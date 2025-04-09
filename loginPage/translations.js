@@ -127,13 +127,6 @@ const translations = {
     gameLabel: "Game:",
     addBtn: "Add",
     
-    // Match table headers
-    matchDescription: "Match Description",
-    matchDate: "Date",
-    matchTime: "Time",
-    matchGame: "Game",
-    actions: "Actions",
-    
     // Games section
     addGameBtn: "Add Game",
     

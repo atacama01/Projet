@@ -1,0 +1,176 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Basic body styling */
+  body {
+    min-height: 100vh;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Text direction will be set via the HTML attribute (lang="...") */
+  }
+  
+  /* Segmented Language Switch (always top-right) */
+  .language-switch {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #f8f8f8;
+  }
+  
+  .language-switch span {
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap;
+  }
+  
+  .language-switch span:hover {
+    background-color: #e4e4e4;
+  }
+  
+  .language-switch .active {
+    background-color: #6c63ff;
+    color: #fff;
+  }
+  
+  /* Main container for left and right sections */
+  .container {
+    width: 90%;
+    max-width: 1000px;
+    height: 600px;
+    display: flex;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  /* Left section with multi-stop gradient */
+  .left-section {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    color: #fff;
+    background: linear-gradient(
+      to bottom,
+      #ececfb 0%,
+      #b8b7f6 33%,
+      #7170ee 66%,
+      #ff6464 100%
+    );
+  }
+  
+  /* Logo image styling */
+  .logo-img {
+    width: 190px; /* Adjust size as needed */
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    display: block;
+  }
+  
+  /* Main text styling */
+  .main-text {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    line-height: 1.3;
+  }
+  
+  /* Sub-text styling */
+  .sub-text {
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    max-width: 300px;
+  }
+  
+  /* Right section for admin cards */
+  .right-section {
+    flex: 1;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  /* Admin cards container */
+  .admin-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  /* Individual card styling */
+  .card {
+    background-color: #fff;
+    width: 300px;
+    min-height: 150px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: #6c63ff;
+  }
+  
+  .card p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #555;
+  }
+  
+  /* RTL Support (if needed) */
+  [dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+  }
+  
+  [dir="rtl"] .radio-group {
+    flex-direction: row-reverse;
+  }
+  /*card link underline remove*/
+  .card-link {
+    text-decoration: none; 
+    color: inherit;        /* Inherit text color from the card */
+    display: block;        /* So the entire card is clickable */
+  }
+  
+  .card-link:hover {
+    text-decoration: none; 
+  }
+  
+  /* If you want to change the hover color of the text: */
+  .card-link:hover h2,
+  .card-link:hover p {
+    color: #6c63ff; /* or any color you like */
+  }
+  
+  

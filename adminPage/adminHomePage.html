@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Home Page</title>
+  <!-- Link to the Admin Home CSS -->
+  <link rel="stylesheet" href="adminHomePage.css">
+</head>
+<body>
+  <!-- Segmented Language Switch (always pinned top-right) -->
+  <div class="language-switch">
+    <span id="english-option" onclick="setLanguageWithHighlight('en')">English</span>
+    <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Left Section: Multi-stop Gradient + Logo + Intro Text -->
+    <div class="left-section">
+      <!-- Adjust the src path to your actual logo location -->
+      <img src="../adminPage/elements/adminLogoPNG.png" alt="Admin Logo" class="logo-img">
+      <h1 class="main-text" data-key="adminWelcome">Admin Dashboard</h1>
+      <p class="sub-text" data-key="adminDesc">
+        Manage competitions, users, and games seamlessly.
+      </p>
+    </div>
+
+<!-- Right Section: Admin Action Cards -->
+<div class="right-section">
+    <div class="admin-cards">
+      <!-- Competitions Card -->
+      <a href="compPage.html" class="card-link">
+        <div class="card">
+          <h2 data-key="cardCompetitionsTitle">Competitions</h2>
+          <p data-key="cardCompetitionsDesc">
+            Manage and schedule competitions.
+          </p>
+        </div>
+      </a>
+
+      <!-- Create competitions Card -->
+    <a href="createCompPage.html" class="card-link">
+      <div class="card">
+        <h2 data-key="cardcreateCompTitle">Create competitions</h2>
+        <p data-key="cardcreateCompDesc">
+          Create new competitions from here.
+        </p>
+      </div>
+    </a> 
+      <!-- Report Card -->
+    <a href="reportPage.html" class="card-link">
+      <div class="card">
+        <h2 data-key="cardreportTitle">Report a problem</h2>
+        <p data-key="cardreportDesc">
+          Report any problem to our team.
+        </p>
+      </div>
+    </a> 
+    </div>
+  </div>
+
+  
+
+  <!-- Include the translations script -->
+  <!-- Adjust the path if your translations.js is in a different folder -->
+  <script src="../loginPage/translations.js"></script>
+  <script>
+    // On page load, set saved or default language
+    const savedLang = localStorage.getItem('lang') || 'en';
+    setLanguageWithHighlight(savedLang);
+  </script>
+</body>
+</html>

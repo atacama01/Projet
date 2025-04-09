@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="forgotPass.css">
+</head>
+<body>
+
+  <!-- Segmented Language Switch -->
+  <div class="language-switch">
+    <span id="english-option" onclick="setLanguageWithHighlight('en')">English</span>
+    <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Left Section: Gradient + Logo + Intro Text -->
+    <div class="left-section">
+      <!-- Replace "LOGO" with your image logo -->
+      <img src="logoBlackPNG.png" alt="Logo" class="logo-img" />
+      <h1 class="main-text" data-key="forgotPassTitle">Reset Password</h1>
+      <p class="sub-text" data-key="forgotPassDesc">
+        Enter your email to reset your password.
+      </p>
+    </div>
+
+    <!-- Right Section: Forgot Password Form -->
+    <div class="right-section">
+      <form class="forgot-form" onsubmit="return handleForgotPass(event)">
+        <h2 data-key="forgotPassTitle">Reset Password</h2>
+        <label for="email" data-key="emailLabel">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="Enter your email" 
+          required
+        />
+        <button type="submit" class="forgot-btn" data-key="submitBtn">Submit</button>
+        <p class="back-link">
+          <a href="index.html" data-key="loginHere">Login here</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="translations.js"></script>
+  <script>
+    // On page load, set the saved or default language
+    const savedLang = localStorage.getItem('lang') || 'en';
+    setLanguageWithHighlight(savedLang);
+
+    // Simple front-end submission handler (modify as needed)
+    function handleForgotPass(event) {
+      event.preventDefault();
+      // Here you can add logic to send a reset link or message
+      alert("If this email exists, a reset link has been sent.");
+      return false;
+    }
+  </script>
+</body>
+</html>

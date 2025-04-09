@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register Page</title>
+  <!-- Link to your new register.css -->
+  <link rel="stylesheet" href="register.css">
+</head>
+<script src="translations.js"></script>
+<body>
+
+  <!-- Language Switch -->
+  <div class="language-switch">
+    <span id="english-option" onclick="setLanguageWithHighlight('en')">English</span>
+    <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+  </div>
+  
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <!-- Left Section (Gradient + Text) -->
+    <div class="left-section">
+      <img 
+      src="logoBlackPNG.png" 
+      alt="Mind Arena Logo" 
+      class="logo-img" 
+    />
+      <h1 class="main-text" data-key="welcomeTitleReg">Join Our Platform</h1>
+      <p class="sub-text" data-key="welcomeDescReg">
+        Register now and start participating in mental game competitions.
+      </p>
+    </div>
+
+    <!-- Right Section (Register Form) -->
+    <div class="right-section">
+      <form class="register-form" onsubmit="return handleRegister(event)">
+        
+        <!-- Title -->
+        <h2 data-key="registerTitle">Create an Account</h2>
+
+        <!-- Full Name -->
+        <label for="fullname" data-key="fullNameLabel">Full Name</label>
+        <input 
+          type="text" 
+          id="fullname" 
+          name="fullname" 
+          placeholder="Enter your full name" 
+          required
+        />
+
+        <!-- Email -->
+        <label for="email" data-key="emailLabel">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="Enter your email" 
+          required
+        />
+
+        <!-- Password -->
+        <label for="password" data-key="passwordLabel">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="Create a password" 
+          required
+        />
+
+        <!-- Confirm Password -->
+        <label for="confirmPassword" data-key="confirmPasswordLabel">Confirm Password</label>
+        <input 
+          type="password" 
+          id="confirmPassword" 
+          name="confirmPassword" 
+          placeholder="Re-enter your password" 
+          required
+        />
+
+        <!-- Radio Buttons for Role -->
+        <div class="radio-group">
+          <input 
+            type="radio" 
+            id="user" 
+            name="role" 
+            value="user" 
+            checked
+          />
+          <label for="user" data-key="userRole">I'm a User</label>
+
+          <input 
+            type="radio" 
+            id="admin" 
+            name="role" 
+            value="admin"
+          />
+          <label for="admin" data-key="adminRole">I'm an Admin</label>
+        </div>
+
+        <!-- Register Button -->
+        <button type="submit" class="register-btn" data-key="registerBtn">
+          Register
+        </button>
+
+        <!-- Link to Login -->
+        <p class="register-link">
+          <span data-key="alreadyHaveAccount">Already have an account?</span>
+          <a href="index.html" data-key="loginHere">Login here</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="translations.js"></script>
+  <script>
+    // On page load, set language from localStorage or default to 'en'
+    const savedLang = localStorage.getItem('lang') || 'en';
+    setLanguage(savedLang);
+
+    // Simple front-end handler for form submission
+    function handleRegister(event) {
+      event.preventDefault();
+      // Example: Check if admin is selected
+      const isAdmin = document.getElementById('admin').checked;
+      if (isAdmin) {
+        window.location.href = "adminHomePage.html";
+      } else {
+        window.location.href = "userHomePage.html";
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+/* Reset (optional) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: #f0f0f0; /* Light background behind the container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.language-switch {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+/*resize the logo*/
+.logo-img {
+  width: 200px;     /* Adjust to your preferred size */
+  height: auto;     /* Keeps the image proportional */
+  margin-bottom: 1.5rem; 
+  display: block;   /* Allows centering if needed */
+}
+/*center the logo*/
+.logo-img {
+  margin: 0 auto 1.5rem auto; 
+  display: block;
+}
+.logo-img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Buttons for language switching */
+.language-switch button {
+  background-color: #6c63ff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.language-switch button:hover {
+  background-color: #5a53d1;
+}
+
+/* Main container that holds both left and right sections */
+.container {
+  width: 90%;
+  max-width: 1000px;
+  height: 600px;
+  display: flex;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 
+   LEFT SECTION 
+   Replacing old gradient with multi-stop gradient from top to bottom
+*/
+.left-section {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: #fff;
+
+  /* Multi-stop gradient (example colors) */
+  background: linear-gradient(
+    to bottom,
+    #ececfb 0%,
+    #b8b7f6 33%,
+    #7170ee 66%,
+    #ff6464 100%
+  );
+}
+
+/* Logo placeholder */
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+/* Main text on the left side */
+.main-text {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Sub-text on the left side */
+.sub-text {
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  max-width: 300px;
+}
+
+/* Right section for the login form */
+.right-section {
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Login form styling */
+.login-form {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title above the form fields */
+.login-form h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+
+/* Labels for form inputs */
+.login-form label {
+  margin-bottom: 0.3rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* Form inputs styling */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* 'Forgot Password?' link */
+.form-options {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.forgot-password {
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: #6c63ff;
+}
+
+/* Radio buttons container */
+.radio-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.radio-group label {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Login button */
+.login-btn {
+  background-color: #6c63ff;
+  color: #fff;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.login-btn:hover {
+  background-color: #5a53d1;
+}
+
+/* Register link */
+.register-link {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.register-link a {
+  text-decoration: none;
+  color: #6c63ff;
+  font-weight: 600;
+}
+
+/* RTL support (optional if you have Arabic) */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .form-options {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .radio-group {
+  flex-direction: row-reverse;
+}
+.language-switch {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;       /* Slight border */
+  border-radius: 20px;          /* Rounded container */
+  overflow: hidden;             /* Ensures round corners are visible */
+  background-color: #f8f8f8;    /* Light background */
+}
+
+.language-switch span {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;          /* Prevents text wrap */
+}
+
+/* Hover effect */
+.language-switch span:hover {
+  background-color: #e4e4e4; 
+}
+
+/* Active/Selected language styling */
+.language-switch .active {
+  background-color: #6c63ff;  /* Your highlight color */
+  color: #fff;                /* White text on highlight */
+}

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Competitions Page</title>
+  <link rel="stylesheet" href="compPage.css">
+</head>
+<body>
+
+
+<!-- ===== NAVBAR (Same as compPage) ===== -->
+<header class="top-nav">
+  <div class="nav-left">
+    <img src="../loginPage/logoBlackPNG.png" alt="Logo" class="nav-logo">
+    <h1 class="nav-title" data-key="compPageTitle">Competitions</h1>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="requestsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="participationApps">Participation applications</li>
+        </div>
+      </a>
+
+      <a href="listOfPPpage.html" class="nav-link active">
+        <div class="card">
+          <li data-key="participantsList">List of participants</li>
+        </div>
+      </a>
+      
+      <a href="listOfPPpage.html" class="nav-link">
+        <div class="card">
+          <li data-key="prizesList">List of prizes</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="matchTiming">Match timing</li>
+        </div>
+      </a>
+      
+      <a href="pointsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="qualifiers">Qualifiers</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="availableGames">Available games</li>
+        </div>
+      </a>
+    </div>
+    <div class="search-container">
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Search..." 
+        data-key="searchPlaceholder"
+      />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="language-switch">
+      <span id="english-option" onclick="setLanguageWithHighlight('en')" class="active">English</span>
+      <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+    </div>
+  </div>
+</header>
+<!-- ===== END NAVBAR ===== -->
+
+  <!-- Main Container -->
+  <div class="main-content">
+    <!-- Create Competition Button Container -->
+    <!-- Small Create Competition Button -->
+    <button 
+        class="create-competition-btn" 
+        onclick="window.location.href='createCompPage.html'"
+>
+  Create Competition
+</button>
+    <!-- Left side: list/cards of competitions -->
+    <div class="left-competitions">
+      <h2>Existing Competitions</h2>
+
+      <!-- Competition #1 -->
+      <div 
+        class="competition-card"
+        data-name="Competition #1"
+        data-max="16"
+        data-begin="2025-04-10"
+        data-end="2025-04-15"
+        data-status="In Progress"
+        data-description="This is a detailed description of Competition #1. It covers rules, prizes, and participant info."
+      >
+        <!-- Three dots menu -->
+        <div class="card-menu">⋮</div>
+        <!-- Dropdown menu (initially hidden) -->
+        <div class="dropdown-menu">
+          <ul>
+            <li>Edit</li>
+            <li>Remove</li>
+            <li class="change-status-trigger">Change Status
+                <!-- Submenu for statuses -->
+                <ul class="change-status-menu">
+                  <li data-status="in-progress">In Progress</li>
+                  <li data-status="ended">Ended</li>
+                  <li data-status="not-started">Not Started</li>
+                </ul>
+              </li>
+          </ul>
+        </div>
+
+        <!-- Basic Info (visible on the card) -->
+        <h3 class="comp-name">Competition #1</h3>
+        <p class="comp-max">Max Players: 16</p>
+        <p class="comp-dates">Begins: 2025-04-10 | Ends: 2025-04-15</p>
+        <p class="comp-status in-progress">Status: In Progress</p>
+      </div>
+
+      <!-- Competition #2 -->
+      <div 
+        class="competition-card"
+        data-name="Competition #2"
+        data-max="30"
+        data-begin="2025-04-10"
+        data-end="2025-04-15"
+        data-status="In Progress"
+        data-description="Competition #2 has more players and a different prize structure."
+      >
+        <!-- Three dots menu -->
+        <div class="card-menu">⋮</div>
+        <!-- Dropdown menu (initially hidden) -->
+        <div class="dropdown-menu">
+          <ul>
+            <li>Edit</li>
+            <li>Remove</li>
+            <li class="change-status-trigger">Change Status
+                <!-- Submenu for statuses -->
+                <ul class="change-status-menu">
+                  <li data-status="in-progress">In Progress</li>
+                  <li data-status="ended">Ended</li>
+                  <li data-status="not-started">Not Started</li>
+                </ul>
+              </li>
+          </ul>
+        </div>
+
+        <!-- Basic Info (visible on the card) -->
+        <h3 class="comp-name">Competition #2</h3>
+        <p class="comp-max">Max Players: 30</p>
+        <p class="comp-dates">Begins: 2025-04-10 | Ends: 2025-04-15</p>
+        <p class="comp-status in-progress">Status: In Progress</p>
+      </div>
+
+      <!-- Competition #3 -->
+      <div 
+        class="competition-card"
+        data-name="Competition #3"
+        data-max="50"
+        data-begin="2025-04-10"
+        data-end="2025-04-15"
+        data-status="Ended"
+        data-description="Competition #3 has ended. This one had the largest number of participants and interesting outcomes."
+      >
+        <!-- Three dots menu -->
+        <div class="card-menu">⋮</div>
+        <!-- Dropdown menu (initially hidden) -->
+        <div class="dropdown-menu">
+          <ul>
+            <li>Edit</li>
+            <li>Remove</li>
+            <li class="change-status-trigger">Change Status
+                <!-- Submenu for statuses -->
+                <ul class="change-status-menu">
+                  <li data-status="in-progress">In Progress</li>
+                  <li data-status="ended">Ended</li>
+                  <li data-status="not-started">Not Started</li>
+                </ul>
+              </li>
+          </ul>
+        </div>
+
+        <!-- Basic Info (visible on the card) -->
+        <h3 class="comp-name">Competition #3</h3>
+        <p class="comp-max">Max Players: 50</p>
+        <p class="comp-dates">Begins: 2025-04-10 | Ends: 2025-04-15</p>
+        <p class="comp-status ended">Status: Ended</p>
+      </div>
+    </div>
+
+    <!-- Right side: details for the clicked competition -->
+    <div class="right-details">
+      <h2>Competition Details</h2>
+      <p>Select a competition on the left to view its details here.</p>
+    </div>
+    
+    <div class="puzzle-icons">
+        <img src="../adminPage/elements/puzzel1.png" alt="Puzzle 1" class="puzzle-icon icon1">
+        <img src="../adminPage/elements/puzzel2.png" alt="Puzzle 2" class="puzzle-icon icon2">
+        <img src="../adminPage/elements/puzzel3.png" alt="Puzzle 3" class="puzzle-icon icon3">
+        <img src="../adminPage/elements/puzzel4.png" alt="Puzzle 4" class="puzzle-icon icon4">
+      </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../loginPage/translations.js"></script>
+  <script>
+    // Load saved or default language
+    const savedLang = localStorage.getItem('lang') || 'en';
+    setLanguageWithHighlight(savedLang);
+
+    // CLICK HANDLER: show full details in .right-details
+  document.querySelectorAll('.competition-card').forEach(card => {
+    card.addEventListener('click', () => {
+      // Retrieve details from data attributes
+      const name = card.getAttribute('data-name');
+      const maxPlayers = card.getAttribute('data-max');
+      const begin = card.getAttribute('data-begin');
+      const end = card.getAttribute('data-end');
+      const status = card.getAttribute('data-status');
+      const description = card.getAttribute('data-description');
+
+      // Insert a UL with LI elements for each piece of info
+      document.querySelector('.right-details').innerHTML = `
+        <h2>${name} Details</h2>
+        <ul class="detail-list">
+          <li><strong>Max Players:</strong> ${maxPlayers}</li>
+          <li><strong>Begin Date:</strong> ${begin}</li>
+          <li><strong>End Date:</strong> ${end}</li>
+          <li><strong>Status:</strong> ${status}</li>
+          <li><strong>Description:</strong> ${description}</li>
+        </ul>
+      `;
+      });
+    });
+  </script>
+
+  <script>
+    // Dropdown menu toggling (three dots)
+    document.querySelectorAll('.card-menu').forEach(menu => {
+      menu.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent the click from propagating
+        // Toggle the dropdown that is the next sibling of the menu
+        const dropdown = menu.nextElementSibling;
+        if (dropdown.style.display === 'block') {
+          dropdown.style.display = 'none';
+        } else {
+          // Close any other open dropdown menus
+          document.querySelectorAll('.dropdown-menu').forEach(d => d.style.display = 'none');
+          dropdown.style.display = 'block';
+        }
+      });
+    });
+
+    // Close the dropdown if the user clicks anywhere else
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.style.display = 'none';
+      });
+    });
+  </script>
+  
+
+  <script>
+    // Select all puzzle icons
+    const puzzleIcons = document.querySelectorAll('.puzzle-icon');
+  
+    // Add a mousemove event to the entire document
+    document.addEventListener('mousemove', (e) => {
+      // Get mouse position relative to the center of the screen
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const offsetX = e.clientX - centerX;
+      const offsetY = e.clientY - centerY;
+  
+      puzzleIcons.forEach((icon, index) => {
+        // The "index + 1" can create different intensities per icon
+        const intensity = (index + 1) * 0.01; // tweak 0.01 for more or less movement
+  
+        // Slight rotation based on mouse offset
+        const rotation = offsetX * intensity * 0.5; // tweak multiplier for rotation
+  
+        // Slight translation (x, y)
+        const translateX = offsetX * intensity;
+        const translateY = offsetY * intensity;
+  
+        icon.style.transform = `
+          translate(${translateX}px, ${translateY}px)
+          rotate(${rotation}deg)
+        `;
+      });
+    });
+  </script>
+
+  <!-- activate page handel -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentPage = window.location.pathname.split("/").pop(); // gets the current file name, like "requestsPage.html"
+      
+      const navLinks = document.querySelectorAll(".nav-link");
+  
+      navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active"); // just in case there's another active
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>

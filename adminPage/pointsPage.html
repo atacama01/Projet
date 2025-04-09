@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competition Points and Playoffs</title>
+  <link rel="stylesheet" href="pointsPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  
+<!-- ===== NAVBAR (Same as compPage) ===== -->
+<header class="top-nav">
+  <div class="nav-left">
+    <img src="../loginPage/logoBlackPNG.png" alt="Logo" class="nav-logo">
+    <h1 class="nav-title" data-key="compPageTitle">Competitions</h1>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="requestsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="participationApps">Participation applications</li>
+        </div>
+      </a>
+
+      <a href="listOfPPpage.html" class="nav-link active">
+        <div class="card">
+          <li data-key="participantsList">List of participants</li>
+        </div>
+      </a>
+      
+      <a href="listOfPPpage.html" class="nav-link">
+        <div class="card">
+          <li data-key="prizesList">List of prizes</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="matchTiming">Match timing</li>
+        </div>
+      </a>
+      
+      <a href="pointsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="qualifiers">Qualifiers</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="availableGames">Available games</li>
+        </div>
+      </a>
+    </div>
+    <div class="search-container">
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Search..." 
+        data-key="searchPlaceholder"
+      />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="language-switch">
+      <span id="english-option" onclick="setLanguageWithHighlight('en')" class="active">English</span>
+      <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+    </div>
+  </div>
+</header>
+<!-- ===== END NAVBAR ===== -->
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Section 1: Points Table -->
+    <div class="section points-section" id="section-1">
+      <h2 class="section-title" data-key="pointsTitle">Points</h2>
+      
+      <div class="points-form">
+        <div class="form-group">
+          <label for="team-name" data-key="teamNameLabel">Team Name:</label>
+          <input type="text" id="team-name" class="form-control" placeholder="Enter team name">
+        </div>
+        
+        <div class="form-group">
+          <label for="team-points" data-key="pointsLabel">Points:</label>
+          <input type="number" id="team-points" class="form-control" placeholder="Enter points" min="0">
+        </div>
+        
+        <button class="btn add-points-btn" onclick="addTeamPoints()">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+      
+      <div class="points-table">
+        <div class="table-header">
+          <div class="header-cell" data-key="rankHeader">Rank</div>
+          <div class="header-cell" data-key="teamNameHeader">Team Name</div>
+          <div class="header-cell" data-key="pointsHeader">Points</div>
+          <div class="header-cell" data-key="actionsHeader">Actions</div>
+        </div>
+        
+        <div id="points-table-body">
+          <!-- Table rows will be added dynamically -->
+        </div>
+      </div>
+      
+      <div class="qualification-note" data-key="qualificationNote">
+        The top 8 teams with the highest points will be qualified.
+      </div>
+    </div>
+    
+    <!-- Section 2: Qualified Teams -->
+    <div class="section qualified-section" id="section-2">
+      <h2 class="section-title" data-key="qualifiedTeamsTitle">List of Qualified Teams</h2>
+      
+      <div class="qualified-table">
+        <div class="table-header">
+          <div class="header-cell" data-key="rankHeader">Rank</div>
+          <div class="header-cell" data-key="teamNameHeader">Team Name</div>
+          <div class="header-cell" data-key="pointsHeader">Points</div>
+        </div>
+        
+        <div id="qualified-table-body">
+          <!-- Qualified teams will be added dynamically -->
+        </div>
+      </div>
+    </div>
+    
+    <!-- Section 3: Playoff Bracket -->
+    <div class="section playoffs-section" id="section-3">
+      <h2 class="section-title" data-key="playoffsTitle">Playoffs</h2>
+      
+      <div class="bracket-container">
+        <div class="bracket">
+          <!-- Round 1: Quarterfinals -->
+          <div class="round round-1">
+            <div class="match-pair">
+              <div class="match">
+                <div class="team team-top" onclick="showTeamDetails(this)">Team 1</div>
+                <div class="team team-bottom" onclick="showTeamDetails(this)">Team 8</div>
+              </div>
+              <div class="match">
+                <div class="team team-top" onclick="showTeamDetails(this)">Team 4</div>
+                <div class="team team-bottom" onclick="showTeamDetails(this)">Team 5</div>
+              </div>
+            </div>
+            <div class="match-pair">
+              <div class="match">
+                <div class="team team-top" onclick="showTeamDetails(this)">Team 2</div>
+                <div class="team team-bottom" onclick="showTeamDetails(this)">Team 7</div>
+              </div>
+              <div class="match">
+                <div class="team team-top" onclick="showTeamDetails(this)">Team 3</div>
+                <div class="team team-bottom" onclick="showTeamDetails(this)">Team 6</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Round 2: Semifinals -->
+          <div class="round round-2">
+            <div class="match-pair">
+              <div class="match">
+                <div class="team team-top" onclick="showTeamDetails(this)">TBD</div>
+                <div class="team team-bottom" onclick="showTeamDetails(this)">TBD</div>
+              </div>
+            </div>
+            <div class="match-pair">
+              <div class="match">
+                <div class="team team-top" onclick="showTeamDetails(this)">TBD</div>
+                <div class="team team-bottom" onclick="showTeamDetails(this)">TBD</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Round 3: Finals -->
+          <div class="round round-3">
+            <div class="match-pair">
+              <div class="match">
+                <div class="team team-top" onclick="showTeamDetails(this)">TBD</div>
+                <div class="team team-bottom" onclick="showTeamDetails(this)">TBD</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Winner -->
+          <div class="round round-winner">
+            <div class="winner-container">
+              <div class="winner-label" data-key="winnerLabel">Winner</div>
+              <div class="winner-team" onclick="showTeamDetails(this)">TBD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bracket-note" data-key="bracketNote">
+        Click on a team box to see details.
+      </div>
+      
+      <button class="details-btn" data-key="detailsBtn" onclick="showBracketDetails()">Details</button>
+    </div>
+  </div>
+  
+  <!-- Team Details Modal -->
+  <div id="team-details-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h3 class="modal-title" data-key="teamDetailsTitle">Team Details</h3>
+      <div class="modal-body">
+        <div class="detail-item">
+          <span class="detail-label" data-key="teamNameDetail">Team Name:</span>
+          <span id="detail-team-name" class="detail-value">Team Name</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label" data-key="pointsDetail">Points:</span>
+          <span id="detail-team-points" class="detail-value">0</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label" data-key="matchesPlayedDetail">Matches Played:</span>
+          <span id="detail-matches-played" class="detail-value">0</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label" data-key="winsDetail">Wins:</span>
+          <span id="detail-wins" class="detail-value">0</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label" data-key="lossesDetail">Losses:</span>
+          <span id="detail-losses" class="detail-value">0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../loginPage/translations.js"></script>
+  <script>
+    // Sample data for teams
+    let teams = [
+      { id: 1, name: 'Team Alpha', points: 28, matchesPlayed: 10, wins: 9, losses: 1 },
+      { id: 2, name: 'Team Beta', points: 25, matchesPlayed: 10, wins: 8, losses: 2 },
+      { id: 3, name: 'Team Gamma', points: 22, matchesPlayed: 10, wins: 7, losses: 3 },
+      { id: 4, name: 'Emerald Eagles', points: 19, matchesPlayed: 10, wins: 6, losses: 4 },
+      { id: 5, name: 'Crimson Dragons', points: 16, matchesPlayed: 10, wins: 5, losses: 5 },
+      { id: 6, name: 'Quantum Quasars', points: 13, matchesPlayed: 10, wins: 4, losses: 6 },
+      { id: 7, name: 'Shadow Wolves', points: 10, matchesPlayed: 10, wins: 3, losses: 7 },
+      { id: 8, name: 'Stellar Strikers', points: 7, matchesPlayed: 10, wins: 2, losses: 8 },
+      { id: 9, name: 'Frost Giants', points: 4, matchesPlayed: 10, wins: 1, losses: 9 },
+      { id: 10, name: 'Neon Ninjas', points: 1, matchesPlayed: 10, wins: 0, losses: 10 }
+    ];
+    
+    // Function to add team points
+    function addTeamPoints() {
+      const teamNameInput = document.getElementById('team-name');
+      const teamPointsInput = document.getElementById('team-points');
+      
+      const teamName = teamNameInput.value.trim();
+      const points = parseInt(teamPointsInput.value);
+      
+      if (!teamName || isNaN(points)) {
+        const currentLang = localStorage.getItem('lang') || 'en';
+        const alertMsg = currentLang === 'ar' ? 'يرجى إدخال اسم الفريق والنقاط' : 'Please enter team name and points';
+        alert(alertMsg);
+        return;
+      }
+      
+      // Check if team already exists
+      const existingTeamIndex = teams.findIndex(team => team.name.toLowerCase() === teamName.toLowerCase());
+      
+      if (existingTeamIndex !== -1) {
+        // Update existing team
+        teams[existingTeamIndex].points = points;
+      } else {
+        // Add new team
+        const newId = teams.length > 0 ? Math.max(...teams.map(team => team.id)) + 1 : 1;
+        teams.push({
+          id: newId,
+          name: teamName,
+          points: points,
+          matchesPlayed: 0,
+          wins: 0,
+          losses: 0
+        });
+      }
+      
+      // Sort teams by points (descending)
+      teams.sort((a, b) => b.points - a.points);
+      
+      // Update tables
+      updatePointsTable();
+      updateQualifiedTable();
+      updateBracket();
+      
+      // Clear inputs
+      teamNameInput.value = '';
+      teamPointsInput.value = '';
+    }
+    
+    // Function to update points table
+    function updatePointsTable() {
+      const tableBody = document.getElementById('points-table-body');
+      tableBody.innerHTML = '';
+      
+      teams.forEach((team, index) => {
+        const row = document.createElement('div');
+        row.className = 'table-row';
+        
+        row.innerHTML = `
+          <div class="table-cell">${index + 1}</div>
+          <div class="table-cell">${team.name}</div>
+          <div class="table-cell">${team.points}</div>
+          <div class="table-cell">
+            <button class="edit-btn" onclick="editTeam(${team.id})">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="delete-btn" onclick="deleteTeam(${team.id})">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+        `;
+        
+        tableBody.appendChild(row);
+      });
+    }
+    
+    // Function to update qualified teams table
+    function updateQualifiedTable() {
+      const tableBody = document.getElementById('qualified-table-body');
+      tableBody.innerHTML = '';
+      
+      // Get top 8 teams
+      const qualifiedTeams = teams.slice(0, 8);
+      
+      qualifiedTeams.forEach((team, index) => {
+        const row = document.createElement('div');
+        row.className = 'table-row';
+        
+        row.innerHTML = `
+          <div class="table-cell">${index + 1}</div>
+          <div class="table-cell">${team.name}</div>
+          <div class="table-cell">${team.points}</div>
+        `;
+        
+        tableBody.appendChild(row);
+      });
+    }
+    
+    // Function to update bracket
+    function updateBracket() {
+      // Get top 8 teams
+      const qualifiedTeams = teams.slice(0, 8);
+      
+      if (qualifiedTeams.length < 8) return;
+      
+      // Update quarterfinals
+      const round1Teams = document.querySelectorAll('.round-1 .team');
+      round1Teams[0].textContent = qualifiedTeams[0].name; // 1st seed
+      round1Teams[1].textContent = qualifiedTeams[7].name; // 8th seed
+      round1Teams[2].textContent = qualifiedTeams[3].name; // 4th seed
+      round1Teams[3].textContent = qualifiedTeams[4].name; // 5th seed
+      round1Teams[4].textContent = qualifiedTeams[1].name; // 2nd seed
+      round1Teams[5].textContent = qualifiedTeams[6].name; // 7th seed
+      round1Teams[6].textContent = qualifiedTeams[2].name; // 3rd seed
+      round1Teams[7].textContent = qualifiedTeams[5].name; // 6th seed
+    }
+    
+    // Function to edit team
+    function editTeam(teamId) {
+      const team = teams.find(t => t.id === teamId);
+      if (!team) return;
+      
+      document.getElementById('team-name').value = team.name;
+      document.getElementById('team-points').value = team.points;
+      
+      // Scroll to form
+      document.querySelector('.points-form').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Function to delete team
+    function deleteTeam(teamId) {
+      const currentLang = localStorage.getItem('lang') || 'en';
+      const confirmMsg = currentLang === 'ar' ? 'هل أنت متأكد من حذف هذا الفريق؟' : 'Are you sure you want to delete this team?';
+      
+      if (confirm(confirmMsg)) {
+        teams = teams.filter(team => team.id !== teamId);
+        
+        // Sort teams by points (descending)
+        teams.sort((a, b) => b.points - a.points);
+        
+        // Update tables
+        updatePointsTable();
+        updateQualifiedTable();
+        updateBracket();
+      }
+    }
+    
+    // Function to show team details
+    function showTeamDetails(element) {
+      const teamName = element.textContent;
+      if (teamName === 'TBD') return;
+      
+      const team = teams.find(t => t.name === teamName);
+      if (!team) return;
+      
+      document.getElementById('detail-team-name').textContent = team.name;
+      document.getElementById('detail-team-points').textContent = team.points;
+      document.getElementById('detail-matches-played').textContent = team.matchesPlayed;
+      document.getElementById('detail-wins').textContent = team.wins;
+      document.getElementById('detail-losses').textContent = team.losses;
+      
+      document.getElementById('team-details-modal').style.display = 'flex';
+    }
+    
+    // Function to show bracket details
+    function showBracketDetails() {
+      const currentLang = localStorage.getItem('lang') || 'en';
+      const alertMsg = currentLang === 'ar' 
+        ? 'تفاصيل التصفيات: يتم تحديث الفرق المتأهلة تلقائيًا بناءً على النقاط.' 
+        : 'Playoff Details: Qualified teams are automatically updated based on points.';
+      
+      alert(alertMsg);
+    }
+    
+    // Function to close modal
+    function closeModal() {
+      document.getElementById('team-details-modal').style.display = 'none';
+    }
+    
+    // Language switching
+    function setLanguageWithHighlight(lang) {
+      // Save selected language
+      localStorage.setItem('lang', lang);
+      
+      // Update UI language
+      const elements = document.querySelectorAll('[data-key]');
+      elements.forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update placeholders
+      if (lang === 'ar') {
+        document.getElementById('team-name').placeholder = 'أدخل اسم الفريق';
+        document.getElementById('team-points').placeholder = 'أدخل النقاط';
+      } else {
+        document.getElementById('team-name').placeholder = 'Enter team name';
+        document.getElementById('team-points').placeholder = 'Enter points';
+      }
+      
+      // Update text direction
+      document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = lang;
+      
+      // Highlight selected language
+      document.getElementById('english-option').classList.toggle('active', lang === 'en');
+      document.getElementById('arabic-option').classList.toggle('active', lang === 'ar');
+    }
+    
+    // On page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      setLanguageWithHighlight(savedLang);
+      
+      // Initialize tables and bracket
+      updatePointsTable();
+      updateQualifiedTable();
+      updateBracket();
+      
+      // Close modal when clicking outside
+      window.onclick = function(event) {
+        const modal = document.getElementById('team-details-modal');
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+    });
+  </script>
+
+  <!-- activate page handel -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentPage = window.location.pathname.split("/").pop(); // gets the current file name, like "requestsPage.html"
+      
+      const navLinks = document.querySelectorAll(".nav-link");
+  
+      navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active"); // just in case there's another active
+        }
+      });
+    });
+  </script>
+</body>
+</html>

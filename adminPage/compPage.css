@@ -1,0 +1,406 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  /* Body styling */
+  body {
+    background: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+      /* Navbar Styling */
+      .top-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        padding: 0.5rem 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      
+      .nav-left {
+        display: flex;
+        align-items: center;
+      }
+      
+      .nav-logo {
+        height: 40px;
+        margin-right: 1rem;
+      }
+      
+      .nav-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+      }
+      
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 0.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .nav-link {
+        text-decoration: none;
+        color: inherit;
+      }
+      
+      .nav-link .card {
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        background-color: transparent;
+      }
+      
+      .nav-link:hover .card {
+        background-color: #f0f4f8;
+        transform: translateY(-2px);
+      }
+      
+      .nav-link.active .card {
+        background-color: #e6f0ff;
+        color: #1a73e8;
+        font-weight: 500;
+      }
+      
+      .search-container {
+        position: relative;
+      }
+      
+      .search-input {
+        padding: 0.5rem 1rem 0.5rem 2.5rem;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        width: 200px;
+        transition: all 0.3s ease;
+      }
+      
+      .search-input:focus {
+        width: 250px;
+        outline: none;
+        border-color: #1a73e8;
+        box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+      }
+      
+      .search-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #888;
+      }
+      
+      .language-switch {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+      
+      .language-switch span {
+        cursor: pointer;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+      }
+      
+      .language-switch span:hover {
+        background-color: #f0f4f8;
+      }
+      
+      .language-switch span.active {
+        background-color: #e6f0ff;
+        color: #1a73e8;
+        font-weight: 500;
+      }
+      .create-competition-btn {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+      
+        background-color: #6c63ff;
+        color: #fff;
+        border: none;
+        padding: 0.6rem 1.2rem;     /* Increased padding */
+        border-radius: 6px;         /* Slightly more rounded */
+        font-size: 1rem;            /* Medium font size */
+        font-weight: 500;           /* Slightly bolder */
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        z-index: 999;
+      }
+      
+      .create-competition-btn:hover {
+        background-color: #5a53d1;
+      }
+      
+  
+  
+  /* Main Content (split layout) */
+  .main-content {
+    display: flex;
+    flex: 1; 
+    margin: 1rem;
+    gap: 1rem; /* space between left and right panels */
+  }
+  
+  /* Left side: list/cards of competitions */
+  .left-competitions {
+    width: 30%;  /* 30% of available width */
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* Right side: competition details */
+  .right-details {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* Competition Card Container */
+  .competition-card {
+    position: relative; /* for absolute positioning of the menu */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    background: linear-gradient(45deg, #ececfb, #b8b7f6);
+  }
+  
+  /* Hover Effects */
+  .competition-card:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+  
+  /* Card Menu (three dots) */
+  .card-menu {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s;
+  }
+  
+  .card-menu:hover {
+    color: #333;
+  }
+  
+  /* Competition Card Content Styles */
+  .competition-card .comp-name {
+    margin-bottom: 0.3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .competition-card .comp-max,
+  .competition-card .comp-dates,
+  .competition-card .comp-status {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+  }
+  
+  .competition-card .comp-status {
+    font-weight: bold;
+  }
+  
+  /* Optional: Color-code status */
+  .comp-status.in-progress {
+    color: green;
+  }
+  .comp-status.ended {
+    color: red;
+  }
+  .comp-status.not-started {
+    color: orange;
+  }
+  
+  /* Dropdown menu styling for the card */
+  .dropdown-menu {
+    position: absolute;
+    top: 30px;  /* below the three dots */
+    right: 8px;
+    background: linear-gradient(45deg, #ececfb, #b8b7f6);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    display: none;  /* Hidden by default */
+    z-index: 10;
+    overflow: hidden; 
+  }
+  
+  .dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+  }
+  
+  .dropdown-menu li {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  /* Interactive hover effect for dropdown items */
+  .dropdown-menu li:hover {
+    background: linear-gradient(45deg, #dcdcf9, #a8a7f1);
+    color: #000;
+    transform: translateY(-1px);
+  }
+
+  /* Wrap the right-details content in a subtle "card" style */
+.right-details {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;  /* Increase padding for more whitespace */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: #333;      /* Default text color */
+  }
+  
+  /* Style the main heading */
+  .right-details h2 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Style paragraphs for competition info */
+  .right-details p {
+    margin-bottom: 0.7rem; /* Extra spacing between lines */
+    color: #555;
+    line-height: 1.5;      /* More readable line spacing */
+  }
+  
+  /* Highlight the label part in each line (e.g., "Max Players:") */
+  .right-details p strong {
+    color: #333;
+    font-weight: 600;
+  }
+  
+  /* Optional: If you want a subtle divider between sections */
+  .right-details hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 1rem 0;
+  }
+  /* Turn off default bullets */
+  .detail-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .detail-list li {
+    position: relative;
+    margin-bottom: 0.7rem;   /* space between lines */
+    padding-left: 1.8rem;    /* room for the dot */
+    color: #555;
+    transition: transform 0.2s, color 0.2s;
+  }
+  
+  /* Create a small circular blue dot */
+  .detail-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.4rem;          /* vertically center the dot */
+    width: 0.6rem;        /* dot size */
+    height: 0.6rem;
+    background-color: #3498db; /* blue color */
+    border-radius: 50%;   /* make it circular */
+    transition: transform 0.2s;
+  }
+  
+  /* On hover, slightly scale the text and the dot */
+  .detail-list li:hover {
+    color: #333;
+    transform: scale(1.02);
+  }
+  
+  .detail-list li:hover::before {
+    transform: scale(1.2);
+  }
+  
+  /*puzzel icons
+ /* Ensure right-details can host absolutely-positioned elements */
+.right-details {
+    position: relative; /* So puzzle-icons can position inside it */
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    flex: 1;
+  }
+  .puzzle-icons {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    width: 450px;  /* Increase container width */
+    height: 450px; /* Increase container height */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "icon1 icon2"
+      "icon3 icon4";
+    place-items: center;
+  }
+  
+  .puzzle-icon {
+    width: 220px; /* Larger icon width */
+    height: auto;
+    transform-origin: center center;
+  }
+
+  /* Slight rotations for each icon */
+  .icon1 {
+    grid-area: icon1;
+    transform: rotate(-15deg);
+  }
+  .icon2 {
+    grid-area: icon2;
+    transform: rotate(10deg);
+  }
+  .icon3 {
+    grid-area: icon3;
+    transform: rotate(5deg);
+  }
+  .icon4 {
+    grid-area: icon4;
+    transform: rotate(-5deg);
+  }
+  

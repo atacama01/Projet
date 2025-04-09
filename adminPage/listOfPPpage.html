@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of Participants and Prizes</title>
+  <link rel="stylesheet" href="listOfPPpage.css">
+</head>
+<body>
+<!-- Add this right after the opening <body> tag, before the navbar -->
+<div class="tug-of-war-container">
+  <div class="tug-of-war-left">
+    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tug%20of%20war%202-WN8rKmDfX4JbqrF9zl9IwETjxp3qjC.png" alt="Tug of War Player 2" class="tug-of-war-player">
+  </div>
+  <div class="tug-of-war-rope"></div>
+  <div class="tug-of-war-right">
+    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tug-of-war-1-xMdEr6iVh2fdkCkCr7t5G5iaOK7z9j.png" alt="Tug of War Player 1" class="tug-of-war-player">
+  </div>
+</div>
+
+<!-- Participant Details Popup -->
+<div id="participant-popup" class="participant-popup">
+  <div class="popup-content">
+    <span class="close-popup" onclick="closeParticipantPopup()">&times;</span>
+    <div class="popup-header">
+      <h2 id="popup-name">Participant Name</h2>
+      <div class="popup-team" id="popup-team">Team Name</div>
+    </div>
+    <div class="popup-body">
+      <div class="popup-photo">
+        <div class="photo-placeholder">
+          <div class="photo-initial">J</div>
+        </div>
+      </div>
+      <div class="popup-details">
+        <div class="detail-item">
+          <span class="detail-label" data-key="ageLabel">Age:</span>
+          <span class="detail-value" id="popup-age">21</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label" data-key="birthdayLabel">Birthday:</span>
+          <span class="detail-value" id="popup-birthday">January 15, 2002</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label" data-key="genderLabel">Gender:</span>
+          <span class="detail-value" id="popup-gender">Male</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label" data-key="specialityLabel">Speciality:</span>
+          <span class="detail-value" id="popup-speciality">Computer Science</span>
+        </div>
+      </div>
+    </div>
+    <div class="popup-footer">
+      <button class="btn view-profile-btn" data-key="viewProfileBtn">View Full Profile</button>
+      <button class="btn reject-btn" data-key="rejectBtn" onclick="showRejectReasonFromPopup()">Reject</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== NAVBAR (Same as compPage) ===== -->
+<header class="top-nav">
+  <div class="nav-left">
+    <img src="../loginPage/logoBlackPNG.png" alt="Logo" class="nav-logo">
+    <h1 class="nav-title" data-key="compPageTitle">Competitions</h1>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="requestsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="participationApps">Participation applications</li>
+        </div>
+      </a>
+
+      <a href="listOfPPpage.html" class="nav-link active">
+        <div class="card">
+          <li data-key="participantsList">List of participants</li>
+        </div>
+      </a>
+      
+      <a href="listOfPPpage.html" class="nav-link">
+        <div class="card">
+          <li data-key="prizesList">List of prizes</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="matchTiming">Match timing</li>
+        </div>
+      </a>
+      
+      <a href="pointsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="qualifiers">Qualifiers</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="availableGames">Available games</li>
+        </div>
+      </a>
+    </div>
+    <div class="search-container">
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Search..." 
+        data-key="searchPlaceholder"
+      />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="language-switch">
+      <span id="english-option" onclick="setLanguageWithHighlight('en')" class="active">English</span>
+      <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+    </div>
+  </div>
+</header>
+<!-- ===== END NAVBAR ===== -->
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Left Section: List of Prizes -->
+    <div class="prizes-section">
+      <h2 class="section-title" data-key="prizesList">List of Prizes</h2>
+      
+      <div class="prizes-list">
+        <div class="prize-item">
+          <span class="prize-rank" data-key="firstPlace">1st Place:</span>
+          <span class="prize-description">Gold Trophy + $1000</span>
+        </div>
+        <div class="prize-item">
+          <span class="prize-rank" data-key="secondPlace">2nd Place:</span>
+          <span class="prize-description">Silver Trophy + $500</span>
+        </div>
+        <div class="prize-item">
+          <span class="prize-rank" data-key="thirdPlace">3rd Place:</span>
+          <span class="prize-description">Bronze Trophy + $250</span>
+        </div>
+      </div>
+      
+      <div class="prize-buttons">
+        <button class="btn delete-btn" data-key="deleteBtn">Delete</button>
+        <button class="btn add-btn" data-key="addBtn">Add</button>
+        <button class="btn edit-btn" data-key="editBtn">Edit</button>
+      </div>
+    </div>
+    
+    <!-- Right Section: List of Participants -->
+    <div class="participants-section">
+      <h2 class="section-title" data-key="participantsList">List of Participants</h2>
+      
+      <div class="participants-table">
+        <div class="table-header">
+          <div class="header-cell" data-key="teamName">Team Name</div>
+          <div class="header-cell" data-key="participantName">Participant Name</div>
+          <div class="header-cell" data-key="actions">Actions</div>
+        </div>
+        
+        <!-- Original participants -->
+        <div class="table-row" onclick="showParticipantPopup(1)">
+          <div class="table-cell">Team Alpha</div>
+          <div class="table-cell">John Doe</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(1); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(2)">
+          <div class="table-cell">Team Beta</div>
+          <div class="table-cell">Jane Smith</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(2); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(3)">
+          <div class="table-cell">Team Gamma</div>
+          <div class="table-cell">Alex Johnson</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(3); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <!-- Additional participants -->
+        <div class="table-row" onclick="showParticipantPopup(4)">
+          <div class="table-cell">Phoenix Flames</div>
+          <div class="table-cell">Michael Chen</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(4); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(5)">
+          <div class="table-cell">Midnight Raiders</div>
+          <div class="table-cell">Sarah Williams</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(5); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(6)">
+          <div class="table-cell">Quantum Quasars</div>
+          <div class="table-cell">David Rodriguez</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(6); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(7)">
+          <div class="table-cell">Emerald Eagles</div>
+          <div class="table-cell">Emily Thompson</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(7); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(8)">
+          <div class="table-cell">Shadow Wolves</div>
+          <div class="table-cell">James Wilson</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(8); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(9)">
+          <div class="table-cell">Crimson Dragons</div>
+          <div class="table-cell">Olivia Martinez</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(9); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(10)">
+          <div class="table-cell">Stellar Strikers</div>
+          <div class="table-cell">Daniel Lee</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(10); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(11)">
+          <div class="table-cell">Frost Giants</div>
+          <div class="table-cell">Sophia Garcia</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(11); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(12)">
+          <div class="table-cell">Neon Ninjas</div>
+          <div class="table-cell">Ethan Brown</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(12); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(13)">
+          <div class="table-cell">Thunderbolt Titans</div>
+          <div class="table-cell">Ava Taylor</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(13); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(14)">
+          <div class="table-cell">Mystic Mavericks</div>
+          <div class="table-cell">Noah Anderson</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(14); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(15)">
+          <div class="table-cell">Sapphire Sharks</div>
+          <div class="table-cell">Isabella Thomas</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(15); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(16)">
+          <div class="table-cell">Vortex Vipers</div>
+          <div class="table-cell">William Jackson</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(16); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(17)">
+          <div class="table-cell">Lunar Lions</div>
+          <div class="table-cell">Mia White</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(17); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(18)">
+          <div class="table-cell">Cobalt Crusaders</div>
+          <div class="table-cell">Benjamin Harris</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(18); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(19)">
+          <div class="table-cell">Inferno Immortals</div>
+          <div class="table-cell">Charlotte Clark</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(19); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+        
+        <div class="table-row" onclick="showParticipantPopup(20)">
+          <div class="table-cell">Nebula Knights</div>
+          <div class="table-cell">Liam Lewis</div>
+          <div class="table-cell">
+            <button class="reject-btn" data-key="rejectBtn" onclick="showRejectReason(20); event.stopPropagation();">Reject</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Rejection Reason Section (Hidden by default) -->
+      <div id="rejection-reason-container" class="rejection-reason-container hidden">
+        <h3 data-key="rejectionReason">Reason for Rejection</h3>
+        <textarea id="rejection-text" placeholder="Enter reason for rejection"></textarea>
+        <div class="rejection-buttons">
+          <button class="btn confirm-btn" data-key="confirmBtn" onclick="confirmRejection()">Confirm</button>
+          <button class="btn cancel-btn" data-key="cancelBtn" onclick="hideRejectReason()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../loginPage/translations.js"></script>
+  <script>
+    // Participant data (mock data)
+    const participantsData = [
+      { id: 1, name: "John Doe", team: "Team Alpha", age: 21, birthday: "January 15, 2002", gender: "Male", speciality: "Computer Science" },
+      { id: 2, name: "Jane Smith", team: "Team Beta", age: 22, birthday: "March 8, 2001", gender: "Female", speciality: "Electrical Engineering" },
+      { id: 3, name: "Alex Johnson", team: "Team Gamma", age: 20, birthday: "July 22, 2003", gender: "Male", speciality: "Mechanical Engineering" },
+      { id: 4, name: "Michael Chen", team: "Phoenix Flames", age: 23, birthday: "April 5, 2000", gender: "Male", speciality: "Data Science" },
+      { id: 5, name: "Sarah Williams", team: "Midnight Raiders", age: 21, birthday: "September 12, 2002", gender: "Female", speciality: "Artificial Intelligence" },
+      { id: 6, name: "David Rodriguez", team: "Quantum Quasars", age: 24, birthday: "November 30, 1999", gender: "Male", speciality: "Software Engineering" },
+      { id: 7, name: "Emily Thompson", team: "Emerald Eagles", age: 22, birthday: "February 18, 2001", gender: "Female", speciality: "Cybersecurity" },
+      { id: 8, name: "James Wilson", team: "Shadow Wolves", age: 23, birthday: "May 7, 2000", gender: "Male", speciality: "Game Development" },
+      { id: 9, name: "Olivia Martinez", team: "Crimson Dragons", age: 21, birthday: "August 25, 2002", gender: "Female", speciality: "Web Development" },
+      { id: 10, name: "Daniel Lee", team: "Stellar Strikers", age: 22, birthday: "October 14, 2001", gender: "Male", speciality: "Mobile App Development" },
+      { id: 11, name: "Sophia Garcia", team: "Frost Giants", age: 20, birthday: "December 3, 2003", gender: "Female", speciality: "UX/UI Design" },
+      { id: 12, name: "Ethan Brown", team: "Neon Ninjas", age: 24, birthday: "June 29, 1999", gender: "Male", speciality: "Robotics" },
+      { id: 13, name: "Ava Taylor", team: "Thunderbolt Titans", age: 21, birthday: "March 17, 2002", gender: "Female", speciality: "Network Security" },
+      { id: 14, name: "Noah Anderson", team: "Mystic Mavericks", age: 23, birthday: "September 8, 2000", gender: "Male", speciality: "Cloud Computing" },
+      { id: 15, name: "Isabella Thomas", team: "Sapphire Sharks", age: 22, birthday: "January 31, 2001", gender: "Female", speciality: "Database Management" },
+      { id: 16, name: "William Jackson", team: "Vortex Vipers", age: 24, birthday: "July 11, 1999", gender: "Male", speciality: "DevOps" },
+      { id: 17, name: "Mia White", team: "Lunar Lions", age: 20, birthday: "April 22, 2003", gender: "Female", speciality: "Machine Learning" },
+      { id: 18, name: "Benjamin Harris", team: "Cobalt Crusaders", age: 23, birthday: "November 5, 2000", gender: "Male", speciality: "Blockchain" },
+      { id: 19, name: "Charlotte Clark", team: "Inferno Immortals", age: 21, birthday: "February 9, 2002", gender: "Female", speciality: "Information Systems" },
+      { id: 20, name: "Liam Lewis", team: "Nebula Knights", age: 22, birthday: "August 14, 2001", gender: "Male", speciality: "Virtual Reality" }
+    ];
+    
+    // Current participant being rejected
+    let currentParticipantId = null;
+    
+    // Show participant popup
+    function showParticipantPopup(participantId) {
+      const participant = participantsData.find(p => p.id === participantId);
+      if (!participant) return;
+      
+      // Update popup content
+      document.getElementById('popup-name').textContent = participant.name;
+      document.getElementById('popup-team').textContent = participant.team;
+      document.getElementById('popup-age').textContent = participant.age;
+      document.getElementById('popup-birthday').textContent = participant.birthday;
+      document.getElementById('popup-gender').textContent = participant.gender;
+      document.getElementById('popup-speciality').textContent = participant.speciality;
+      
+      // Set photo initial
+      document.querySelector('.photo-initial').textContent = participant.name.charAt(0);
+      
+      // Store current participant ID
+      currentParticipantId = participantId;
+      
+      // Show popup with animation
+      const popup = document.getElementById('participant-popup');
+      popup.classList.add('show');
+      
+      // Add blur effect to background
+      document.querySelector('.container').classList.add('blur-background');
+    }
+    
+    // Close participant popup
+    function closeParticipantPopup() {
+      const popup = document.getElementById('participant-popup');
+      popup.classList.remove('show');
+      
+      // Remove blur effect from background
+      document.querySelector('.container').classList.remove('blur-background');
+    }
+    
+    // Show rejection reason from popup
+    function showRejectReasonFromPopup() {
+      closeParticipantPopup();
+      showRejectReason(currentParticipantId);
+    }
+    
+    // Show rejection reason textarea
+    function showRejectReason(participantId) {
+      currentParticipantId = participantId;
+      document.getElementById('rejection-reason-container').classList.remove('hidden');
+      document.getElementById('rejection-text').focus();
+    }
+    
+    // Hide rejection reason textarea
+    function hideRejectReason() {
+      document.getElementById('rejection-reason-container').classList.add('hidden');
+      document.getElementById('rejection-text').value = '';
+      currentParticipantId = null;
+    }
+    
+    // Confirm rejection
+    function confirmRejection() {
+      const reason = document.getElementById('rejection-text').value;
+      if (reason.trim() === '') {
+        alert('Please provide a reason for rejection');
+        return;
+      }
+      
+      // Here you would typically send this data to your server
+      console.log(`Rejected participant ${currentParticipantId} with reason: ${reason}`);
+      
+      // Remove the participant from the table (for demo purposes)
+      const rows = document.querySelectorAll('.table-row');
+      if (currentParticipantId <= rows.length) {
+        rows[currentParticipantId - 1].style.display = 'none';
+      }
+      
+      hideRejectReason();
+    }
+    
+    function setLanguageWithHighlight(lang) {
+      // Save selected language
+      localStorage.setItem('lang', lang);
+      
+      // Update UI language
+      const elements = document.querySelectorAll('[data-key]');
+      elements.forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update text direction
+      document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      
+      // Highlight selected language
+      document.getElementById('english-option').classList.toggle('active', lang === 'en');
+      document.getElementById('arabic-option').classList.toggle('active', lang === 'ar');
+    }
+    
+    // On page load, set saved or default language
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      setLanguageWithHighlight(savedLang);
+      
+      // Add hover effect to table rows
+      const tableRows = document.querySelectorAll('.table-row');
+      tableRows.forEach(row => {
+        row.addEventListener('mouseenter', function() {
+          this.classList.add('row-hover');
+        });
+        row.addEventListener('mouseleave', function() {
+          this.classList.remove('row-hover');
+        });
+      });
+    });
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const leftPlayer = document.querySelector('.tug-of-war-left');
+    const rightPlayer = document.querySelector('.tug-of-war-right');
+    const rope = document.querySelector('.tug-of-war-rope');
+    
+    // Variables to track the tug-of-war state
+    let tugPosition = 0; // 0 means neutral, negative means left is winning, positive means right is winning
+    const maxTug = 100; // Maximum pull in either direction
+    
+    // Initial vertical position (middle of the page)
+    let verticalPosition = window.innerHeight / 2;
+    
+    // Handle scroll effect
+    window.addEventListener('scroll', function() {
+      // Calculate how far down the page we've scrolled as a percentage
+      const scrollPercentage = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      
+      // Move players horizontally based on scroll position
+      const scrollOffset = scrollPercentage * 30; // Max 30px horizontal movement
+      
+      // Move players vertically based on scroll position
+      // This will make them move up and down as you scroll
+      const verticalOffset = 100 + (scrollPercentage * 300); // Vertical movement range
+      
+      leftPlayer.style.transform = `translateX(${50 + scrollOffset - tugPosition/2}px) translateY(${verticalOffset}px)`;
+      rightPlayer.style.transform = `translateX(${-50 - scrollOffset + tugPosition/2}px) translateY(${verticalOffset}px)`;
+      
+      // Make the rope follow the players
+      rope.style.transform = `translateY(${verticalOffset}px)`;
+      
+      // Make the rope slightly longer or shorter based on scroll
+      const baseRopeWidth = 100 - 300; // Base width minus player widths
+      const ropeStretch = 20 * Math.sin(scrollPercentage * Math.PI); // Oscillate between -20 and 20px
+      rope.style.width = `calc(${baseRopeWidth}% + ${ropeStretch}px)`;
+    });
+    
+    // Handle mouse movement
+    document.addEventListener('mousemove', function(e) {
+      // Calculate mouse position relative to center of screen
+      const mouseX = e.clientX;
+      const windowCenter = window.innerWidth / 2;
+      const mouseOffset = (mouseX - windowCenter) / windowCenter; // -1 to 1
+      
+      // Update tug position based on mouse position
+      // The further from center, the stronger the pull
+      tugPosition = mouseOffset * maxTug;
+      
+      // Get current vertical position from transform
+      const currentTransform = leftPlayer.style.transform || '';
+      const verticalMatch = currentTransform.match(/translateY$$([^)]+)$$/);
+      const currentVertical = verticalMatch ? verticalMatch[1] : '0px';
+      
+      // Apply the tug effect while maintaining vertical position
+      leftPlayer.style.transform = `translateX(${50 - tugPosition/2}px) translateY(${currentVertical})`;
+      rightPlayer.style.transform = `translateX(${-50 + tugPosition/2}px) translateY(${currentVertical})`;
+      
+      // Make players lean based on tug direction
+      leftPlayer.style.rotate = `${-tugPosition/10}deg`;
+      rightPlayer.style.rotate = `${tugPosition/10}deg`;
+      
+      // Update rope tension visually
+      const baseRopeWidth = 100 - 300;
+      const ropeTension = Math.abs(tugPosition) / 2; // Rope gets shorter as tension increases
+      rope.style.width = `calc(${baseRopeWidth}% - ${ropeTension}px)`;
+    });
+    
+    // Add a subtle animation to make it feel alive even when not interacting
+    function breathingAnimation() {
+      const time = Date.now() / 1000;
+      const breathe = Math.sin(time) * 5;
+      
+      // Only apply breathing animation if not actively tugging
+      if (Math.abs(tugPosition) < 5) {
+        // Get current vertical position from transform
+        const leftTransform = leftPlayer.style.transform || '';
+        const verticalMatch = leftTransform.match(/translateY$$([^)]+)$$/);
+        const currentVertical = verticalMatch ? verticalMatch[1] : '0px';
+        
+        leftPlayer.style.transform = `translateX(${50 + breathe}px) translateY(${currentVertical})`;
+        rightPlayer.style.transform = `translateX(${-50 - breathe}px) translateY(${currentVertical})`;
+      }
+      
+      requestAnimationFrame(breathingAnimation);
+    }
+    
+    breathingAnimation();
+  });
+</script>
+
+<!-- activate page handel -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop(); // gets the current file name, like "requestsPage.html"
+    
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+      const linkPage = link.getAttribute("href");
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active"); // just in case there's another active
+      }
+    });
+  });
+</script>
+</body>
+</html>

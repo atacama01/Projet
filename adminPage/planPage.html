@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match Planning and Games</title>
+  <link rel="stylesheet" href="planPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+ 
+<!-- ===== NAVBAR (Same as compPage) ===== -->
+<header class="top-nav">
+  <div class="nav-left">
+    <img src="../loginPage/logoBlackPNG.png" alt="Logo" class="nav-logo">
+    <h1 class="nav-title" data-key="compPageTitle">Competitions</h1>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="requestsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="participationApps">Participation applications</li>
+        </div>
+      </a>
+
+      <a href="listOfPPpage.html" class="nav-link active">
+        <div class="card">
+          <li data-key="participantsList">List of participants</li>
+        </div>
+      </a>
+      
+      <a href="listOfPPpage.html" class="nav-link">
+        <div class="card">
+          <li data-key="prizesList">List of prizes</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="matchTiming">Match timing</li>
+        </div>
+      </a>
+      
+      <a href="pointsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="qualifiers">Qualifiers</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="availableGames">Available games</li>
+        </div>
+      </a>
+    </div>
+    <div class="search-container">
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Search..." 
+        data-key="searchPlaceholder"
+      />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="language-switch">
+      <span id="english-option" onclick="setLanguageWithHighlight('en')" class="active">English</span>
+      <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+    </div>
+  </div>
+</header>
+<!-- ===== END NAVBAR ===== -->
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Match Scheduling Section (Left) -->
+    <div class="match-section">
+      <h2 class="section-title" data-key="matchTiming">Match Timing</h2>
+      
+      <!-- Match Scheduling Form -->
+      <div class="match-form">
+        <div class="form-group">
+          <label for="team1" data-key="team1Label">Team 1:</label>
+          <select id="team1" class="form-control">
+            <option value="" disabled selected>Select team</option>
+            <option value="team1">Team Alpha</option>
+            <option value="team2">Team Beta</option>
+            <option value="team3">Team Gamma</option>
+            <option value="team4">Emerald Eagles</option>
+            <option value="team5">Crimson Dragons</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="team2" data-key="team2Label">Team 2:</label>
+          <select id="team2" class="form-control">
+            <option value="" disabled selected>Select team</option>
+            <option value="team1">Team Alpha</option>
+            <option value="team2">Team Beta</option>
+            <option value="team3">Team Gamma</option>
+            <option value="team4">Emerald Eagles</option>
+            <option value="team5">Crimson Dragons</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="match-date" data-key="dateLabel">Date:</label>
+          <input type="date" id="match-date" class="form-control" placeholder="yyyy.mm.dd">
+        </div>
+        
+        <div class="form-group">
+          <label for="match-time" data-key="timeLabel">Time:</label>
+          <input type="time" id="match-time" class="form-control" placeholder="h:mm">
+        </div>
+        
+        <div class="form-group">
+          <label for="match-game" data-key="gameLabel">Game:</label>
+          <select id="match-game" class="form-control">
+            <option value="" disabled selected>Select game</option>
+            <option value="chess">Chess</option>
+            <option value="puzzle">Puzzle</option>
+            <option value="rubik">Rubik's Cube</option>
+          </select>
+        </div>
+        
+        <button class="btn add-match-btn" data-key="addBtn" onclick="addMatch()">Add</button>
+      </div>
+      
+      <!-- Scheduled Matches Table -->
+      <div class="matches-table">
+        <div class="table-header">
+          <div class="header-cell" data-key="matchDescription">Match Description</div>
+          <div class="header-cell" data-key="matchDate">Date</div>
+          <div class="header-cell" data-key="matchTime">Time</div>
+          <div class="header-cell" data-key="matchGame">Game</div>
+          <div class="header-cell" data-key="actions">Actions</div>
+        </div>
+        
+        <div class="table-row">
+          <div class="table-cell">Team Alpha vs Team Gamma</div>
+          <div class="table-cell">2025.04.19</div>
+          <div class="table-cell">16:30</div>
+          <div class="table-cell">Chess</div>
+          <div class="table-cell">
+            <button class="delete-btn" onclick="deleteMatch(0)"><i class="fas fa-trash-alt"></i></button>
+          </div>
+        </div>
+        
+        <div class="table-row">
+          <div class="table-cell">Emerald Eagles vs Crimson Dragons</div>
+          <div class="table-cell">2025.04.20</div>
+          <div class="table-cell">14:00</div>
+          <div class="table-cell">Puzzle</div>
+          <div class="table-cell">
+            <button class="delete-btn" onclick="deleteMatch(1)"><i class="fas fa-trash-alt"></i></button>
+          </div>
+        </div>
+        
+        <div class="table-row">
+          <div class="table-cell">Team Beta vs Team Alpha</div>
+          <div class="table-cell">2025.04.21</div>
+          <div class="table-cell">18:15</div>
+          <div class="table-cell">Rubik's Cube</div>
+          <div class="table-cell">
+            <button class="delete-btn" onclick="deleteMatch(2)"><i class="fas fa-trash-alt"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Available Games Section (Right) -->
+    <div class="games-section">
+      <h2 class="section-title" data-key="availableGames">Available Games</h2>
+      
+      <div class="games-list">
+        <div class="game-item">
+          <span class="game-name">Chess</span>
+          <button class="delete-btn" onclick="deleteGame(0)"><i class="fas fa-trash-alt"></i></button>
+        </div>
+        
+        <div class="game-item">
+          <span class="game-name">Puzzle</span>
+          <button class="delete-btn" onclick="deleteGame(1)"><i class="fas fa-trash-alt"></i></button>
+        </div>
+        
+        <div class="game-item">
+          <span class="game-name">Rubik's Cube</span>
+          <button class="delete-btn" onclick="deleteGame(2)"><i class="fas fa-trash-alt"></i></button>
+        </div>
+        
+        <div class="game-item">
+          <span class="game-name">Memory Game</span>
+          <button class="delete-btn" onclick="deleteGame(3)"><i class="fas fa-trash-alt"></i></button>
+        </div>
+        
+        <div class="game-item">
+          <span class="game-name">Sudoku</span>
+          <button class="delete-btn" onclick="deleteGame(4)"><i class="fas fa-trash-alt"></i></button>
+        </div>
+      </div>
+      
+      <div class="add-game-container">
+        <input type="text" id="new-game" class="form-control" placeholder="New game name">
+        <button class="btn add-game-btn" data-key="addGameBtn" onclick="addGame()">Add Game</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../loginPage/translations.js"></script>
+  <script>
+    // Mock data for teams and games
+    const teams = [
+      { id: 'team1', name: 'فريق ألفا', nameEn: 'Team Alpha' },
+      { id: 'team2', name: 'فريق بيتا', nameEn: 'Team Beta' },
+      { id: 'team3', name: 'فريق جاما', nameEn: 'Team Gamma' },
+      { id: 'team4', name: 'النسور الخضراء', nameEn: 'Emerald Eagles' },
+      { id: 'team5', name: 'التنانين القرمزية', nameEn: 'Crimson Dragons' }
+    ];
+    
+    const games = [
+      { id: 'chess', name: 'شطرنج', nameEn: 'Chess' },
+      { id: 'puzzle', name: 'بوزل', nameEn: 'Puzzle' },
+      { id: 'rubik', name: 'مكعب روبك', nameEn: 'Rubik\'s Cube' },
+      { id: 'memory', name: 'لعبة الذاكرة', nameEn: 'Memory Game' },
+      { id: 'sudoku', name: 'سودوكو', nameEn: 'Sudoku' }
+    ];
+    
+    // Add a new match
+    function addMatch() {
+      const team1Select = document.getElementById('team1');
+      const team2Select = document.getElementById('team2');
+      const dateInput = document.getElementById('match-date');
+      const timeInput = document.getElementById('match-time');
+      const gameSelect = document.getElementById('match-game');
+      
+      // Validate inputs
+      if (team1Select.value === '' || team2Select.value === '' || 
+          dateInput.value === '' || timeInput.value === '' || 
+          gameSelect.value === '') {
+        const currentLang = localStorage.getItem('lang') || 'en';
+        const alertMsg = currentLang === 'ar' ? 'يرجى ملء جميع الحقول' : 'Please fill in all fields';
+        alert(alertMsg);
+        return;
+      }
+      
+      if (team1Select.value === team2Select.value) {
+        const currentLang = localStorage.getItem('lang') || 'en';
+        const alertMsg = currentLang === 'ar' ? 'لا يمكن اختيار نفس الفريق' : 'Cannot select the same team';
+        alert(alertMsg);
+        return;
+      }
+      
+      // Get team names
+      const team1 = teams.find(t => t.id === team1Select.value);
+      const team2 = teams.find(t => t.id === team2Select.value);
+      const game = games.find(g => g.id === gameSelect.value);
+      
+      // Format date
+      const date = new Date(dateInput.value);
+      const formattedDate = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+      
+      // Create new match row
+      const matchesTable = document.querySelector('.matches-table');
+      const newRow = document.createElement('div');
+      newRow.className = 'table-row';
+      
+      // Get current language
+      const currentLang = localStorage.getItem('lang') || 'en';
+      const team1Name = currentLang === 'ar' ? team1.name : team1.nameEn;
+      const team2Name = currentLang === 'ar' ? team2.name : team2.nameEn;
+      const gameName = currentLang === 'ar' ? game.name : game.nameEn;
+      const vsText = currentLang === 'ar' ? 'ضد' : 'vs';
+      
+      newRow.innerHTML = `
+        <div class="table-cell">${team1Name} ${vsText} ${team2Name}</div>
+        <div class="table-cell">${formattedDate}</div>
+        <div class="table-cell">${timeInput.value}</div>
+        <div class="table-cell">${gameName}</div>
+        <div class="table-cell">
+          <button class="delete-btn" onclick="deleteMatch(${document.querySelectorAll('.matches-table .table-row').length})">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
+      `;
+      
+      matchesTable.appendChild(newRow);
+      
+      // Reset form
+      team1Select.value = '';
+      team2Select.value = '';
+      dateInput.value = '';
+      timeInput.value = '';
+      gameSelect.value = '';
+      
+      // Add animation class
+      setTimeout(() => {
+        newRow.classList.add('show');
+      }, 10);
+    }
+    
+    // Delete a match
+    function deleteMatch(index) {
+      const rows = document.querySelectorAll('.matches-table .table-row');
+      if (index < rows.length) {
+        rows[index].classList.add('delete-animation');
+        setTimeout(() => {
+          rows[index].remove();
+        }, 300);
+      }
+    }
+    
+    // Add a new game
+    function addGame() {
+      const newGameInput = document.getElementById('new-game');
+      
+      // Validate input
+      if (newGameInput.value.trim() === '') {
+        const currentLang = localStorage.getItem('lang') || 'en';
+        const alertMsg = currentLang === 'ar' ? 'يرجى إدخال اسم اللعبة' : 'Please enter a game name';
+        alert(alertMsg);
+        return;
+      }
+      
+      // Create new game item
+      const gamesList = document.querySelector('.games-list');
+      const newGame = document.createElement('div');
+      newGame.className = 'game-item';
+      
+      newGame.innerHTML = `
+        <span class="game-name">${newGameInput.value}</span>
+        <button class="delete-btn" onclick="deleteGame(${document.querySelectorAll('.games-list .game-item').length})">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      `;
+      
+      gamesList.appendChild(newGame);
+      
+      // Reset input
+      newGameInput.value = '';
+      
+      // Add animation class
+      setTimeout(() => {
+        newGame.classList.add('show');
+      }, 10);
+    }
+    
+    // Delete a game
+    function deleteGame(index) {
+      const games = document.querySelectorAll('.games-list .game-item');
+      if (index < games.length) {
+        games[index].classList.add('delete-animation');
+        setTimeout(() => {
+          games[index].remove();
+        }, 300);
+      }
+    }
+    
+    // Language switching
+    function setLanguageWithHighlight(lang) {
+      // Save selected language
+      localStorage.setItem('lang', lang);
+      
+      // Update UI language
+      const elements = document.querySelectorAll('[data-key]');
+      elements.forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update placeholders
+      if (lang === 'ar') {
+        document.getElementById('new-game').placeholder = 'اسم اللعبة الجديدة';
+        document.querySelector('#team1 option[disabled]').textContent = 'اختر الفريق';
+        document.querySelector('#team2 option[disabled]').textContent = 'اختر الفريق';
+        document.querySelector('#match-game option[disabled]').textContent = 'اختر اللعبة';
+      } else {
+        document.getElementById('new-game').placeholder = 'New game name';
+        document.querySelector('#team1 option[disabled]').textContent = 'Select team';
+        document.querySelector('#team2 option[disabled]').textContent = 'Select team';
+        document.querySelector('#match-game option[disabled]').textContent = 'Select game';
+      }
+      
+      // Update text direction
+      document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = lang;
+      
+      // Highlight selected language
+      document.getElementById('english-option').classList.toggle('active', lang === 'en');
+      document.getElementById('arabic-option').classList.toggle('active', lang === 'ar');
+      
+      // Update match descriptions based on language
+      updateMatchDescriptions(lang);
+    }
+    
+    // Update match descriptions based on language
+    function updateMatchDescriptions(lang) {
+      const rows = document.querySelectorAll('.matches-table .table-row');
+      rows.forEach((row, index) => {
+        // This is a simplified example - in a real app, you'd use data attributes or a data structure
+        // to store both language versions of the match description
+        const cell = row.querySelector('.table-cell:first-child');
+        if (index === 0) {
+          cell.textContent = lang === 'ar' ? 'فريق ألفا ضد فريق جاما' : 'Team Alpha vs Team Gamma';
+        } else if (index === 1) {
+          cell.textContent = lang === 'ar' ? 'النسور الخضراء ضد التنانين القرمزية' : 'Emerald Eagles vs Crimson Dragons';
+        } else if (index === 2) {
+          cell.textContent = lang === 'ar' ? 'فريق بيتا ضد فريق ألفا' : 'Team Beta vs Team Alpha';
+        }
+      });
+      
+      // Update game names based on language
+      const gameItems = document.querySelectorAll('.games-list .game-item');
+      gameItems.forEach((item, index) => {
+        const nameSpan = item.querySelector('.game-name');
+        if (index === 0) {
+          nameSpan.textContent = lang === 'ar' ? 'شطرنج' : 'Chess';
+        } else if (index === 1) {
+          nameSpan.textContent = lang === 'ar' ? 'بوزل' : 'Puzzle';
+        } else if (index === 2) {
+          nameSpan.textContent = lang === 'ar' ? 'مكعب روبك' : 'Rubik\'s Cube';
+        } else if (index === 3) {
+          nameSpan.textContent = lang === 'ar' ? 'لعبة الذاكرة' : 'Memory Game';
+        } else if (index === 4) {
+          nameSpan.textContent = lang === 'ar' ? 'سودوكو' : 'Sudoku';
+        }
+      });
+    }
+    
+    // On page load, set saved or default language
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      setLanguageWithHighlight(savedLang);
+    });
+  </script>
+
+  <!-- activate page handel -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentPage = window.location.pathname.split("/").pop(); // gets the current file name, like "requestsPage.html"
+      
+      const navLinks = document.querySelectorAll(".nav-link");
+  
+      navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active"); // just in case there's another active
+        }
+      });
+    });
+  </script>
+</body>
+</html>

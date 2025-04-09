@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Competition</title>
+  <link rel="stylesheet" href="createCompPage.css">
+</head>
+<body>
+
+
+<!-- ===== NAVBAR (Same as compPage) ===== -->
+<header class="top-nav">
+  <div class="nav-left">
+    <img src="../loginPage/logoBlackPNG.png" alt="Logo" class="nav-logo">
+    <h1 class="nav-title" data-key="compPageTitle">Competitions</h1>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="requestsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="participationApps">Participation applications</li>
+        </div>
+      </a>
+
+      <a href="listOfPPpage.html" class="nav-link active">
+        <div class="card">
+          <li data-key="participantsList">List of participants</li>
+        </div>
+      </a>
+      
+      <a href="listOfPPpage.html" class="nav-link">
+        <div class="card">
+          <li data-key="prizesList">List of prizes</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="matchTiming">Match timing</li>
+        </div>
+      </a>
+      
+      <a href="pointsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="qualifiers">Qualifiers</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="availableGames">Available games</li>
+        </div>
+      </a>
+    </div>
+    <div class="search-container">
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Search..." 
+        data-key="searchPlaceholder"
+      />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="language-switch">
+      <span id="english-option" onclick="setLanguageWithHighlight('en')" class="active">English</span>
+      <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+    </div>
+  </div>
+</header>
+<!-- ===== END NAVBAR ===== -->
+
+  <!-- Main Container for Create Competition -->
+  <img id="floating-img-left" class="floating-image" src="../adminPage/elements/chess2.png" alt="Left Decorative Image">
+  <img id="floating-img-right" class="floating-image" src="../adminPage/elements/chess1.png" alt="Right Decorative Image">
+
+  <div class="create-comp-container">
+    <h1 class="page-title" data-key="pageTitle">Create Comp</h1>
+
+    <!-- Create Competition Form (4 sections) -->
+    <form class="create-comp-form">
+
+      <!-- SECTION 1: Basic Info -->
+      <div class="section" id="section-1">
+        <h2 data-key="section1Title">competition info</h2>
+
+        <!-- Competition Name -->
+        <label data-key="compNameLabel">competition name</label>
+        <input 
+          type="text" 
+          placeholder="ex: chess" 
+          data-key="compNamePlaceholder"
+        />
+
+        <!-- Max Players -->
+        <label data-key="maxPlayersLabel">max palyers number</label>
+        <input 
+          type="number" 
+          placeholder="ex: 20" 
+          data-key="maxPlayersPlaceholder"
+        />
+
+        <!-- Competition Place -->
+        <label data-key="compPlaceLabel">competition place</label>
+        <input 
+          type="text" 
+          placeholder="ex: sport salle" 
+          data-key="compPlacePlaceholder"
+        />
+
+        <!-- Begin & End Date -->
+        <label data-key="beginDateLabel">begin date</label>
+        <input type="date" />
+
+        <label data-key="endDateLabel">end date</label>
+        <input type="date" />
+
+        <!-- Player Info Required -->
+        <label data-key="playerInfoLabel">necessary players info</label>
+        <textarea 
+          rows="3" 
+          placeholder="ex: full name, phone number..."
+          data-key="playerInfoPlaceholder"
+        ></textarea>
+      </div>
+
+      <!-- SECTION 2: Gifts -->
+      <div class="section" id="section-2">
+        <h2 data-key="section2Title">Gifts list</h2>
+
+        <!-- Checkbox to enable gifts (optional) -->
+        <label class="enable-gifts">
+          <input type="checkbox" />
+          <span data-key="enableGiftsLabel">enable gifts</span>
+        </label>
+
+        <!-- Gifts fields -->
+        <div id="gifts-container">
+          <div class="gift-field">
+            <input type="text" placeholder="gift 1" required />
+          </div>
+          <div class="gift-field">
+            <input type="text" placeholder="gift 2" required />
+          </div>
+          <div class="gift-field">
+            <input type="text" placeholder="gift 3" required />
+          </div>
+        </div>
+        <button type="button" id="add-gift-btn" data-key="addGiftBtn">+ add gift</button>
+      </div>
+
+      <!-- SECTION 3: Play Mode / Games -->
+      <div class="section" id="section-3">
+        <h2 data-key="section3Title">game players system</h2>
+
+        <!-- Game Mode -->
+        <label data-key="playModeLabel">palyers number</label>
+        <div class="play-mode">
+          <label>
+            <input type="radio" name="mode" value="single" checked />
+            <span data-key="modeSingle">one</span>
+          </label>
+          <label>
+            <input type="radio" name="mode" value="double" />
+            <span data-key="modeDouble">two</span>
+          </label>
+          <label>
+            <input type="radio" name="mode" value="multiple" />
+            <span data-key="modeMultiple">multiple</span>
+          </label>
+        </div>
+
+        <!-- Games List -->
+        <h4 data-key="gamesListTitle">competition games</h4>
+        <div id="games-container">
+          <div class="game-field">
+            <input type="text" placeholder="game name 1" required />
+          </div>
+        </div>
+        <button type="button" id="add-game-btn" data-key="addGameBtn">+ add game</button>
+      </div>
+      
+
+      <!-- SECTION 4: Description & System -->
+      <div class="section" id="section-4">
+        <h2 data-key="section4Title">description</h2>
+        <textarea 
+          rows="4" 
+          placeholder="write a description here..."
+          data-key="descPlaceholder"
+        ></textarea>
+
+        <h3 data-key="systemTitle">competition system</h3>
+        <label>
+          <input type="radio" name="compSystem" value="points" checked />
+          <span data-key="systemPoints">depends on points</span>
+        </label>
+        <label>
+          <input type="radio" name="compSystem" value="random" />
+          <span data-key="systemRandom">random</span>
+        </label>
+        <!-- Final Create Button -->
+        <button type="submit" class="create-comp-btn" data-key="createCompBtn">
+          Create the competition
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../loginPage/translations.js"></script>
+  <script>
+    // Form Validation
+document.querySelector('.create-comp-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const requiredFields = document.querySelectorAll('.create-comp-form input[required], .create-comp-form textarea[required]');
+    let isValid = true;
+
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            field.style.borderColor = "red";
+            isValid = false;
+        } else {
+            field.style.borderColor = "#ccc";
+        }
+    });
+
+    if (!isValid) {
+        alert("Please fill in all required fields.");
+        return;
+    }
+
+    alert("Competition Created!");
+});
+
+// Add Gift Field with Animation
+document.getElementById('add-gift-btn').addEventListener('click', () => {
+    const giftsContainer = document.getElementById('gifts-container');
+    const count = giftsContainer.querySelectorAll('.gift-field').length + 1;
+
+    const giftField = document.createElement('div');
+    giftField.className = 'gift-field';
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = `Gift ${count}`;
+    input.required = true;
+
+    giftField.appendChild(input);
+    giftsContainer.appendChild(giftField);
+});
+
+// Add Game Field with Animation
+document.getElementById('add-game-btn').addEventListener('click', () => {
+    const gamesContainer = document.getElementById('games-container');
+    const count = gamesContainer.querySelectorAll('.game-field').length + 1;
+
+    const gameField = document.createElement('div');
+    gameField.className = 'game-field';
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = `Game ${count}`;
+    input.required = true;
+
+    gameField.appendChild(input);
+    gamesContainer.appendChild(gameField);
+});
+
+document.addEventListener('mousemove', (e) => {
+    const leftImage = document.getElementById('floating-img-left');
+    const rightImage = document.getElementById('floating-img-right');
+
+    let x = (window.innerWidth / 2 - e.clientX) / 30;
+    let y = (window.innerHeight / 2 - e.clientY) / 30;
+
+    leftImage.style.transform = `translate(${x}px, ${y}px)`;
+    rightImage.style.transform = `translate(${-x}px, ${-y}px)`;
+});
+
+
+  </script>
+  <!-- activate page handel -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentPage = window.location.pathname.split("/").pop(); // gets the current file name, like "requestsPage.html"
+      
+      const navLinks = document.querySelectorAll(".nav-link");
+  
+      navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active"); // just in case there's another active
+        }
+      });
+    });
+  </script>
+</body>
+</html>

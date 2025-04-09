@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Participation Requests</title>
+  <link rel="stylesheet" href="requestsPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR (Same as compPage) ===== -->
+<header class="top-nav">
+  <div class="nav-left">
+    <img src="../loginPage/logoBlackPNG.png" alt="Logo" class="nav-logo">
+    <h1 class="nav-title" data-key="compPageTitle">Competitions</h1>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="requestsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="participationApps">Participation applications</li>
+        </div>
+      </a>
+
+      <a href="listOfPPpage.html" class="nav-link active">
+        <div class="card">
+          <li data-key="participantsList">List of participants</li>
+        </div>
+      </a>
+      
+      <a href="listOfPPpage.html" class="nav-link">
+        <div class="card">
+          <li data-key="prizesList">List of prizes</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="matchTiming">Match timing</li>
+        </div>
+      </a>
+      
+      <a href="pointsPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="qualifiers">Qualifiers</li>
+        </div>
+      </a>
+      
+      <a href="planPage.html" class="nav-link">
+        <div class="card">
+          <li data-key="availableGames">Available games</li>
+        </div>
+      </a>
+    </div>
+    <div class="search-container">
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Search..." 
+        data-key="searchPlaceholder"
+      />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="language-switch">
+      <span id="english-option" onclick="setLanguageWithHighlight('en')" class="active">English</span>
+      <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+    </div>
+  </div>
+</header>
+<!-- ===== END NAVBAR ===== -->
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Left Section - Competitions List -->
+    <div class="competitions-panel">
+      <h2 class="section-title" data-key="existingCompetitions">Existing Competitions</h2>
+      
+      <!-- Competition Cards -->
+      <div class="competition-cards">
+        <!-- Competition #1 -->
+        <div class="competition-card" onclick="selectCompetition(1)" id="competition-1">
+          <div class="card-header">
+            <h3 class="competition-title">Competition #1</h3>
+            <div class="dropdown">
+              <button class="options-btn" onclick="event.stopPropagation()"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dropdown-menu">
+                <a href="#" onclick="editCompetition(1, event)"><i class="fas fa-edit"></i> <span data-key="edit">Edit</span></a>
+                <a href="#" onclick="changeStatus(1, event)"><i class="fas fa-exchange-alt"></i> <span data-key="changeStatus">Change Status</span></a>
+                <a href="#" onclick="removeCompetition(1, event)"><i class="fas fa-trash"></i> <span data-key="remove">Remove</span></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="competition-details">
+            <div class="detail-item">
+              <span class="detail-label" data-key="maxPlayers">Max Players:</span>
+              <span class="detail-value">16</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="begins">Begins:</span>
+              <span class="detail-value">2025-04-10</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="ends">Ends:</span>
+              <span class="detail-value">2025-04-15</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="status">Status:</span>
+              <span class="detail-value status-progress" data-key="inProgress">In Progress</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Competition #2 -->
+        <div class="competition-card" onclick="selectCompetition(2)" id="competition-2">
+          <div class="card-header">
+            <h3 class="competition-title">Competition #2</h3>
+            <div class="dropdown">
+              <button class="options-btn" onclick="event.stopPropagation()"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dropdown-menu">
+                <a href="#" onclick="editCompetition(2, event)"><i class="fas fa-edit"></i> <span data-key="edit">Edit</span></a>
+                <a href="#" onclick="changeStatus(2, event)"><i class="fas fa-exchange-alt"></i> <span data-key="changeStatus">Change Status</span></a>
+                <a href="#" onclick="removeCompetition(2, event)"><i class="fas fa-trash"></i> <span data-key="remove">Remove</span></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="competition-details">
+            <div class="detail-item">
+              <span class="detail-label" data-key="maxPlayers">Max Players:</span>
+              <span class="detail-value">30</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="begins">Begins:</span>
+              <span class="detail-value">2025-04-10</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="ends">Ends:</span>
+              <span class="detail-value">2025-04-15</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="status">Status:</span>
+              <span class="detail-value status-progress" data-key="inProgress">In Progress</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Competition #3 -->
+        <div class="competition-card" onclick="selectCompetition(3)" id="competition-3">
+          <div class="card-header">
+            <h3 class="competition-title">Competition #3</h3>
+            <div class="dropdown">
+              <button class="options-btn" onclick="event.stopPropagation()"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dropdown-menu">
+                <a href="#" onclick="editCompetition(3, event)"><i class="fas fa-edit"></i> <span data-key="edit">Edit</span></a>
+                <a href="#" onclick="changeStatus(3, event)"><i class="fas fa-exchange-alt"></i> <span data-key="changeStatus">Change Status</span></a>
+                <a href="#" onclick="removeCompetition(3, event)"><i class="fas fa-trash"></i> <span data-key="remove">Remove</span></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="competition-details">
+            <div class="detail-item">
+              <span class="detail-label" data-key="maxPlayers">Max Players:</span>
+              <span class="detail-value">50</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="begins">Begins:</span>
+              <span class="detail-value">2025-04-10</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="ends">Ends:</span>
+              <span class="detail-value">2025-04-15</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="status">Status:</span>
+              <span class="detail-value status-ended" data-key="ended">Ended</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Competition #4 -->
+        <div class="competition-card" onclick="selectCompetition(4)" id="competition-4">
+          <div class="card-header">
+            <h3 class="competition-title">Chess Tournament</h3>
+            <div class="dropdown">
+              <button class="options-btn" onclick="event.stopPropagation()"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dropdown-menu">
+                <a href="#" onclick="editCompetition(4, event)"><i class="fas fa-edit"></i> <span data-key="edit">Edit</span></a>
+                <a href="#" onclick="changeStatus(4, event)"><i class="fas fa-exchange-alt"></i> <span data-key="changeStatus">Change Status</span></a>
+                <a href="#" onclick="removeCompetition(4, event)"><i class="fas fa-trash"></i> <span data-key="remove">Remove</span></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="competition-details">
+            <div class="detail-item">
+              <span class="detail-label" data-key="maxPlayers">Max Players:</span>
+              <span class="detail-value">24</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="begins">Begins:</span>
+              <span class="detail-value">2025-05-01</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="ends">Ends:</span>
+              <span class="detail-value">2025-05-10</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="status">Status:</span>
+              <span class="detail-value status-upcoming" data-key="upcoming">Upcoming</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Competition #5 -->
+        <div class="competition-card" onclick="selectCompetition(5)" id="competition-5">
+          <div class="card-header">
+            <h3 class="competition-title">Puzzle Challenge</h3>
+            <div class="dropdown">
+              <button class="options-btn" onclick="event.stopPropagation()"><i class="fas fa-ellipsis-v"></i></button>
+              <div class="dropdown-menu">
+                <a href="#" onclick="editCompetition(5, event)"><i class="fas fa-edit"></i> <span data-key="edit">Edit</span></a>
+                <a href="#" onclick="changeStatus(5, event)"><i class="fas fa-exchange-alt"></i> <span data-key="changeStatus">Change Status</span></a>
+                <a href="#" onclick="removeCompetition(5, event)"><i class="fas fa-trash"></i> <span data-key="remove">Remove</span></a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="competition-details">
+            <div class="detail-item">
+              <span class="detail-label" data-key="maxPlayers">Max Players:</span>
+              <span class="detail-value">40</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="begins">Begins:</span>
+              <span class="detail-value">2025-04-20</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="ends">Ends:</span>
+              <span class="detail-value">2025-04-25</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="status">Status:</span>
+              <span class="detail-value status-progress" data-key="inProgress">In Progress</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Right Section - Requests Panel -->
+    <div class="requests-panel">
+      <h2 class="section-title" data-key="registrationRequests">Registration Requests</h2>
+      
+      <div id="no-selection-message" class="info-message">
+        <p data-key="selectCompetitionMessage">Select a competition on the left to view its requests.</p>
+      </div>
+      
+      <div id="requests-container" class="hidden">
+        <!-- Search and Filter Bar -->
+        <div class="filter-bar">
+          <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search requests..." data-key="searchRequests">
+            <i class="fas fa-search search-icon"></i>
+          </div>
+          
+          <div class="filter-container">
+            <div class="filter-group">
+              <select id="status-filter" class="filter-select">
+                <option value="all" data-key="all">All Status</option>
+                <option value="pending" data-key="pending">Pending</option>
+                <option value="approved" data-key="approved">Approved</option>
+                <option value="rejected" data-key="rejected">Rejected</option>
+              </select>
+            </div>
+            
+            <div class="filter-group">
+              <select id="type-filter" class="filter-select">
+                <option value="all" data-key="all">All Types</option>
+                <option value="individual" data-key="individual">Individual</option>
+                <option value="team" data-key="team">Team</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Requests List Container - Will be populated dynamically -->
+        <div id="requests-list" class="requests-list">
+          <!-- Requests will be loaded here dynamically -->
+        </div>
+      </div>
+      
+      <!-- Rejection Form -->
+      <div id="rejection-form" class="rejection-form hidden">
+        <h3 class="form-title" data-key="rejectionReason">Reason for Rejection</h3>
+        
+        <div class="form-group">
+          <label for="rejection-reason" data-key="reasonLabel">Reason:</label>
+          <textarea id="rejection-reason" class="form-control" rows="4" placeholder="Enter reason for rejection"></textarea>
+        </div>
+        
+        <div class="form-actions">
+          <button class="cancel-btn" data-key="cancel" onclick="hideRejectionForm()">Cancel</button>
+          <button class="send-btn" data-key="sendDecision" onclick="sendRejection()">Send Decision</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../loginPage/translations.js"></script>
+  <script>
+    // Competition data
+    const competitions = [
+      { id: 1, name: "Competition #1", maxPlayers: 16, begins: "2025-04-10", ends: "2025-04-15", status: "inProgress" },
+      { id: 2, name: "Competition #2", maxPlayers: 30, begins: "2025-04-10", ends: "2025-04-15", status: "inProgress" },
+      { id: 3, name: "Competition #3", maxPlayers: 50, begins: "2025-04-10", ends: "2025-04-15", status: "ended" },
+      { id: 4, name: "Chess Tournament", maxPlayers: 24, begins: "2025-05-01", ends: "2025-05-10", status: "upcoming" },
+      { id: 5, name: "Puzzle Challenge", maxPlayers: 40, begins: "2025-04-20", ends: "2025-04-25", status: "inProgress" }
+    ];
+    
+    // Sample requests data for each competition
+    const competitionRequests = {
+      1: [
+        {
+          id: "req-1-1",
+          type: "individual",
+          name: "John Doe",
+          age: 20,
+          gender: "Male",
+          major: "Computer Science",
+          email: "john.doe@example.com",
+          phone: "+1 234 567 8901",
+          requestDate: "2025-04-07",
+          status: "pending"
+        },
+        {
+          id: "req-1-2",
+          type: "team",
+          name: "Alpha Team",
+          members: [
+            { name: "Jane Doe", role: "Captain", gender: "Female", major: "Engineering", age: 23 },
+            { name: "Michael Johnson", gender: "Male", major: "Physics", age: 21 },
+            { name: "Sarah Williams", gender: "Female", major: "Mathematics", age: 22 }
+          ],
+          status: "pending"
+        }
+      ],
+      2: [
+        {
+          id: "req-2-1",
+          type: "individual",
+          name: "Emily Johnson",
+          age: 19,
+          gender: "Female",
+          major: "Biology",
+          email: "emily.j@example.com",
+          phone: "+1 987 654 3210",
+          requestDate: "2025-04-06",
+          status: "pending"
+        },
+        {
+          id: "req-2-2",
+          type: "individual",
+          name: "Robert Chen",
+          age: 22,
+          gender: "Male",
+          major: "Chemistry",
+          email: "robert.c@example.com",
+          phone: "+1 555 123 4567",
+          requestDate: "2025-04-05",
+          status: "pending"
+        }
+      ],
+      3: [
+        {
+          id: "req-3-1",
+          type: "team",
+          name: "Beta Squad",
+          members: [
+            { name: "Alex Thompson", role: "Captain", gender: "Male", major: "Computer Engineering", age: 24 },
+            { name: "Lisa Garcia", gender: "Female", major: "Data Science", age: 23 },
+            { name: "David Kim", gender: "Male", major: "Electrical Engineering", age: 22 },
+            { name: "Sophia Martinez", gender: "Female", major: "Information Technology", age: 21 }
+          ],
+          status: "pending"
+        }
+      ],
+      4: [
+        {
+          id: "req-4-1",
+          type: "individual",
+          name: "William Taylor",
+          age: 25,
+          gender: "Male",
+          major: "Mathematics",
+          email: "william.t@example.com",
+          phone: "+1 333 444 5555",
+          requestDate: "2025-04-08",
+          status: "pending"
+        },
+        {
+          id: "req-4-2",
+          type: "individual",
+          name: "Olivia Brown",
+          age: 20,
+          gender: "Female",
+          major: "Psychology",
+          email: "olivia.b@example.com",
+          phone: "+1 666 777 8888",
+          requestDate: "2025-04-07",
+          status: "pending"
+        },
+        {
+          id: "req-4-3",
+          type: "team",
+          name: "Chess Masters",
+          members: [
+            { name: "James Wilson", role: "Captain", gender: "Male", major: "Philosophy", age: 23 },
+            { name: "Emma Davis", gender: "Female", major: "Economics", age: 22 }
+          ],
+          status: "pending"
+        }
+      ],
+      5: [
+        {
+          id: "req-5-1",
+          type: "individual",
+          name: "Noah Martin",
+          age: 21,
+          gender: "Male",
+          major: "Cognitive Science",
+          email: "noah.m@example.com",
+          phone: "+1 222 333 4444",
+          requestDate: "2025-04-09",
+          status: "pending"
+        },
+        {
+          id: "req-5-2",
+          type: "team",
+          name: "Puzzle Solvers",
+          members: [
+            { name: "Ava Anderson", role: "Captain", gender: "Female", major: "Logic", age: 24 },
+            { name: "Liam Thomas", gender: "Male", major: "Artificial Intelligence", age: 23 },
+            { name: "Isabella White", gender: "Female", major: "Cybersecurity", age: 22 }
+          ],
+          status: "pending"
+        }
+      ]
+    };
+    
+    // Current selected competition
+    let currentCompetitionId = null;
+    
+    // Select competition
+    function selectCompetition(id) {
+      // Remove active class from all competition cards
+      document.querySelectorAll('.competition-card').forEach(card => {
+        card.classList.remove('active');
+      });
+      
+      // Add active class to selected competition card
+      document.getElementById(`competition-${id}`).classList.add('active');
+      
+      // Hide the "no selection" message
+      document.getElementById('no-selection-message').classList.add('hidden');
+      
+      // Show the requests container
+      document.getElementById('requests-container').classList.remove('hidden');
+      
+      // Update current competition ID
+      currentCompetitionId = id;
+      
+      // Load requests for this competition
+      loadCompetitionRequests(id);
+    }
+    
+    // Load requests for a specific competition
+    function loadCompetitionRequests(competitionId) {
+      const requestsList = document.getElementById('requests-list');
+      requestsList.innerHTML = ''; // Clear existing requests
+      
+      const requests = competitionRequests[competitionId] || [];
+      
+      if (requests.length === 0) {
+        requestsList.innerHTML = `
+          <div class="no-requests-message">
+            <p data-key="noRequests">No requests found for this competition.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      // Generate HTML for each request
+      requests.forEach(request => {
+        if (request.type === 'individual') {
+          requestsList.innerHTML += createIndividualRequestHTML(request);
+        } else if (request.type === 'team') {
+          requestsList.innerHTML += createTeamRequestHTML(request);
+        }
+      });
+      
+      // Reinitialize event listeners for dropdowns
+      initializeDropdowns();
+    }
+    
+    // Create HTML for individual request
+    function createIndividualRequestHTML(request) {
+      return `
+        <div class="request-card" id="${request.id}">
+          <div class="request-header">
+            <div class="request-info">
+              <h3 class="request-name">${request.name}</h3>
+              <span class="request-age">(Age: ${request.age})</span>
+            </div>
+            <span class="request-type" data-key="individual">Individual</span>
+          </div>
+          
+          <div class="request-content">
+            <div class="dropdown-container">
+              <button class="dropdown-btn" onclick="toggleDropdown('${request.id}-info')">
+                <span data-key="infoList">Information List</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              
+              <div id="${request.id}-info" class="dropdown-content">
+                <div class="info-row">
+                  <span class="info-label" data-key="gender">Gender:</span>
+                  <span class="info-value">${request.gender}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label" data-key="major">Major:</span>
+                  <span class="info-value">${request.major}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label" data-key="email">Email:</span>
+                  <span class="info-value">${request.email}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label" data-key="phone">Phone:</span>
+                  <span class="info-value">${request.phone}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label" data-key="requestDate">Request Date:</span>
+                  <span class="info-value">${request.requestDate}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="action-buttons">
+              <button class="accept-btn" data-key="accept" onclick="acceptRequest('${request.id}')">Accept</button>
+              <button class="reject-btn" data-key="reject" onclick="showRejectionForm('${request.id}')">Reject</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    
+    // Create HTML for team request
+    function createTeamRequestHTML(request) {
+      let membersHTML = '';
+      
+      request.members.forEach((member, index) => {
+        membersHTML += `
+          <div class="member-info">
+            <div class="info-row">
+              <span class="info-label" data-key="playerName">Player Name:</span>
+              <span class="info-value">${member.name}${member.role ? ` (${member.role})` : ''}</span>
+            </div>
+            
+            <div class="dropdown-container">
+              <button class="dropdown-btn" onclick="toggleDropdown('${request.id}-member-${index}')">
+                <span data-key="infoList">Information List</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              
+              <div id="${request.id}-member-${index}" class="dropdown-content">
+                <div class="info-row">
+                  <span class="info-label" data-key="gender">Gender:</span>
+                  <span class="info-value">${member.gender}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label" data-key="major">Major:</span>
+                  <span class="info-value">${member.major}</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label" data-key="age">Age:</span>
+                  <span class="info-value">${member.age}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      return `
+        <div class="request-card" id="${request.id}">
+          <div class="request-header">
+            <div class="request-info">
+              <h3 class="request-name">${request.name}</h3>
+              <span class="request-members">(${request.members.length} members)</span>
+            </div>
+            <span class="request-type" data-key="team">Team</span>
+          </div>
+          
+          <div class="request-content">
+            <div class="team-info">
+              <div class="team-members">
+                <h4 data-key="teamMembers">Team Members:</h4>
+                ${membersHTML}
+              </div>
+            </div>
+            
+            <div class="action-buttons">
+              <button class="accept-btn" data-key="accept" onclick="acceptRequest('${request.id}')">Accept</button>
+              <button class="reject-btn" data-key="reject" onclick="showRejectionForm('${request.id}')">Reject</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    
+    // Initialize dropdowns
+    function initializeDropdowns() {
+      // Close all dropdowns when clicking outside
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-btn') && 
+            !event.target.matches('.fa-chevron-down') && 
+            !event.target.matches('.options-btn') && 
+            !event.target.matches('.fa-ellipsis-v')) {
+          
+          // Close content dropdowns
+          const dropdowns = document.getElementsByClassName('dropdown-content');
+          for (let i = 0; i < dropdowns.length; i++) {
+            if (dropdowns[i].classList.contains('show')) {
+              dropdowns[i].classList.remove('show');
+            }
+          }
+          
+          // Close menu dropdowns
+          const menus = document.getElementsByClassName('dropdown-menu');
+          for (let i = 0; i < menus.length; i++) {
+            if (menus[i].classList.contains('show')) {
+              menus[i].classList.remove('show');
+            }
+          }
+        }
+      };
+    }
+    
+    // Toggle dropdown
+    function toggleDropdown(id) {
+      event.stopPropagation();
+      const dropdown = document.getElementById(id);
+      dropdown.classList.toggle('show');
+    }
+    
+    // Show rejection form
+    function showRejectionForm(requestId) {
+      // Store the request ID for later use
+      document.getElementById('rejection-form').setAttribute('data-request-id', requestId);
+      document.getElementById('rejection-form').classList.remove('hidden');
+      document.getElementById('rejection-reason').focus();
+      
+      // Scroll to the form
+      document.getElementById('rejection-form').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Hide rejection form
+    function hideRejectionForm() {
+      document.getElementById('rejection-form').classList.add('hidden');
+      document.getElementById('rejection-reason').value = '';
+    }
+    
+    // Accept request
+    function acceptRequest(requestId) {
+      const currentLang = localStorage.getItem('lang') || 'en';
+      const confirmMsg = currentLang === 'ar' 
+        ? 'هل أنت متأكد من قبول هذا الطلب؟' 
+        : 'Are you sure you want to accept this request?';
+      
+      if (confirm(confirmMsg)) {
+        const successMsg = currentLang === 'ar'
+          ? 'تم قبول الطلب بنجاح'
+          : 'Request accepted successfully';
+        
+        alert(successMsg);
+        
+        // Update request status in data
+        updateRequestStatus(requestId, 'approved');
+        
+        // Reload requests to reflect changes
+        loadCompetitionRequests(currentCompetitionId);
+      }
+    }
+    
+    // Send rejection
+    function sendRejection() {
+      const requestId = document.getElementById('rejection-form').getAttribute('data-request-id');
+      const reason = document.getElementById('rejection-reason').value.trim();
+      
+      if (!reason) {
+        const currentLang = localStorage.getItem('lang') || 'en';
+        const alertMsg = currentLang === 'ar'
+          ? 'يرجى إدخال سبب الرفض'
+          : 'Please enter a reason for rejection';
+        
+        alert(alertMsg);
+        return;
+      }
+      
+      const currentLang = localStorage.getItem('lang') || 'en';
+      const successMsg = currentLang === 'ar'
+        ? 'تم رفض الطلب وإرسال السبب بنجاح'
+        : 'Request rejected and reason sent successfully';
+      
+      alert(successMsg);
+      
+      // Update request status in data
+      updateRequestStatus(requestId, 'rejected');
+      
+      // Reload requests to reflect changes
+      loadCompetitionRequests(currentCompetitionId);
+      
+      // Hide the form
+      hideRejectionForm();
+    }
+    
+    // Update request status in data
+    function updateRequestStatus(requestId, status) {
+      // Find the competition that contains this request
+      for (const compId in competitionRequests) {
+        const requests = competitionRequests[compId];
+        const requestIndex = requests.findIndex(req => req.id === requestId);
+        
+        if (requestIndex !== -1) {
+          // Update the status
+          requests[requestIndex].status = status;
+          break;
+        }
+      }
+    }
+    
+    // Competition management functions
+    function editCompetition(id, event) {
+      event.stopPropagation();
+      const currentLang = localStorage.getItem('lang') || 'en';
+      const message = currentLang === 'ar'
+        ? 'تحرير المسابقة: ' + id
+        : 'Edit Competition: ' + id;
+      
+      alert(message);
+      
+      // Close the dropdown menu
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.classList.remove('show');
+      });
+    }
+    
+    function changeStatus(id, event) {
+      event.stopPropagation();
+      const currentLang = localStorage.getItem('lang') || 'en';
+      const message = currentLang === 'ar'
+        ? 'تغيير حالة المسابقة: ' + id
+        : 'Change Status of Competition: ' + id;
+      
+      alert(message);
+      
+      // Close the dropdown menu
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.classList.remove('show');
+      });
+    }
+    
+    function removeCompetition(id, event) {
+      event.stopPropagation();
+      const currentLang = localStorage.getItem('lang') || 'en';
+      const confirmMsg = currentLang === 'ar'
+        ? 'هل أنت متأكد من حذف هذه المسابقة؟'
+        : 'Are you sure you want to remove this competition?';
+      
+      if (confirm(confirmMsg)) {
+        const successMsg = currentLang === 'ar'
+          ? 'تم حذف المسابقة بنجاح'
+          : 'Competition removed successfully';
+        
+        alert(successMsg);
+        
+        // In a real app, you would remove the competition from the database
+        // For this demo, we'll just hide the card
+        document.getElementById(`competition-${id}`).style.display = 'none';
+      }
+      
+      // Close the dropdown menu
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.classList.remove('show');
+      });
+    }
+    
+    // Toggle dropdown menu for competition options
+    document.querySelectorAll('.options-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const dropdown = this.nextElementSibling;
+        
+        // Close all other dropdowns
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+          if (menu !== dropdown) {
+            menu.classList.remove('show');
+          }
+        });
+        
+        // Toggle this dropdown
+        dropdown.classList.toggle('show');
+      });
+    });
+    
+    // Language switching
+    function setLanguageWithHighlight(lang) {
+      // Save selected language
+      localStorage.setItem('lang', lang);
+      
+      // Update UI language
+      const elements = document.querySelectorAll('[data-key]');
+      elements.forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update placeholders
+      if (lang === 'ar') {
+        document.querySelectorAll('.search-input')[0].placeholder = 'بحث...';
+        document.querySelectorAll('.search-input')[1].placeholder = 'بحث عن الطلبات...';
+        document.getElementById('rejection-reason').placeholder = 'أدخل سبب الرفض';
+      } else {
+        document.querySelectorAll('.search-input')[0].placeholder = 'Search...';
+        document.querySelectorAll('.search-input')[1].placeholder = 'Search requests...';
+        document.getElementById('rejection-reason').placeholder = 'Enter reason for rejection';
+      }
+      
+      // Update text direction
+      document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = lang;
+      
+      // Highlight selected language
+      document.getElementById('english-option').classList.toggle('active', lang === 'en');
+      document.getElementById('arabic-option').classList.toggle('active', lang === 'ar');
+    }
+    
+    // On page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      setLanguageWithHighlight(savedLang);
+      
+      // Initialize dropdowns
+      initializeDropdowns();
+    });
+  </script>
+
+  <!-- activate page handel -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentPage = window.location.pathname.split("/").pop(); // gets the current file name, like "requestsPage.html"
+      
+      const navLinks = document.querySelectorAll(".nav-link");
+  
+      navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active"); // just in case there's another active
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>

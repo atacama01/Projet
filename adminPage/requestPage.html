@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Requests Page</title>
+  <link rel="stylesheet" href="requestPage.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <img src="../loginPage/logoBlackPNG.png" alt="Logo" class="nav-logo">
+      <h1 class="nav-title" data-key="compPageTitle">Competitions</h1>
+    </div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <a href="requestsPage.html" class="nav-right">
+          <div class="card">
+            <li data-key="participationApps">Participation applications</li>
+          </div>
+        </a>
+
+        <a href="listOfPPpage.html" class="nav-right">
+          <div class="card">
+            <li data-key="participantsList">List of participants</li>
+          </div>
+        </a>
+        
+        <a href="listOfPPpage.html" class="nav-right">
+          <div class="card">
+            <li data-key="prizesList">List of prizes</li>
+          </div>
+        </a>
+        
+        <a href="planPage.html" class="nav-right">
+          <div class="card">
+            <li data-key="matchTiming">Match timing</li>
+          </div>
+        </a>
+        
+        <a href="pointsPage.html" class="nav-right">
+          <div class="card">
+            <li data-key="qualifiers">Qualifiers</li>
+          </div>
+        </a>
+        
+        <a href="planPage.html" class="nav-right">
+          <div class="card">
+            <li data-key="availableGames">Available games</li>
+          </div>
+        </a>
+      </ul>
+      <input type="text" class="search-input" placeholder="Search..." data-key="searchPlaceholder" />
+      <div class="language-switch">
+        <span id="english-option" onclick="setLanguageWithHighlight('en')">English</span>
+        <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="main-content">
+    
+    <!-- Left Section: Competitions List (using same format as compPage) -->
+    <div class="left-competitions">
+      <h2>Existing Competitions</h2>
+      
+      <!-- Competition #1 -->
+      <div 
+        class="competition-card"
+        data-comp-id="1"
+        data-name="Competition #1"
+        data-max="16"
+        data-begin="2025-04-10"
+        data-end="2025-04-15"
+        data-status="In Progress"
+        data-description="This is a detailed description of Competition #1. It covers rules, prizes, and participant info."
+      >
+        <!-- Three dots menu (omitted for brevity, but remains if needed) -->
+        <div class="card-menu">⋮</div>
+        <div class="dropdown-menu">
+          <ul>
+            <li>Edit</li>
+            <li>Remove</li>
+            <li class="change-status-trigger">Change Status
+              <ul class="change-status-menu">
+                <li data-status="in-progress">In Progress</li>
+                <li data-status="ended">Ended</li>
+                <li data-status="not-started">Not Started</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- Displayed Info -->
+        <h3 class="comp-name">Competition #1</h3>
+        <p class="comp-max">Max Players: 16</p>
+        <p class="comp-dates">Begins: 2025-04-10 | Ends: 2025-04-15</p>
+        <p class="comp-status in-progress">Status: In Progress</p>
+      </div>
+      
+      <!-- Competition #2 -->
+      <div 
+        class="competition-card"
+        data-comp-id="2"
+        data-name="Competition #2"
+        data-max="30"
+        data-begin="2025-04-10"
+        data-end="2025-04-15"
+        data-status="In Progress"
+        data-description="Competition #2 has more players and a different prize structure."
+      >
+        <div class="card-menu">⋮</div>
+        <div class="dropdown-menu">
+          <ul>
+            <li>Edit</li>
+            <li>Remove</li>
+            <li class="change-status-trigger">Change Status
+              <ul class="change-status-menu">
+                <li data-status="in-progress">In Progress</li>
+                <li data-status="ended">Ended</li>
+                <li data-status="not-started">Not Started</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <h3 class="comp-name">Competition #2</h3>
+        <p class="comp-max">Max Players: 30</p>
+        <p class="comp-dates">Begins: 2025-04-10 | Ends: 2025-04-15</p>
+        <p class="comp-status in-progress">Status: In Progress</p>
+      </div>
+      
+      <!-- Competition #3 -->
+      <div 
+        class="competition-card"
+        data-comp-id="3"
+        data-name="Competition #3"
+        data-max="50"
+        data-begin="2025-04-10"
+        data-end="2025-04-15"
+        data-status="Ended"
+        data-description="Competition #3 has ended. This one had the largest number of participants and interesting outcomes."
+      >
+        <div class="card-menu">⋮</div>
+        <div class="dropdown-menu">
+          <ul>
+            <li>Edit</li>
+            <li>Remove</li>
+            <li class="change-status-trigger">Change Status
+              <ul class="change-status-menu">
+                <li data-status="in-progress">In Progress</li>
+                <li data-status="ended">Ended</li>
+                <li data-status="not-started">Not Started</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <h3 class="comp-name">Competition #3</h3>
+        <p class="comp-max">Max Players: 50</p>
+        <p class="comp-dates">Begins: 2025-04-10 | Ends: 2025-04-15</p>
+        <p class="comp-status ended">Status: Ended</p>
+      </div>
+    </div>
+    
+    <div class="right-requests">
+        <h2>Registration Requests</h2>
+        <p>Select a competition on the left to view its requests.</p>
+      
+        <div id="requests-container">
+          <!-- Example request card -->
+          <div class="request-card">
+            <strong>John Doe</strong> (Age: 20)
+            <div class="request-buttons">
+              <button class="accept">Accept</button>
+              <button class="reject">Reject</button>
+            </div>
+          </div>
+      
+          <div class="request-card">
+            <strong>Jane Smith</strong> (Age: 22)
+            <div class="request-buttons">
+              <button class="accept">Accept</button>
+              <button class="reject">Reject</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+  <!-- Scripts -->
+  <script src="../loginPage/translations.js"></script>
+  <script>
+    // Load saved or default language
+    const savedLang = localStorage.getItem('lang') || 'en';
+    setLanguageWithHighlight(savedLang);
+
+    // Mock Data for Registration Requests (for demonstration)
+    const competitionRequests = {
+      "1": [
+        { name: "John Doe", age: 20, gender: "Male", major: "Computer Science" },
+        { name: "Jane Smith", age: 22, gender: "Female", major: "Mathematics" }
+      ],
+      "2": [
+        { name: "Alex Brown", age: 19, gender: "Male", major: "Physics" },
+        { name: "Emily White", age: 21, gender: "Female", major: "Biology" }
+      ],
+      "3": [
+        { name: "Michael Green", age: 23, gender: "Male", major: "Engineering" },
+        { name: "Sophia Black", age: 20, gender: "Female", major: "Chemistry" }
+      ]
+    };
+
+    // When a competition card is clicked, load its registration requests
+    document.querySelectorAll('.competition-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const compId = card.getAttribute('data-comp-id');
+        loadRequests(compId);
+      });
+    });
+
+    // Function to load requests into the right section
+    function loadRequests(compId) {
+      const container = document.getElementById('requests-container');
+      container.innerHTML = ''; // Clear previous requests
+      
+      if (competitionRequests[compId]) {
+        competitionRequests[compId].forEach(player => {
+          const requestCard = document.createElement('div');
+          requestCard.classList.add('request-card');
+          requestCard.innerHTML = `
+            <p><strong>${player.name}</strong> (Age: ${player.age})</p>
+            <button class="accept-btn">Accept</button>
+            <button class="reject-btn">Reject</button>
+          `;
+          // When clicking on a request card, show detailed player info
+          requestCard.addEventListener('click', () => showPlayerDetails(player));
+          container.appendChild(requestCard);
+        });
+      } else {
+        container.innerHTML = "<p>No requests found for this competition.</p>";
+      }
+    }
+
+    // Show player details in a popup
+    function showPlayerDetails(player) {
+      document.getElementById('detail-name').innerText = player.name;
+      document.getElementById('detail-age').innerText = player.age;
+      document.getElementById('detail-gender').innerText = player.gender;
+      document.getElementById('detail-major').innerText = player.major;
+      
+      document.getElementById('player-details').classList.add('active');
+      document.getElementById('overlay').classList.add('active');
+    }
+
+    // Close the player details popup
+    function closePlayerDetails() {
+      document.getElementById('player-details').classList.remove('active');
+      document.getElementById('overlay').classList.remove('active');
+    }
+
+    document.querySelectorAll(".request-card").forEach(card => {
+  card.addEventListener("click", () => {
+    alert(`Clicked on ${card.querySelector("strong").textContent}'s request`);
+  });
+});
+
+  </script>
+  
+  <script>
+    // Dropdown menu toggling (three dots)
+    document.querySelectorAll('.card-menu').forEach(menu => {
+      menu.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent the click from propagating
+        const dropdown = menu.nextElementSibling;
+        if (dropdown.style.display === 'block') {
+          dropdown.style.display = 'none';
+        } else {
+          document.querySelectorAll('.dropdown-menu').forEach(d => d.style.display = 'none');
+          dropdown.style.display = 'block';
+        }
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.style.display = 'none';
+      });
+    });
+  </script>
+  <!-- Player Details Popup and Overlay -->
+  <div class="player-details" id="player-details">
+    <h2>Player Details</h2>
+    <p><strong>Name:</strong> <span id="detail-name"></span></p>
+    <p><strong>Age:</strong> <span id="detail-age"></span></p>
+    <p><strong>Gender:</strong> <span id="detail-gender"></span></p>
+    <p><strong>Study Major:</strong> <span id="detail-major"></span></p>
+    <button onclick="closePlayerDetails()">Close</button>
+  </div>
+  
+  <div class="overlay" id="overlay"></div>
+
+</body>
+</html>

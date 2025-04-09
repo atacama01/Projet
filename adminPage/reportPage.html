@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report a Problem</title>
+  <link rel="stylesheet" href="reportPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <img src="../loginPage/logoBlackPNG.png" alt="Logo" class="nav-logo">
+      <h1 class="nav-title" data-key="reportPageTitle">Report a Problem</h1>
+    </div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li data-key="dashboard">Dashboard</li>
+        <li data-key="competitions">Competitions</li>
+        <li data-key="users">Users</li>
+        <li data-key="games">Games</li>
+        <li data-key="reports" class="active">Reports</li>
+        <li data-key="settings">Settings</li>
+      </ul>
+      <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Search..." 
+        data-key="searchPlaceholder"
+      />
+      <div class="language-switch">
+        <span id="english-option" onclick="setLanguageWithHighlight('en')" class="active">English</span>
+        <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Left Section - Report Form -->
+    <div class="report-form-panel">
+      <h2 class="section-title" data-key="submitNewReport">Submit a New Report</h2>
+      
+      <form id="report-form" class="report-form">
+        <div class="form-group">
+          <label for="report-title" data-key="reportTitle">Report Title:</label>
+          <input type="text" id="report-title" class="form-control" placeholder="Enter a descriptive title" data-key="reportTitlePlaceholder" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="report-category" data-key="category">Category:</label>
+          <select id="report-category" class="form-control" required>
+            <option value="" disabled selected data-key="selectCategory">Select a category</option>
+            <option value="technical" data-key="technical">Technical Issue</option>
+            <option value="account" data-key="account">Account Problem</option>
+            <option value="competition" data-key="competitionIssue">Competition Issue</option>
+            <option value="payment" data-key="payment">Payment Problem</option>
+            <option value="other" data-key="other">Other</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="report-priority" data-key="priority">Priority:</label>
+          <div class="priority-selector">
+            <div class="priority-option">
+              <input type="radio" id="priority-low" name="priority" value="low">
+              <label for="priority-low" class="priority-label priority-low" data-key="low">Low</label>
+            </div>
+            <div class="priority-option">
+              <input type="radio" id="priority-medium" name="priority" value="medium" checked>
+              <label for="priority-medium" class="priority-label priority-medium" data-key="medium">Medium</label>
+            </div>
+            <div class="priority-option">
+              <input type="radio" id="priority-high" name="priority" value="high">
+              <label for="priority-high" class="priority-label priority-high" data-key="high">High</label>
+            </div>
+            <div class="priority-option">
+              <input type="radio" id="priority-critical" name="priority" value="critical">
+              <label for="priority-critical" class="priority-label priority-critical" data-key="critical">Critical</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="report-description" data-key="description">Description:</label>
+          <textarea id="report-description" class="form-control" rows="6" placeholder="Describe the problem in detail..." data-key="descriptionPlaceholder" required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="report-steps" data-key="stepsToReproduce">Steps to Reproduce:</label>
+          <textarea id="report-steps" class="form-control" rows="4" placeholder="List the steps to reproduce this issue..." data-key="stepsPlaceholder"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label data-key="attachments">Attachments:</label>
+          <div class="file-upload-container">
+            <div class="file-upload">
+              <input type="file" id="file-upload" class="file-input" multiple>
+              <label for="file-upload" class="file-label">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span data-key="dragDropFiles">Drag & drop files or click to browse</span>
+              </label>
+            </div>
+            <div id="file-list" class="file-list"></div>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" class="cancel-btn" data-key="cancel" onclick="resetForm()">Cancel</button>
+          <button type="submit" class="submit-btn" data-key="submitReport">Submit Report</button>
+        </div>
+      </form>
+    </div>
+    
+    <!-- Right Section - Recent Reports -->
+    <div class="recent-reports-panel">
+      <div class="panel-header">
+        <h2 class="section-title" data-key="recentReports">Recent Reports</h2>
+        <div class="filter-dropdown">
+          <button class="filter-btn">
+            <i class="fas fa-filter"></i>
+            <span data-key="filter">Filter</span>
+          </button>
+          <div class="filter-menu">
+            <div class="filter-option">
+              <input type="checkbox" id="filter-all" checked>
+              <label for="filter-all" data-key="all">All</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="filter-open">
+              <label for="filter-open" data-key="open">Open</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="filter-in-progress">
+              <label for="filter-in-progress" data-key="inProgress">In Progress</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="filter-resolved">
+              <label for="filter-resolved" data-key="resolved">Resolved</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="filter-closed">
+              <label for="filter-closed" data-key="closed">Closed</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="reports-list">
+        <!-- Report Card 1 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-info">
+              <h3 class="report-name">Login Authentication Failed</h3>
+              <span class="report-id">#REP-2023-001</span>
+            </div>
+            <span class="report-status status-open" data-key="open">Open</span>
+          </div>
+          
+          <div class="report-content">
+            <div class="report-details">
+              <div class="detail-item">
+                <span class="detail-label" data-key="category">Category:</span>
+                <span class="detail-value" data-key="technical">Technical Issue</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="reportedBy">Reported By:</span>
+                <span class="detail-value">Ahmed Mohammed</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="reportedOn">Reported On:</span>
+                <span class="detail-value">2023-11-15</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="priority">Priority:</span>
+                <span class="detail-value priority-high" data-key="high">High</span>
+              </div>
+            </div>
+            
+            <div class="report-preview">
+              <p>Users are unable to log in to the platform. The authentication service is returning 500 errors...</p>
+            </div>
+            
+            <div class="report-actions">
+              <button class="view-btn" data-key="viewDetails">View Details</button>
+              <button class="assign-btn" data-key="assign">Assign</button>
+              <div class="status-dropdown">
+                <button class="status-btn" data-key="changeStatus">Change Status</button>
+                <div class="status-menu">
+                  <a href="#" data-status="open" data-key="open">Open</a>
+                  <a href="#" data-status="in-progress" data-key="inProgress">In Progress</a>
+                  <a href="#" data-status="resolved" data-key="resolved">Resolved</a>
+                  <a href="#" data-status="closed" data-key="closed">Closed</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Report Card 2 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-info">
+              <h3 class="report-name">Competition Registration Error</h3>
+              <span class="report-id">#REP-2023-002</span>
+            </div>
+            <span class="report-status status-in-progress" data-key="inProgress">In Progress</span>
+          </div>
+          
+          <div class="report-content">
+            <div class="report-details">
+              <div class="detail-item">
+                <span class="detail-label" data-key="category">Category:</span>
+                <span class="detail-value" data-key="competitionIssue">Competition Issue</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="reportedBy">Reported By:</span>
+                <span class="detail-value">Sarah Johnson</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="reportedOn">Reported On:</span>
+                <span class="detail-value">2023-11-14</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="priority">Priority:</span>
+                <span class="detail-value priority-medium" data-key="medium">Medium</span>
+              </div>
+            </div>
+            
+            <div class="report-preview">
+              <p>Users are experiencing errors when trying to register for the Chess Tournament. The form submission fails...</p>
+            </div>
+            
+            <div class="report-actions">
+              <button class="view-btn" data-key="viewDetails">View Details</button>
+              <button class="assign-btn" data-key="assign">Assign</button>
+              <div class="status-dropdown">
+                <button class="status-btn" data-key="changeStatus">Change Status</button>
+                <div class="status-menu">
+                  <a href="#" data-status="open" data-key="open">Open</a>
+                  <a href="#" data-status="in-progress" data-key="inProgress">In Progress</a>
+                  <a href="#" data-status="resolved" data-key="resolved">Resolved</a>
+                  <a href="#" data-status="closed" data-key="closed">Closed</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Report Card 3 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-info">
+              <h3 class="report-name">Payment Gateway Timeout</h3>
+              <span class="report-id">#REP-2023-003</span>
+            </div>
+            <span class="report-status status-resolved" data-key="resolved">Resolved</span>
+          </div>
+          
+          <div class="report-content">
+            <div class="report-details">
+              <div class="detail-item">
+                <span class="detail-label" data-key="category">Category:</span>
+                <span class="detail-value" data-key="payment">Payment Problem</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="reportedBy">Reported By:</span>
+                <span class="detail-value">Michael Chen</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="reportedOn">Reported On:</span>
+                <span class="detail-value">2023-11-10</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="priority">Priority:</span>
+                <span class="detail-value priority-critical" data-key="critical">Critical</span>
+              </div>
+            </div>
+            
+            <div class="report-preview">
+              <p>The payment gateway is timing out when users attempt to make payments. This is affecting all transactions...</p>
+            </div>
+            
+            <div class="report-actions">
+              <button class="view-btn" data-key="viewDetails">View Details</button>
+              <button class="assign-btn" data-key="assign">Assign</button>
+              <div class="status-dropdown">
+                <button class="status-btn" data-key="changeStatus">Change Status</button>
+                <div class="status-menu">
+                  <a href="#" data-status="open" data-key="open">Open</a>
+                  <a href="#" data-status="in-progress" data-key="inProgress">In Progress</a>
+                  <a href="#" data-status="resolved" data-key="resolved">Resolved</a>
+                  <a href="#" data-status="closed" data-key="closed">Closed</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Report Card 4 -->
+        <div class="report-card">
+          <div class="report-header">
+            <div class="report-info">
+              <h3 class="report-name">Profile Image Upload Failing</h3>
+              <span class="report-id">#REP-2023-004</span>
+            </div>
+            <span class="report-status status-closed" data-key="closed">Closed</span>
+          </div>
+          
+          <div class="report-content">
+            <div class="report-details">
+              <div class="detail-item">
+                <span class="detail-label" data-key="category">Category:</span>
+                <span class="detail-value" data-key="account">Account Problem</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="reportedBy">Reported By:</span>
+                <span class="detail-value">Fatima Al-Sayed</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="reportedOn">Reported On:</span>
+                <span class="detail-value">2023-11-05</span>
+              </div>
+              
+              <div class="detail-item">
+                <span class="detail-label" data-key="priority">Priority:</span>
+                <span class="detail-value priority-low" data-key="low">Low</span>
+              </div>
+            </div>
+            
+            <div class="report-preview">
+              <p>Users are unable to upload profile images. The upload process starts but never completes...</p>
+            </div>
+            
+            <div class="report-actions">
+              <button class="view-btn" data-key="viewDetails">View Details</button>
+              <button class="assign-btn" data-key="assign">Assign</button>
+              <div class="status-dropdown">
+                <button class="status-btn" data-key="changeStatus">Change Status</button>
+                <div class="status-menu">
+                  <a href="#" data-status="open" data-key="open">Open</a>
+                  <a href="#" data-status="in-progress" data-key="inProgress">In Progress</a>
+                  <a href="#" data-status="resolved" data-key="resolved">Resolved</a>
+                  <a href="#" data-status="closed" data-key="closed">Closed</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pagination">
+        <button class="pagination-btn" disabled><i class="fas fa-chevron-left"></i></button>
+        <span class="pagination-info">Page 1 of 1</span>
+        <button class="pagination-btn" disabled><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Report Detail Modal -->
+  <div id="report-detail-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Report Details</h2>
+        <button class="close-btn">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="report-detail-header">
+          <h3 id="modal-report-title">Login Authentication Failed</h3>
+          <span id="modal-report-id" class="report-id">#REP-2023-001</span>
+          <span id="modal-report-status" class="report-status status-open" data-key="open">Open</span>
+        </div>
+        
+        <div class="report-detail-info">
+          <div class="detail-column">
+            <div class="detail-item">
+              <span class="detail-label" data-key="category">Category:</span>
+              <span id="modal-category" class="detail-value" data-key="technical">Technical Issue</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="priority">Priority:</span>
+              <span id="modal-priority" class="detail-value priority-high" data-key="high">High</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="reportedBy">Reported By:</span>
+              <span id="modal-reporter" class="detail-value">Ahmed Mohammed</span>
+            </div>
+          </div>
+          
+          <div class="detail-column">
+            <div class="detail-item">
+              <span class="detail-label" data-key="reportedOn">Reported On:</span>
+              <span id="modal-report-date" class="detail-value">2023-11-15</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="assignedTo">Assigned To:</span>
+              <span id="modal-assignee" class="detail-value">Not Assigned</span>
+            </div>
+            
+            <div class="detail-item">
+              <span class="detail-label" data-key="lastUpdated">Last Updated:</span>
+              <span id="modal-last-updated" class="detail-value">2023-11-15</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="report-detail-section">
+          <h4 data-key="description">Description</h4>
+          <p id="modal-description">
+            Users are unable to log in to the platform. The authentication service is returning 500 errors. This is affecting all users across the platform. The issue started at approximately 10:30 AM today.
+          </p>
+        </div>
+        
+        <div class="report-detail-section">
+          <h4 data-key="stepsToReproduce">Steps to Reproduce</h4>
+          <ol id="modal-steps">
+            <li>Navigate to the login page</li>
+            <li>Enter valid credentials</li>
+            <li>Click the login button</li>
+            <li>Observe the error message</li>
+          </ol>
+        </div>
+        
+        <div class="report-detail-section">
+          <h4 data-key="attachments">Attachments</h4>
+          <div id="modal-attachments" class="attachment-list">
+            <div class="attachment-item">
+              <i class="fas fa-file-image"></i>
+              <span class="attachment-name">error-screenshot.png</span>
+              <a href="#" class="attachment-download"><i class="fas fa-download"></i></a>
+            </div>
+            <div class="attachment-item">
+              <i class="fas fa-file-alt"></i>
+              <span class="attachment-name">error-logs.txt</span>
+              <a href="#" class="attachment-download"><i class="fas fa-download"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="report-detail-section">
+          <h4 data-key="comments">Comments</h4>
+          <div id="modal-comments" class="comments-list">
+            <div class="comment-item">
+              <div class="comment-header">
+                <span class="comment-author">Support Team</span>
+                <span class="comment-date">2023-11-15 11:45 AM</span>
+              </div>
+              <div class="comment-content">
+                <p>We are investigating this issue. It appears to be related to the recent server update.</p>
+              </div>
+            </div>
+            <div class="comment-item">
+              <div class="comment-header">
+                <span class="comment-author">System Admin</span>
+                <span class="comment-date">2023-11-15 12:30 PM</span>
+              </div>
+              <div class="comment-content">
+                <p>The authentication service is experiencing high load. We're scaling up resources to handle the traffic.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="add-comment">
+            <textarea id="comment-input" class="form-control" rows="3" placeholder="Add a comment..." data-key="addCommentPlaceholder"></textarea>
+            <button id="post-comment-btn" class="submit-btn" data-key="postComment">Post Comment</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <div class="modal-actions">
+          <button class="assign-btn" data-key="assign">Assign</button>
+          <div class="status-dropdown">
+            <button class="status-btn" data-key="changeStatus">Change Status</button>
+            <div class="status-menu">
+              <a href="#" data-status="open" data-key="open">Open</a>
+              <a href="#" data-status="in-progress" data-key="inProgress">In Progress</a>
+              <a href="#" data-status="resolved" data-key="resolved">Resolved</a>
+              <a href="#" data-status="closed" data-key="closed">Closed</a>
+            </div>
+          </div>
+          <button class="close-modal-btn" data-key="close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="../loginPage/translations.js"></script>
+  <script>
+    // Form handling
+    document.getElementById('report-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const title = document.getElementById('report-title').value;
+      const category = document.getElementById('report-category').value;
+      const priority = document.querySelector('input[name="priority"]:checked').value;
+      const description = document.getElementById('report-description').value;
+      const steps = document.getElementById('report-steps').value;
+      
+      // In a real application, you would send this data to the server
+      console.log('Report submitted:', { title, category, priority, description, steps });
+      
+      // Show success message
+      const currentLang = localStorage.getItem('lang') || 'en';
+      const successMsg = currentLang === 'ar' 
+        ? 'تم إرسال التقرير بنجاح!' 
+        : 'Report submitted successfully!';
+      
+      alert(successMsg);
+      
+      // Reset form
+      resetForm();
+    });
+    
+    // Reset form
+    function resetForm() {
+      document.getElementById('report-form').reset();
+      document.getElementById('file-list').innerHTML = '';
+    }
+    
+    // File upload handling
+    document.getElementById('file-upload').addEventListener('change', function(e) {
+      const fileList = document.getElementById('file-list');
+      fileList.innerHTML = '';
+      
+      // Display selected files
+      for (let i = 0; i < this.files.length; i++) {
+        const file = this.files[i];
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
+        
+        // Determine file icon based on type
+        let fileIcon = 'fa-file';
+        if (file.type.startsWith('image/')) {
+          fileIcon = 'fa-file-image';
+        } else if (file.type === 'application/pdf') {
+          fileIcon = 'fa-file-pdf';
+        } else if (file.type.includes('spreadsheet') || file.type.includes('excel')) {
+          fileIcon = 'fa-file-excel';
+        } else if (file.type.includes('document') || file.type.includes('word')) {
+          fileIcon = 'fa-file-word';
+        }
+        
+        fileItem.innerHTML = `
+          <i class="fas ${fileIcon}"></i>
+          <span class="file-name">${file.name}</span>
+          <span class="file-size">${formatFileSize(file.size)}</span>
+          <button type="button" class="remove-file" onclick="removeFile(this)">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+        
+        fileList.appendChild(fileItem);
+      }
+    });
+    
+    // Format file size
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    // Remove file
+    function removeFile(button) {
+      button.parentElement.remove();
+    }
+    
+    // Modal handling
+    const modal = document.getElementById('report-detail-modal');
+    const closeBtn = document.querySelector('.close-btn');
+    const closeModalBtn = document.querySelector('.close-modal-btn');
+    
+    // Open modal when View Details is clicked
+    document.querySelectorAll('.view-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      });
+    });
+    
+    // Close modal
+    closeBtn.addEventListener('click', closeModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+    
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Enable scrolling
+    }
+    
+    // Dropdown handling
+    document.addEventListener('click', function(e) {
+      // Status dropdown
+      if (e.target.matches('.status-btn') || e.target.closest('.status-btn')) {
+        const dropdown = e.target.closest('.status-dropdown').querySelector('.status-menu');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        e.stopPropagation();
+      } else {
+        document.querySelectorAll('.status-menu').forEach(menu => {
+          menu.style.display = 'none';
+        });
+      }
+      
+      // Filter dropdown
+      if (e.target.matches('.filter-btn') || e.target.closest('.filter-btn')) {
+        const dropdown = document.querySelector('.filter-menu');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        e.stopPropagation();
+      } else if (!e.target.matches('.filter-menu') && !e.target.closest('.filter-menu')) {
+        document.querySelector('.filter-menu').style.display = 'none';
+      }
+    });
+    
+    // Change status
+    document.querySelectorAll('.status-menu a').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const status = this.getAttribute('data-status');
+        const statusText = this.textContent;
+        
+        // If in modal, update modal status
+        if (this.closest('.modal')) {
+          const statusElement = document.getElementById('modal-report-status');
+          statusElement.textContent = statusText;
+          statusElement.className = `report-status status-${status}`;
+        } else {
+          // Update card status
+          const card = this.closest('.report-card');
+          const statusElement = card.querySelector('.report-status');
+          statusElement.textContent = statusText;
+          statusElement.className = `report-status status-${status}`;
+        }
+        
+        // Hide dropdown
+        this.closest('.status-menu').style.display = 'none';
+      });
+    });
+    
+    // Language switching
+    function setLanguageWithHighlight(lang) {
+      // Save selected language
+      localStorage.setItem('lang', lang);
+      
+      // Update UI language
+      const elements = document.querySelectorAll('[data-key]');
+      elements.forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update placeholders
+      if (lang === 'ar') {
+        document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
+          const key = el.getAttribute('data-key');
+          if (translations[lang] && translations[lang][key]) {
+            el.placeholder = translations[lang][key];
+          }
+        });
+      } else {
+        document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
+          const key = el.getAttribute('data-key');
+          if (translations[lang] && translations[lang][key]) {
+            el.placeholder = translations[lang][key];
+          }
+        });
+      }
+      
+      // Update text direction
+      document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = lang;
+      
+      // Highlight selected language
+      document.getElementById('english-option').classList.toggle('active', lang === 'en');
+      document.getElementById('arabic-option').classList.toggle('active', lang === 'ar');
+    }
+    
+    // On page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      setLanguageWithHighlight(savedLang);
+    });
+  </script>
+</body>
+</html>

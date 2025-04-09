@@ -1,0 +1,305 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+ /* NAVBAR (same as compPage) */
+ .top-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .nav-logo {
+    width: 75px;
+    height: auto;
+  }
+  
+  .nav-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-links li {
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .nav-links li:hover {
+    color: #6c63ff;
+  }
+  
+  .search-input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .language-switch {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #f8f8f8;
+  }
+  
+  .language-switch span {
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap;
+  }
+  
+  .language-switch span:hover {
+    background-color: #e4e4e4;
+  }
+  
+  .language-switch .active {
+    background-color: #6c63ff;
+    color: #fff;
+  }
+  /* Main Content Layout */
+  .main-content {
+    display: flex;
+    margin: 20px;
+    gap: 20px;
+  }
+  
+  .left-competitions,
+  .right-requests {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Competition Card Container */
+  .competition-card {
+    position: relative; /* for absolute positioning of the menu */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    background: linear-gradient(90deg, #ececfb, #ff6464);
+  }
+  
+  /* Hover Effects */
+  .competition-card:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+  
+  /* Card Menu (three dots) */
+  .card-menu {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s;
+  }
+  
+  .card-menu:hover {
+    color: #333;
+  }
+  
+  /* Competition Card Content Styles */
+  .competition-card .comp-name {
+    margin-bottom: 0.3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .competition-card .comp-max,
+  .competition-card .comp-dates,
+  .competition-card .comp-status {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+  }
+  
+  .competition-card .comp-status {
+    font-weight: bold;
+  }
+  
+  /* Optional: Color-code status */
+  .comp-status.in-progress {
+    color: green;
+  }
+  .comp-status.ended {
+    color: red;
+  }
+  .comp-status.not-started {
+    color: orange;
+  }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  }
+  
+  /* Registration Requests */
+  .request-card {
+    background-color: #fff3e0;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .accept-btn,
+  .reject-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .accept-btn {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .reject-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  /* Player Details Popup */
+  .player-details {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+    border-radius: 8px;
+    display: none;
+  }
+  
+  .player-details.active {
+    display: block;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0);
+    display: none;
+  }
+  
+  .overlay.active {
+    display: block;
+  }
+  
+  .registration-requests {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f5f5ff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .request-card {
+    background-color: #d6d6ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  
+  .request-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .request-card strong {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .request-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .request-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .request-buttons button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .request-buttons .accept {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .request-buttons .accept:hover {
+    background-color: #45a049;
+  }
+  
+  .request-buttons .reject {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .request-buttons .reject:hover {
+    background-color: #e53935;
+  }

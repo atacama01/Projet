@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create Competition</title>
   <link rel="stylesheet" href="createCompPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-
-<!-- ===== NAVBAR (Same as compPage) ===== -->
+<!-- ===== NAVBAR ===== -->
 <header class="top-nav">
   <div class="nav-left">
     <img src="../loginPage/logoBlackPNG.png" alt="Logo" class="nav-logo">
@@ -24,31 +25,19 @@
 
       <a href="listOfPPpage.html" class="nav-link active">
         <div class="card">
-          <li data-key="participantsList">List of participants</li>
-        </div>
-      </a>
-      
-      <a href="listOfPPpage.html" class="nav-link">
-        <div class="card">
-          <li data-key="prizesList">List of prizes</li>
+          <li data-key="participantsList">Prizes & Participants</li>
         </div>
       </a>
       
       <a href="planPage.html" class="nav-link">
         <div class="card">
-          <li data-key="matchTiming">Match timing</li>
+          <li data-key="matchTiming">Matches & Games</li>
         </div>
       </a>
       
       <a href="pointsPage.html" class="nav-link">
         <div class="card">
           <li data-key="qualifiers">Qualifiers</li>
-        </div>
-      </a>
-      
-      <a href="planPage.html" class="nav-link">
-        <div class="card">
-          <li data-key="availableGames">Available games</li>
         </div>
       </a>
     </div>
@@ -69,233 +58,418 @@
 </header>
 <!-- ===== END NAVBAR ===== -->
 
-  <!-- Main Container for Create Competition -->
-  <img id="floating-img-left" class="floating-image" src="../adminPage/elements/chess2.png" alt="Left Decorative Image">
-  <img id="floating-img-right" class="floating-image" src="../adminPage/elements/chess1.png" alt="Right Decorative Image">
+<!-- Return to Competitions Button -->
+<button class="return-btn" onclick="window.location.href='compPage.html'">
+  <i class="fas fa-arrow-left"></i> Back to Competitions
+</button>
 
-  <div class="create-comp-container">
-    <h1 class="page-title" data-key="pageTitle">Create Comp</h1>
+<!-- Main Container for Create Competition -->
+<div class="create-comp-container">
+  <h1 class="page-title">Create New Competition</h1>
 
-    <!-- Create Competition Form (4 sections) -->
-    <form class="create-comp-form">
+  <!-- Create Competition Form -->
+  <form id="create-competition-form" class="create-comp-form">
+    <!-- SECTION 1: Basic Info -->
+    <div class="section" id="section-1">
+      <h2 data-key="section1Title">Competition Information</h2>
 
-      <!-- SECTION 1: Basic Info -->
-      <div class="section" id="section-1">
-        <h2 data-key="section1Title">competition info</h2>
+      <!-- Competition Name -->
+      <label for="comp-name" data-key="compNameLabel">Competition Name</label>
+      <input 
+        type="text" 
+        id="comp-name"
+        placeholder="Enter competition name" 
+        data-key="compNamePlaceholder"
+        required
+      />
 
-        <!-- Competition Name -->
-        <label data-key="compNameLabel">competition name</label>
-        <input 
-          type="text" 
-          placeholder="ex: chess" 
-          data-key="compNamePlaceholder"
-        />
+      <!-- Game Name -->
+      <label for="game-name" data-key="gameNameLabel">Game</label>
+      <input 
+        type="text" 
+        id="game-name"
+        placeholder="Enter game name" 
+        data-key="gameNamePlaceholder"
+        required
+      />
 
-        <!-- Max Players -->
-        <label data-key="maxPlayersLabel">max palyers number</label>
-        <input 
-          type="number" 
-          placeholder="ex: 20" 
-          data-key="maxPlayersPlaceholder"
-        />
+      <!-- Max Players -->
+      <label for="max-players" data-key="maxPlayersLabel">Maximum Players</label>
+      <input 
+        type="number" 
+        id="max-players"
+        placeholder="Enter maximum number of players" 
+        data-key="maxPlayersPlaceholder"
+        required
+      />
 
-        <!-- Competition Place -->
-        <label data-key="compPlaceLabel">competition place</label>
-        <input 
-          type="text" 
-          placeholder="ex: sport salle" 
-          data-key="compPlacePlaceholder"
-        />
+      <!-- Competition Place -->
+      <label for="comp-place" data-key="compPlaceLabel">Competition Location</label>
+      <input 
+        type="text" 
+        id="comp-place"
+        placeholder="Enter competition location" 
+        data-key="compPlacePlaceholder"
+        required
+      />
 
-        <!-- Begin & End Date -->
-        <label data-key="beginDateLabel">begin date</label>
-        <input type="date" />
+      <!-- Begin & End Date -->
+      <label for="begin-date" data-key="beginDateLabel">Start Date</label>
+      <input type="date" id="begin-date" required />
 
-        <label data-key="endDateLabel">end date</label>
-        <input type="date" />
+      <label for="end-date" data-key="endDateLabel">End Date</label>
+      <input type="date" id="end-date" required />
+    </div>
 
-        <!-- Player Info Required -->
-        <label data-key="playerInfoLabel">necessary players info</label>
-        <textarea 
-          rows="3" 
-          placeholder="ex: full name, phone number..."
-          data-key="playerInfoPlaceholder"
-        ></textarea>
+    <!-- SECTION 2: Prizes -->
+    <div class="section" id="section-2">
+      <h2 data-key="section2Title">Prizes</h2>
+
+      <!-- Checkbox to enable prizes (optional) -->
+      <label class="enable-prizes">
+        <input type="checkbox" id="enable-prizes" checked />
+        <span data-key="enableGiftsLabel">Enable Prizes</span>
+      </label>
+
+      <!-- Prizes fields -->
+      <div id="prizes-container">
+        <div class="prize-field">
+          <label for="prize-1">First Place Prize</label>
+          <input type="text" id="prize-1" placeholder="First place prize" required />
+        </div>
+        <div class="prize-field">
+          <label for="prize-2">Second Place Prize</label>
+          <input type="text" id="prize-2" placeholder="Second place prize" required />
+        </div>
+        <div class="prize-field">
+          <label for="prize-3">Third Place Prize</label>
+          <input type="text" id="prize-3" placeholder="Third place prize" required />
+        </div>
       </div>
+      <button type="button" id="add-prize-btn" data-key="addPrizeBtn">
+        <i class="fas fa-plus"></i> Add Prize
+      </button>
+    </div>
 
-      <!-- SECTION 2: Gifts -->
-      <div class="section" id="section-2">
-        <h2 data-key="section2Title">Gifts list</h2>
+    <!-- SECTION 3: Game Settings -->
+    <div class="section" id="section-3">
+      <h2 data-key="section3Title">Game Settings</h2>
 
-        <!-- Checkbox to enable gifts (optional) -->
-        <label class="enable-gifts">
-          <input type="checkbox" />
-          <span data-key="enableGiftsLabel">enable gifts</span>
+      <!-- Game Mode -->
+      <label data-key="playModeLabel">Player Mode</label>
+      <div class="play-mode">
+        <label>
+          <input type="radio" name="mode" value="single" checked />
+          <span data-key="modeSingle">Individual</span>
         </label>
-
-        <!-- Gifts fields -->
-        <div id="gifts-container">
-          <div class="gift-field">
-            <input type="text" placeholder="gift 1" required />
-          </div>
-          <div class="gift-field">
-            <input type="text" placeholder="gift 2" required />
-          </div>
-          <div class="gift-field">
-            <input type="text" placeholder="gift 3" required />
-          </div>
-        </div>
-        <button type="button" id="add-gift-btn" data-key="addGiftBtn">+ add gift</button>
+        <label>
+          <input type="radio" name="mode" value="double" />
+          <span data-key="modeDouble">Pairs</span>
+        </label>
+        <label>
+          <input type="radio" name="mode" value="multiple" />
+          <span data-key="modeMultiple">Teams</span>
+        </label>
       </div>
 
-      <!-- SECTION 3: Play Mode / Games -->
-      <div class="section" id="section-3">
-        <h2 data-key="section3Title">game players system</h2>
-
-        <!-- Game Mode -->
-        <label data-key="playModeLabel">palyers number</label>
-        <div class="play-mode">
-          <label>
-            <input type="radio" name="mode" value="single" checked />
-            <span data-key="modeSingle">one</span>
-          </label>
-          <label>
-            <input type="radio" name="mode" value="double" />
-            <span data-key="modeDouble">two</span>
-          </label>
-          <label>
-            <input type="radio" name="mode" value="multiple" />
-            <span data-key="modeMultiple">multiple</span>
-          </label>
-        </div>
-
-        <!-- Games List -->
-        <h4 data-key="gamesListTitle">competition games</h4>
-        <div id="games-container">
-          <div class="game-field">
-            <input type="text" placeholder="game name 1" required />
-          </div>
-        </div>
-        <button type="button" id="add-game-btn" data-key="addGameBtn">+ add game</button>
-      </div>
-      
-
-      <!-- SECTION 4: Description & System -->
-      <div class="section" id="section-4">
-        <h2 data-key="section4Title">description</h2>
-        <textarea 
-          rows="4" 
-          placeholder="write a description here..."
-          data-key="descPlaceholder"
-        ></textarea>
-
-        <h3 data-key="systemTitle">competition system</h3>
+      <!-- Competition System -->
+      <h3 data-key="systemTitle">Competition System</h3>
+      <div class="comp-system">
         <label>
           <input type="radio" name="compSystem" value="points" checked />
-          <span data-key="systemPoints">depends on points</span>
+          <span data-key="systemPoints">Points Based</span>
         </label>
         <label>
-          <input type="radio" name="compSystem" value="random" />
-          <span data-key="systemRandom">random</span>
+          <input type="radio" name="compSystem" value="elimination" />
+          <span data-key="systemElimination">Elimination</span>
         </label>
-        <!-- Final Create Button -->
+        <label>
+          <input type="radio" name="compSystem" value="round-robin" />
+          <span data-key="systemRoundRobin">Round Robin</span>
+        </label>
+      </div>
+
+      <!-- Required Player Info -->
+      <label for="player-info" data-key="playerInfoLabel">Required Player Information</label>
+      <div class="player-info-options">
+        <label><input type="checkbox" value="name" checked> Full Name</label>
+        <label><input type="checkbox" value="email" checked> Email</label>
+        <label><input type="checkbox" value="phone" checked> Phone Number</label>
+        <label><input type="checkbox" value="age"> Age</label>
+        <label><input type="checkbox" value="address"> Address</label>
+        <label><input type="checkbox" value="experience"> Experience Level</label>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Description -->
+    <div class="section" id="section-4">
+      <h2 data-key="section4Title">Description</h2>
+      <textarea 
+        id="comp-description"
+        rows="6" 
+        placeholder="Write a detailed description of the competition..."
+        data-key="descPlaceholder"
+        required
+      ></textarea>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" onclick="window.location.href='compPage.html'">
+          <i class="fas fa-times"></i> Cancel
+        </button>
         <button type="submit" class="create-comp-btn" data-key="createCompBtn">
-          Create the competition
+          <i class="fas fa-check"></i> Create Competition
         </button>
       </div>
-    </form>
+    </div>
+  </form>
+</div>
+
+<!-- Floating decorative images -->
+<img id="floating-img-left" class="floating-image" src="../adminPage/elements/chess2.png" alt="Left Decorative Image">
+<img id="floating-img-right" class="floating-image" src="../adminPage/elements/chess1.png" alt="Right Decorative Image">
+
+<!-- Toast notification for success/error messages -->
+<div class="toast" id="toast">
+  <div class="toast-content">
+    <i class="toast-icon"></i>
+    <span class="toast-message"></span>
   </div>
+  <div class="toast-progress"></div>
+</div>
 
-  <!-- Scripts -->
-  <script src="../loginPage/translations.js"></script>
-  <script>
-    // Form Validation
-document.querySelector('.create-comp-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const requiredFields = document.querySelectorAll('.create-comp-form input[required], .create-comp-form textarea[required]');
-    let isValid = true;
-
-    requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-            field.style.borderColor = "red";
-            isValid = false;
-        } else {
-            field.style.borderColor = "#ccc";
-        }
-    });
-
-    if (!isValid) {
-        alert("Please fill in all required fields.");
-        return;
-    }
-
-    alert("Competition Created!");
-});
-
-// Add Gift Field with Animation
-document.getElementById('add-gift-btn').addEventListener('click', () => {
-    const giftsContainer = document.getElementById('gifts-container');
-    const count = giftsContainer.querySelectorAll('.gift-field').length + 1;
-
-    const giftField = document.createElement('div');
-    giftField.className = 'gift-field';
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.placeholder = `Gift ${count}`;
-    input.required = true;
-
-    giftField.appendChild(input);
-    giftsContainer.appendChild(giftField);
-});
-
-// Add Game Field with Animation
-document.getElementById('add-game-btn').addEventListener('click', () => {
-    const gamesContainer = document.getElementById('games-container');
-    const count = gamesContainer.querySelectorAll('.game-field').length + 1;
-
-    const gameField = document.createElement('div');
-    gameField.className = 'game-field';
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.placeholder = `Game ${count}`;
-    input.required = true;
-
-    gameField.appendChild(input);
-    gamesContainer.appendChild(gameField);
-});
-
-document.addEventListener('mousemove', (e) => {
-    const leftImage = document.getElementById('floating-img-left');
-    const rightImage = document.getElementById('floating-img-right');
-
-    let x = (window.innerWidth / 2 - e.clientX) / 30;
-    let y = (window.innerHeight / 2 - e.clientY) / 30;
-
-    leftImage.style.transform = `translate(${x}px, ${y}px)`;
-    rightImage.style.transform = `translate(${-x}px, ${-y}px)`;
-});
-
-
-  </script>
-  <!-- activate page handel -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const currentPage = window.location.pathname.split("/").pop(); // gets the current file name, like "requestsPage.html"
-      
-      const navLinks = document.querySelectorAll(".nav-link");
+<!-- Scripts -->
+<script src="../loginPage/translations.js"></script>
+<script>
+  // Load saved or default language
+  const savedLang = localStorage.getItem('lang') || 'en';
   
-      navLinks.forEach(link => {
-        const linkPage = link.getAttribute("href");
-        if (linkPage === currentPage) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active"); // just in case there's another active
+  function setLanguageWithHighlight(lang) {
+    // Store the language preference
+    localStorage.setItem('lang', lang);
+    
+    // Update the UI to highlight the selected language
+    document.getElementById('english-option').classList.toggle('active', lang === 'en');
+    document.getElementById('arabic-option').classList.toggle('active', lang === 'ar');
+    
+    // Set the text direction
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    
+    // Update all translatable elements
+    if (typeof translations !== 'undefined' && translations[lang]) {
+      document.querySelectorAll('[data-key]').forEach(elem => {
+        const key = elem.getAttribute('data-key');
+        if (translations[lang][key]) {
+          if (elem.tagName === 'INPUT') {
+            elem.placeholder = translations[lang][key];
+          } else {
+            elem.textContent = translations[lang][key];
+          }
         }
       });
+    }
+  }
+  
+  // Initialize language
+  setLanguageWithHighlight(savedLang);
+
+  // Add Prize Field
+  document.getElementById('add-prize-btn').addEventListener('click', () => {
+    const prizesContainer = document.getElementById('prizes-container');
+    const count = prizesContainer.querySelectorAll('.prize-field').length + 1;
+
+    const prizeField = document.createElement('div');
+    prizeField.className = 'prize-field';
+    prizeField.style.animation = 'fadeIn 0.5s ease-in-out forwards';
+
+    const label = document.createElement('label');
+    label.textContent = `Additional Prize ${count - 3}`;
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = `Enter prize details`;
+    input.required = true;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'remove-btn';
+    removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+    removeBtn.addEventListener('click', () => {
+      prizeField.style.animation = 'fadeOut 0.3s ease-in-out forwards';
+      setTimeout(() => {
+        prizeField.remove();
+        // Renumber the remaining prizes
+        const prizeFields = prizesContainer.querySelectorAll('.prize-field');
+        prizeFields.forEach((field, index) => {
+          if (index > 2) { // Skip the first three (1st, 2nd, 3rd place)
+            const fieldLabel = field.querySelector('label');
+            if (fieldLabel) {
+              fieldLabel.textContent = `Additional Prize ${index - 2}`;
+            }
+          }
+        });
+      }, 300);
     });
-  </script>
+
+    prizeField.appendChild(label);
+    prizeField.appendChild(input);
+    prizeField.appendChild(removeBtn);
+    prizesContainer.appendChild(prizeField);
+  });
+
+  // Form submission handler
+  document.getElementById('create-competition-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Validate form
+    const requiredFields = document.querySelectorAll('input[required], textarea[required]');
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+      if (!field.value.trim()) {
+        field.classList.add('error');
+        isValid = false;
+      } else {
+        field.classList.remove('error');
+      }
+    });
+    
+    if (!isValid) {
+      showToast('error', 'Please fill in all required fields');
+      return;
+    }
+    
+    // Get form data
+    const competitionData = {
+      name: document.getElementById('comp-name').value,
+      game: document.getElementById('game-name').value,
+      maxPlayers: document.getElementById('max-players').value,
+      place: document.getElementById('comp-place').value,
+      beginDate: document.getElementById('begin-date').value,
+      endDate: document.getElementById('end-date').value,
+      description: document.getElementById('comp-description').value,
+      prizes: [],
+      playerMode: document.querySelector('input[name="mode"]:checked').value,
+      competitionSystem: document.querySelector('input[name="compSystem"]:checked').value
+    };
+    
+    // Get prizes
+    if (document.getElementById('enable-prizes').checked) {
+      document.querySelectorAll('#prizes-container input').forEach(input => {
+        if (input.value.trim()) {
+          competitionData.prizes.push(input.value);
+        }
+      });
+    }
+    
+    // Store the competition data in localStorage to be retrieved by the competitions page
+    localStorage.setItem('newCompetition', JSON.stringify(competitionData));
+    
+    // Show success message
+    showToast('success', 'Competition created successfully! Redirecting...');
+    
+    // Redirect back to competitions page after a short delay
+    setTimeout(() => {
+      window.location.href = 'compPage.html';
+    }, 1500);
+  });
+
+  // Variables to track mouse position
+  let mouseX = 0;
+  let mouseY = 0;
+
+  // Enhanced floating image animation with mouse movement
+  document.addEventListener('mousemove', (e) => {
+    // Store mouse position for combined effect with scroll
+    mouseX = e.clientX / window.innerWidth - 0.5;
+    mouseY = e.clientY / window.innerHeight - 0.5;
+    
+    updateImagesPosition();
+  });
+
+  // Add scroll event listener to move images up/down when scrolling
+  window.addEventListener('scroll', () => {
+    updateImagesPosition();
+  });
+
+  // Function to update images position based on mouse and scroll
+  function updateImagesPosition() {
+    const leftImage = document.getElementById('floating-img-left');
+    const rightImage = document.getElementById('floating-img-right');
+    
+    if (leftImage && rightImage) {
+      // Get current scroll position
+      const scrollY = window.scrollY || window.pageYOffset;
+      
+      // Calculate scroll effect (vertical movement)
+      // Move images up/down based on scroll position
+      const scrollEffect = scrollY * 0.8; // Adjust multiplier for scroll sensitivity
+      
+      // Left image moves opposite to mouse direction and up with scroll
+      leftImage.style.transform = `
+        translate(${-mouseX * 40}px, ${-mouseY * 40 - scrollEffect}px)
+        rotate(${-mouseX * 5}deg)
+      `;
+      
+      // Right image follows mouse direction and down with scroll
+      rightImage.style.transform = `
+        translate(${mouseX * 40}px, ${mouseY * 40 + scrollEffect}px)
+        rotate(${mouseX * 5}deg)
+      `;
+    }
+  }
+
+  // Toast notification function
+  function showToast(type, message) {
+    const toast = document.getElementById('toast');
+    const toastIcon = toast.querySelector('.toast-icon');
+    const toastMessage = toast.querySelector('.toast-message');
+    const toastProgress = toast.querySelector('.toast-progress');
+    
+    // Set icon based on type
+    if (type === 'success') {
+      toastIcon.className = 'toast-icon fas fa-check-circle';
+      toast.className = 'toast toast-success show';
+    } else if (type === 'error') {
+      toastIcon.className = 'toast-icon fas fa-exclamation-circle';
+      toast.className = 'toast toast-error show';
+    } else if (type === 'warning') {
+      toastIcon.className = 'toast-icon fas fa-exclamation-triangle';
+      toast.className = 'toast toast-warning show';
+    } else {
+      toastIcon.className = 'toast-icon fas fa-info-circle';
+      toast.className = 'toast toast-info show';
+    }
+    
+    // Set message
+    toastMessage.textContent = message;
+    
+    // Reset progress animation
+    toastProgress.style.animation = 'none';
+    toastProgress.offsetHeight; // Trigger reflow
+    toastProgress.style.animation = 'progress 3s linear forwards';
+    
+    // Hide toast after 3 seconds
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3000);
+  }
+
+  // Initialize active nav link
+  document.addEventListener("DOMContentLoaded", function() {
+    const currentPage = window.location.pathname.split("/").pop();
+    
+    document.querySelectorAll(".nav-link").forEach(link => {
+      const linkPage = link.getAttribute("href");
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+
+    // Initialize image positions on page load
+    updateImagesPosition();
+  });
+</script>
 </body>
 </html>

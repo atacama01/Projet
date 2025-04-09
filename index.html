@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<!-- Language Switch -->
+<div class="language-switch">
+  <span id="english-option" onclick="setLanguageWithHighlight('en')">English</span>
+  <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+</div>
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <!-- Left Section (Logo + Intro Text) -->
+    <div class="left-section">
+      <img 
+  src="logoBlackPNG.png" 
+  alt="Mind Arena Logo" 
+  class="logo-img" 
+/>
+      <h1 class="main-text" data-key="welcomeTitle">Welcome to Our Platform</h1>
+      <p class="sub-text" data-key="welcomeDesc">
+        Manage your mental game competitions easily and seamlessly.
+      </p>
+    </div>
+
+    <!-- Right Section (Login Form) -->
+    <div class="right-section">
+      <form class="login-form" onsubmit="return handleLogin(event)">
+
+        <h2 data-key="loginTitle">Login</h2>
+
+        <!-- Email -->
+        <label for="email" data-key="emailLabel">Email</label>
+        <input 
+          type="text" 
+          id="email" 
+          name="email" 
+          placeholder="Enter your email"
+          required
+        />
+
+        <!-- Password -->
+        <label for="password" data-key="passwordLabel">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="Enter your password"
+          required
+        />
+
+        <!-- Forgot Password Link -->
+        <div class="form-options">
+          <a href="forgotPass.html" class="forgot-password" data-key="forgotPassword">
+            Forgot Password?
+          </a>
+        </div>
+
+        <!-- Radio Buttons for Role -->
+        <div class="radio-group">
+          <input 
+            type="radio" 
+            id="user" 
+            name="role" 
+            value="user" 
+            checked
+          />
+          <label for="user" data-key="userRole">I'm a User</label>
+
+          <input 
+            type="radio" 
+            id="admin" 
+            name="role" 
+            value="admin"
+          />
+          <label for="admin" data-key="adminRole">I'm an Admin</label>
+        </div>
+
+        <!-- Login Button -->
+        <button type="submit" class="login-btn" data-key="loginBtn">Login</button>
+
+        <!-- Register Link -->
+        <p class="register-link">
+          <span data-key="noAccount">Don’t have an account?</span>
+          <a href="register.html" data-key="registerNow">Register now</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="translations.js"></script>
+  <script>
+    // On page load, set language from localStorage or default to 'en'
+    const savedLang = localStorage.getItem('lang') || 'en';
+    setLanguage(savedLang);
+
+    // Simple front-end redirect logic (optional)
+    function handleLogin(event) {
+      event.preventDefault();
+      const isAdmin = document.getElementById('admin').checked;
+      if (isAdmin) {
+        // Example: redirect to admin page
+        window.location.href = "../adminPage/adminHomePage.html";
+      } else {
+        // Example: redirect to user page
+        window.location.href = "../adminPage/userHomePage.html";
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>

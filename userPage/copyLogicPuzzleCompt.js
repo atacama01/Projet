@@ -1,0 +1,111 @@
+// Translations for multilingual support
+const translations = {
+    // English translations
+    en: {
+      // Header
+      logicPuzzle: "Logic Puzzle",
+      logout: "Logout",
+      noNotifications: "No new notifications",
+  
+      // Navigation
+      home: "Home",
+      competitions: "Competitions",
+      results: "Results",
+      iqTest: "IQ Test",
+      profile: "Profile",
+      report: "Report a Problem",
+  
+      // Competition details
+      back: "Back to Competitions",
+      available: "Available",
+      upcoming: "Upcoming",
+      closed: "Closed",
+      description: "Description",
+      logicDescExtended:
+        "Challenge yourself with tough logic puzzles that will test your critical thinking and problem-solving abilities. This competition features a series of increasingly difficult puzzles that require deductive reasoning, pattern recognition, and logical analysis to solve within the time constraints.",
+      registration: "Registration",
+      open: "Open",
+      requiredGrade: "Required IQ Test Grade",
+      startDate: "Start Date",
+      location: "Location",
+      locationValue: "Online",
+      gender: "Gender",
+      allGenders: "All",
+      gameType: "Game Type",
+      individual: "Individual",
+      timeLimit: "Time Limit",
+      difficulty: "Difficulty",
+      awards: "Awards",
+      firstPrize: "1st Place: 80000DA + Gold Medal",
+      secondPrize: "2nd Place: 40000DA + Silver Medal",
+      thirdPrize: "3rd Place: 20000DA + Bronze Medal",
+      certificates: "Certificates for all participants",
+      rules: "Rules",
+      rule1: "Participants must solve all puzzles within the time limit",
+      rule2: "No external resources or assistance allowed",
+      rule3: "Each puzzle has a specific format for submitting answers",
+      rule4: "Points are awarded based on accuracy and completion time",
+      rule5: "Judges' decisions are final",
+      startsIn: "Starts in:",
+      days: "Days",
+      hours: "Hours",
+      minutes: "Minutes",
+      seconds: "Seconds",
+      registerNow: "Register Now",
+    },
+  
+    // Arabic translations
+    ar: {
+      // Header
+      logicPuzzle: "لغز منطقي",
+      logout: "تسجيل الخروج",
+      noNotifications: "لا توجد إشعارات جديدة",
+  
+      // Navigation
+      home: "الرئيسية",
+      competitions: "المسابقات",
+      results: "النتائج",
+      iqTest: "اختبار الذكاء",
+      profile: "الملف الشخصي",
+      report: "الإبلاغ عن مشكلة",
+  
+      // Competition details
+      back: "العودة إلى المسابقات",
+      available: "متاح",
+      upcoming: "قادم",
+      closed: "مغلق",
+      description: "الوصف",
+      logicDescExtended:
+        "تحدى نفسك مع ألغاز منطقية صعبة ستختبر تفكيرك النقدي وقدراتك على حل المشكلات. تتضمن هذه المسابقة سلسلة من الألغاز المتزايدة الصعوبة التي تتطلب التفكير الاستنتاجي والتعرف على الأنماط والتحليل المنطقي لحلها ضمن القيود الزمنية.",
+      registration: "التسجيل",
+      open: "مفتوح",
+      requiredGrade: "درجة اختبار الذكاء المطلوبة",
+      startDate: "تاريخ البدء",
+      location: "الموقع",
+      locationValue: "عبر الإنترنت",
+      gender: "الجنس",
+      allGenders: "الكل",
+      gameType: "نوع اللعبة",
+      individual: "فردي",
+      timeLimit: "الحد الزمني",
+      difficulty: "الصعوبة",
+      awards: "الجوائز",
+      firstPrize: "المركز الأول: 80000 دج + ميدالية ذهبية",
+      secondPrize: "المركز الثاني: 40000 دج + ميدالية فضية",
+      thirdPrize: "المركز الثالث: 20000 دج + ميدالية برونزية",
+      certificates: "شهادات لجميع المشاركين",
+      rules: "القواعد",
+      rule1: "يجب على المشاركين حل جميع الألغاز ضمن الحد الزمني",
+      rule2: "لا يسمح باستخدام الموارد الخارجية أو المساعدة",
+      rule3: "لكل لغز تنسيق محدد لتقديم الإجابات",
+      rule4: "يتم منح النقاط بناءً على الدقة ووقت الإكمال",
+      rule5: "قرارات الحكام نهائية",
+      startsIn: "يبدأ في:",
+      days: "أيام",
+      hours: "ساعات",
+      minutes: "دقائق",
+      seconds: "ثواني",
+      registerNow: "سجل الآن",
+    },
+  }
+  

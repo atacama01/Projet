@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competition Results - Mind Arena</title>
+  <link rel="stylesheet" href="copyCompetitionResults.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-background">
+    <!-- Puzzle Pieces -->
+    <div class="bg-element puzzle-piece top-left">
+      <i class="fas fa-puzzle-piece"></i>
+    </div>
+    <div class="bg-element puzzle-piece top-right">
+      <i class="fas fa-puzzle-piece"></i>
+    </div>
+    <div class="bg-element puzzle-piece bottom-left">
+      <i class="fas fa-puzzle-piece"></i>
+    </div>
+    <div class="bg-element puzzle-piece bottom-right">
+      <i class="fas fa-puzzle-piece"></i>
+    </div>
+    
+    <!-- Math Symbols -->
+    <div class="bg-element math-symbol sum-symbol top-center">
+      <span>∑</span>
+    </div>
+    <div class="bg-element math-symbol integral-symbol left-center">
+      <span>∫</span>
+    </div>
+    <div class="bg-element math-symbol gamma-symbol right-center">
+      <span>Γ</span>
+    </div>
+    <div class="bg-element math-symbol pi-symbol bottom-center">
+      <span>π</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <!-- Left section: Logo -->
+      <div class="header-left">
+        <div class="header-logo">
+          <a href="index.html" class="logo-link">
+            <img src="logos.png" alt="Mind Arena Logo" class="header-logo-img">
+            <span class="header-logo-text" data-key="mindArena">Mind Arena</span>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Middle section: Search -->
+      <div class="header-middle">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search...">
+          <button class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Right section: Notifications, Language, Logout -->
+      <div class="header-right">
+        <!-- Notifications -->
+        <div class="notification-container">
+          <button class="notification-button">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">3</span>
+          </button>
+          <div class="notification-dropdown">
+            <div class="notification-header">
+              <h3 data-key="notifications">Notifications</h3>
+              <button class="mark-all-read" data-key="markAllRead">Mark all as read</button>
+            </div>
+            <div class="notification-list">
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-trophy"></i></div>
+                <div class="notification-content">
+                  <p data-key="newCompetition">New competition available: Math Challenge</p>
+                  <span class="notification-time">2 hours ago</span>
+                </div>
+              </div>
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-clipboard-check"></i></div>
+                <div class="notification-content">
+                  <p data-key="iqTestResults">Your IQ test results are ready</p>
+                  <span class="notification-time">Yesterday</span>
+                </div>
+              </div>
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-medal"></i></div>
+                <div class="notification-content">
+                  <p data-key="newBadge">You've earned a new badge!</p>
+                  <span class="notification-time">3 days ago</span>
+                </div>
+              </div>
+            </div>
+            <div class="notification-footer">
+              <a href="#" data-key="viewAllNotifications">View all notifications</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Language Switch -->
+        <div class="language-switch">
+          <span id="english-option" onclick="setLanguageWithHighlight('en')">English</span>
+          <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+        </div>
+        
+        <!-- Logout Button -->
+        <button class="logout-button">
+          <i class="fas fa-sign-out-alt"></i>
+          <span data-key="logout">Logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Title Banner -->
+  <div class="page-title-container">
+    <h1 data-key="competitionResults">Competition Results</h1>
+    <div class="breadcrumbs">
+      <a href="#" data-key="home">Home</a> &gt; <span data-key="competitionResults">Competition Results</span>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <div class="container">
+    <!-- Competition Filter Section -->
+    <div class="filter-section">
+      <div class="filter-group">
+        <label for="competition-type" data-key="competitionType">Competition Type:</label>
+        <select id="competition-type">
+          <option value="all" data-key="all">All</option>
+          <option value="iq" data-key="iqTest">IQ Test</option>
+          <option value="math" data-key="mathChallenge">Math Challenge</option>
+          <option value="logic" data-key="logicPuzzle">Logic Puzzle</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="competition-date" data-key="date">Date:</label>
+        <select id="competition-date">
+          <option value="all" data-key="all">All</option>
+          <option value="this-month" data-key="thisMonth">This Month</option>
+          <option value="last-month" data-key="lastMonth">Last Month</option>
+          <option value="this-year" data-key="thisYear">This Year</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="competition-status" data-key="status">Status:</label>
+        <select id="competition-status">
+          <option value="all" data-key="all">All</option>
+          <option value="completed" data-key="completed">Completed</option>
+          <option value="ongoing" data-key="ongoing">Ongoing</option>
+          <option value="upcoming" data-key="upcoming">Upcoming</option>
+        </select>
+      </div>
+      <button class="filter-button" data-key="filter">Filter</button>
+    </div>
+
+    <!-- Competition Results Table -->
+    <div class="results-section">
+      <h2 data-key="recentCompetitions">Recent Competitions</h2>
+      <div class="table-container">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th data-key="id">ID</th>
+              <th data-key="competitionName">Competition Name</th>
+              <th data-key="date">Date</th>
+              <th data-key="participants">Participants</th>
+              <th data-key="yourScore">Your Score</th>
+              <th data-key="yourRank">Your Rank</th>
+              <th data-key="actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>IQ Challenge 2023</td>
+              <td>10/03/2023</td>
+              <td>150</td>
+              <td>85/100</td>
+              <td>12</td>
+              <td>
+                <button class="view-details-btn" data-id="1" data-key="viewDetails">View Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Math Olympiad</td>
+              <td>25/02/2023</td>
+              <td>98</td>
+              <td>92/100</td>
+              <td>5</td>
+              <td>
+                <button class="view-details-btn" data-id="2" data-key="viewDetails">View Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Logic Puzzle Challenge</td>
+              <td>15/01/2023</td>
+              <td>120</td>
+              <td>78/100</td>
+              <td>20</td>
+              <td>
+                <button class="view-details-btn" data-id="3" data-key="viewDetails">View Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Memory Masters</td>
+              <td>05/12/2022</td>
+              <td>75</td>
+              <td>90/100</td>
+              <td>3</td>
+              <td>
+                <button class="view-details-btn" data-id="4" data-key="viewDetails">View Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Speed Mathematics</td>
+              <td>20/11/2022</td>
+              <td>110</td>
+              <td>88/100</td>
+              <td>7</td>
+              <td>
+                <button class="view-details-btn" data-id="5" data-key="viewDetails">View Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <button class="pagination-btn prev" disabled><i class="fas fa-chevron-left"></i></button>
+        <span class="pagination-info">Page 1 of 3</span>
+        <button class="pagination-btn next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- Tournament Brackets Section -->
+    <div class="tournament-section">
+      <h2 data-key="tournamentBrackets">Tournament Brackets</h2>
+      <div class="tournament-selector">
+        <label for="tournament-select" data-key="selectTournament">Select Tournament:</label>
+        <select id="tournament-select">
+          <option value="1">IQ Challenge 2023</option>
+          <option value="2">Math Olympiad</option>
+          <option value="3">Logic Puzzle Challenge</option>
+        </select>
+      </div>
+      <div class="bracket-container">
+        <div class="tournament-bracket">
+          <!-- Round 1 -->
+          <div class="round round-1">
+            <div class="round-title" data-key="round1">Round 1</div>
+            <div class="matches">
+              <div class="match">
+                <div class="match-participant winner">
+                  <span class="participant-name">Ahmed M.</span>
+                  <span class="participant-score">85</span>
+                </div>
+                <div class="match-participant">
+                  <span class="participant-name">Khalid S.</span>
+                  <span class="participant-score">78</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="match-participant">
+                  <span class="participant-name">Sara A.</span>
+                  <span class="participant-score">72</span>
+                </div>
+                <div class="match-participant winner">
+                  <span class="participant-name">Mohammed R.</span>
+                  <span class="participant-score">80</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="match-participant winner">
+                  <span class="participant-name">Fatima K.</span>
+                  <span class="participant-score">90</span>
+                </div>
+                <div class="match-participant">
+                  <span class="participant-name">Ali H.</span>
+                  <span class="participant-score">82</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="match-participant">
+                  <span class="participant-name">Noor J.</span>
+                  <span class="participant-score">75</span>
+                </div>
+                <div class="match-participant winner">
+                  <span class="participant-name">Omar T.</span>
+                  <span class="participant-score">88</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Round 2 -->
+          <div class="round round-2">
+            <div class="round-title" data-key="semifinals">Semifinals</div>
+            <div class="matches">
+              <div class="match">
+                <div class="match-participant winner">
+                  <span class="participant-name">Ahmed M.</span>
+                  <span class="participant-score">88</span>
+                </div>
+                <div class="match-participant">
+                  <span class="participant-name">Mohammed R.</span>
+                  <span class="participant-score">82</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="match-participant">
+                  <span class="participant-name">Fatima K.</span>
+                  <span class="participant-score">85</span>
+                </div>
+                <div class="match-participant winner">
+                  <span class="participant-name">Omar T.</span>
+                  <span class="participant-score">92</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Round 3 -->
+          <div class="round round-3">
+            <div class="round-title" data-key="finals">Finals</div>
+            <div class="matches">
+              <div class="match">
+                <div class="match-participant">
+                  <span class="participant-name">Ahmed M.</span>
+                  <span class="participant-score">90</span>
+                </div>
+                <div class="match-participant winner">
+                  <span class="participant-name">Omar T.</span>
+                  <span class="participant-score">95</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Winner -->
+          <div class="round round-4">
+            <div class="round-title" data-key="champion">Champion</div>
+            <div class="matches">
+              <div class="match champion">
+                <div class="match-participant winner">
+                  <span class="participant-name">Omar T.</span>
+                  <span class="participant-score">95</span>
+                  <div class="trophy-icon">
+                    <i class="fas fa-trophy"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Performers Section -->
+    <div class="top-performers-section">
+      <h2 data-key="topPerformers">Top Performers</h2>
+      <div class="performers-grid">
+        <div class="performer-card first-place">
+          <div class="performer-rank">1</div>
+          <div class="performer-avatar">
+            <img src="/placeholder.svg?height=80&width=80" alt="First Place" class="avatar-img">
+            <div class="medal gold">
+              <i class="fas fa-medal"></i>
+            </div>
+          </div>
+          <div class="performer-name">Omar Tariq</div>
+          <div class="performer-score">95/100</div>
+        </div>
+        
+        <div class="performer-card second-place">
+          <div class="performer-rank">2</div>
+          <div class="performer-avatar">
+            <img src="/placeholder.svg?height=80&width=80" alt="Second Place" class="avatar-img">
+            <div class="medal silver">
+              <i class="fas fa-medal"></i>
+            </div>
+          </div>
+          <div class="performer-name">Ahmed Mohammed</div>
+          <div class="performer-score">90/100</div>
+        </div>
+        
+        <div class="performer-card third-place">
+          <div class="performer-rank">3</div>
+          <div class="performer-avatar">
+            <img src="/placeholder.svg?height=80&width=80" alt="Third Place" class="avatar-img">
+            <div class="medal bronze">
+              <i class="fas fa-medal"></i>
+            </div>
+          </div>
+          <div class="performer-name">Fatima Khalid</div>
+          <div class="performer-score">85/100</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Competition Details Modal (Hidden by default) -->
+  <div class="modal" id="competition-details-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 data-key="competitionDetails">Competition Details</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="competition-info">
+          <h3 id="modal-competition-name">IQ Challenge 2023</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <label data-key="date">Date</label>
+              <p id="modal-competition-date">10/03/2023</p>
+            </div>
+            <div class="info-item">
+              <label data-key="participants">Participants</label>
+              <p id="modal-competition-participants">150</p>
+            </div>
+            <div class="info-item">
+              <label data-key="duration">Duration</label>
+              <p id="modal-competition-duration">90 minutes</p>
+            </div>
+            <div class="info-item">
+              <label data-key="difficulty">Difficulty</label>
+              <p id="modal-competition-difficulty">Advanced</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="your-performance">
+          <h3 data-key="yourPerformance">Your Performance</h3>
+          <div class="performance-stats">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="stat-details">
+                <span class="stat-label" data-key="score">Score</span>
+                <span class="stat-value" id="modal-your-score">85/100</span>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div class="stat-details">
+                <span class="stat-label" data-key="rank">Rank</span>
+                <span class="stat-value" id="modal-your-rank">12 / 150</span>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-percentage"></i>
+              </div>
+              <div class="stat-details">
+                <span class="stat-label" data-key="percentile">Percentile</span>
+                <span class="stat-value" id="modal-your-percentile">92%</span>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-details">
+                <span class="stat-label" data-key="timeSpent">Time Spent</span>
+                <span class="stat-value" id="modal-your-time">75 minutes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="score-breakdown">
+          <h3 data-key="scoreBreakdown">Score Breakdown</h3>
+          <div class="breakdown-chart">
+            <canvas id="score-chart"></canvas>
+          </div>
+        </div>
+        
+        <div class="modal-actions">
+          <button class="download-certificate-btn" data-key="downloadCertificate">
+            <i class="fas fa-certificate"></i> Download Certificate
+          </button>
+          <button class="view-answers-btn" data-key="viewAnswers">
+            <i class="fas fa-eye"></i> View Your Answers
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="copyCompetitionResults.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications - Mind Arena</title>
+  <link rel="stylesheet" href="copyNotificationPage.css">
+</head>
+<body>
+  <!-- Background animated objects -->
+  <div class="background-objects" id="backgroundObjects">
+    <!-- Top border objects -->
+    <div class="bg-object bell top-left">🔔</div>
+    <div class="bg-object message top-left-center">💬</div>
+    <div class="bg-object notification top-center">📱</div>
+    <div class="bg-object email top-right-center">📧</div>
+    <div class="bg-object alert top-right">⚠️</div>
+    
+    <!-- Left and right border objects -->
+    <div class="bg-object bell left-top">🔔</div>
+    <div class="bg-object message left-center">💬</div>
+    <div class="bg-object notification left-bottom">📱</div>
+    
+    <div class="bg-object alert right-top">⚠️</div>
+    <div class="bg-object email right-center">📧</div>
+    <div class="bg-object bell right-bottom">🔔</div>
+    
+    <!-- Bottom border objects -->
+    <div class="bg-object alert bottom-left">⚠️</div>
+    <div class="bg-object email bottom-left-center">📧</div>
+    <div class="bg-object notification bottom-center">📱</div>
+    <div class="bg-object message bottom-right-center">💬</div>
+    <div class="bg-object bell bottom-right">🔔</div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-left">
+      <a href="copyUserHomePage.html">
+        <img src="logos.png" alt="Logo" class="header-logo">
+      </a>
+      <h1 class="header-title" data-key="notifications">Notifications</h1>
+    </div>
+
+    <div class="header-right">
+      <div class="language-switch">
+        <span id="english-option" class="active">EN</span>
+        <span id="arabic-option">AR</span>
+      </div>
+
+      <a href="copySettingPage.html" class="settings-btn" title="Settings" data-key="settingsTitle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Notification Controls -->
+    <div class="notification-controls">
+      <div class="notification-filters">
+        <button class="filter-btn active" data-filter="all" data-key="all">All</button>
+        <button class="filter-btn" data-filter="unread" data-key="unread">Unread</button>
+        <button class="filter-btn" data-filter="competitions" data-key="competitions">Competitions</button>
+        <button class="filter-btn" data-filter="results" data-key="results">Results</button>
+        <button class="filter-btn" data-filter="system" data-key="system">System</button>
+      </div>
+      
+      <button class="clear-all-btn" id="clearAllBtn" data-key="clearAll">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+        </svg>
+        <span data-key="clearAll">Clear All</span>
+      </button>
+    </div>
+    
+    <!-- Notifications List -->
+    <div class="notifications-list" id="notificationsList">
+      <!-- Unread Notification -->
+      <div class="notification-item unread" data-type="competitions" data-id="1">
+        <div class="notification-icon competition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <h3 class="notification-title" data-key="newCompetitionTitle">New Competition Available</h3>
+            <span class="notification-time">2 hours ago</span>
+          </div>
+          <p class="notification-message" data-key="newCompetitionMessage">The Math Challenge competition is now open for registration. Don't miss your chance to participate!</p>
+          <div class="notification-actions">
+            <button class="action-btn view-btn" data-key="view">View</button>
+            <button class="action-btn mark-read-btn" data-key="markRead">Mark as Read</button>
+            <button class="action-btn delete-btn" data-key="delete">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Read Notification -->
+      <div class="notification-item" data-type="results" data-id="2">
+        <div class="notification-icon results">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <h3 class="notification-title" data-key="resultsPublishedTitle">Results Published</h3>
+            <span class="notification-time">Yesterday</span>
+          </div>
+          <p class="notification-message" data-key="resultsPublishedMessage">The results for the Logic Puzzle competition have been published. Check your ranking now!</p>
+          <div class="notification-actions">
+            <button class="action-btn view-btn" data-key="view">View</button>
+            <button class="action-btn delete-btn" data-key="delete">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Unread Notification -->
+      <div class="notification-item unread" data-type="system" data-id="3">
+        <div class="notification-icon system">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <h3 class="notification-title" data-key="securityAlertTitle">Account Security Alert</h3>
+            <span class="notification-time">2 days ago</span>
+          </div>
+          <p class="notification-message" data-key="securityAlertMessage">We noticed a login from a new device. If this wasn't you, please update your password immediately.</p>
+          <div class="notification-actions">
+            <button class="action-btn view-btn" data-key="view">View</button>
+            <button class="action-btn mark-read-btn" data-key="markRead">Mark as Read</button>
+            <button class="action-btn delete-btn" data-key="delete">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Read Notification -->
+      <div class="notification-item" data-type="competitions" data-id="4">
+        <div class="notification-icon reminder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <h3 class="notification-title" data-key="competitionReminderTitle">Competition Reminder</h3>
+            <span class="notification-time">3 days ago</span>
+          </div>
+          <p class="notification-message" data-key="competitionReminderMessage">The Memory Game competition starts in 24 hours. Make sure you're prepared!</p>
+          <div class="notification-actions">
+            <button class="action-btn view-btn" data-key="view">View</button>
+            <button class="action-btn delete-btn" data-key="delete">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Read Notification -->
+      <div class="notification-item" data-type="system" data-id="5">
+        <div class="notification-icon system">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div class="notification-content">
+          <div class="notification-header">
+            <h3 class="notification-title" data-key="profileUpdateTitle">Profile Update</h3>
+            <span class="notification-time">1 week ago</span>
+          </div>
+          <p class="notification-message" data-key="profileUpdateMessage">Your profile has been successfully updated with your new information.</p>
+          <div class="notification-actions">
+            <button class="action-btn view-btn" data-key="view">View</button>
+            <button class="action-btn delete-btn" data-key="delete">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Empty State (hidden by default) -->
+    <div class="empty-state" id="emptyState" style="display: none;">
+      <div class="empty-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+      </div>
+      <h2 data-key="noNotifications">No Notifications</h2>
+      <p data-key="noNotificationsDesc">You're all caught up! Check back later for new notifications.</p>
+    </div>
+  </div>
+
+  <script src="translations.js"></script>
+  <script src="copyNotificationPage.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Challenge - Competition Details</title>
+  <link rel="stylesheet" href="copyMathCompetition.css">
+</head>
+<body>
+  <!-- Background animated objects -->
+  <div class="background-objects" id="backgroundObjects">
+    <div class="bg-object math-symbol">∑</div>
+    <div class="bg-object math-symbol">π</div>
+    <div class="bg-object math-symbol">∞</div>
+    <div class="bg-object math-symbol">√</div>
+    <div class="bg-object math-symbol">∫</div>
+    <div class="bg-object math-symbol">±</div>
+    <div class="bg-object math-symbol">÷</div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-left">
+      <a href="competitionPage.html">
+        <img src="logos.png" alt="Logo" class="header-logo">
+      </a>
+    </div>
+
+    <div class="header-center">
+      <h1 class="header-title" data-key="mathChallenge">Math Challenge</h1>
+    </div>
+
+    <div class="header-right">
+      <div class="notification-container">
+        <button class="notification-btn" id="notificationBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+          </svg>
+        </button>
+
+        <div class="notification-dropdown" id="notificationDropdown">
+          <div class="notification-item" data-key="noNotifications">No new notifications</div>
+        </div>
+      </div>
+
+      <!-- Language Switch -->
+      <div class="language-switch">
+        <span id="english-option" class="active">English</span>
+        <span id="arabic-option">العربية</span>
+      </div>
+
+      <button class="logout-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        <span class="logout-text" data-key="logout">Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html" data-key="home">Home</a></li>
+      <li class="active"><a href="competitionPage.html" data-key="competitions">Competitions</a></li>
+      <li><a href="#" data-key="results">Results</a></li>
+      <li><a href="#" data-key="iqTest">IQ Test</a></li>
+      <li><a href="#" data-key="profile">Profile</a></li>
+      <li><a href="reportAProblem.html" data-key="report">Report a Problem</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <!-- Back Button -->
+    <a href="copyUserCompetitionPage.html" class="back-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span data-key="back">Back to Competitions</span>
+    </a>
+    
+    <!-- Competition Title -->
+    <h1 class="page-title" data-key="mathChallenge">Math Challenge</h1>
+    
+    <!-- Competition State -->
+    <div class="competition-state available" data-key="available">Available</div>
+    
+    <!-- Main Content -->
+    <div class="competition-details">
+      <div class="detail-section">
+        <h2 data-key="description">Description</h2>
+        <p data-key="mathDescExtended">Join our annual Math Challenge where participants solve complex mathematical problems under time constraints. This competition tests your analytical skills, problem-solving abilities, and mathematical knowledge across various domains including algebra, geometry, and calculus.</p>
+      </div>
+      
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="detail-label" data-key="registration">Registration:</span>
+          <span class="detail-value open" data-key="open">Open</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="detail-label" data-key="requiredGrade">Required IQ Test Grade:</span>
+          <span class="detail-value">120+</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="detail-label" data-key="startDate">Start Date:</span>
+          <span class="detail-value">15 June 2023</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="detail-label" data-key="location">Location:</span>
+          <span class="detail-value" data-key="locationValue">Online</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="detail-label" data-key="gender">Gender:</span>
+          <span class="detail-value" data-key="allGenders">All</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="detail-label" data-key="gameType">Game Type:</span>
+          <span class="detail-value" data-key="individual">Individual</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="detail-label" data-key="timeLimit">Time Limit:</span>
+          <span class="detail-value">90 minutes</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="detail-label" data-key="difficulty">Difficulty:</span>
+          <span class="detail-value">Advanced</span>
+        </div>
+      </div>
+      
+      <div class="detail-section">
+        <h2 data-key="awards">Awards</h2>
+        <ul class="awards-list">
+          <li data-key="firstPrize">1st Place: 200000DA + Gold Medal</li>
+          <li data-key="secondPrize">2nd Place: 100000DA + Silver Medal</li>
+          <li data-key="thirdPrize">3rd Place: 50000DA + Bronze Medal</li>
+          <li data-key="certificates">Certificates for all participants</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h2 data-key="rules">Rules</h2>
+        <ul class="rules-list">
+          <li data-key="rule1">Participants must complete all problems within the time limit</li>
+          <li data-key="rule2">No calculators or external resources allowed</li>
+          <li data-key="rule3">Answers must be submitted in the specified format</li>
+          <li data-key="rule4">Judges' decisions are final</li>
+        </ul>
+      </div>
+      
+      <div class="countdown-container">
+        <h3 data-key="startsIn">Starts in:</h3>
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-value" id="days">00</span>
+            <span class="countdown-label" data-key="days">Days</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="hours">00</span>
+            <span class="countdown-label" data-key="hours">Hours</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="minutes">00</span>
+            <span class="countdown-label" data-key="minutes">Minutes</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-value" id="seconds">00</span>
+            <span class="countdown-label" data-key="seconds">Seconds</span>
+          </div>
+        </div>
+      </div>
+      
+      <button class="register-button" data-key="registerNow">Register Now</button>
+    </div>
+  </div>
+
+  <script src="translations.js"></script>
+  <script src="copyMathCompetition.js"></script>
+  <script>
+    // Set competition-specific countdown date
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set to June 15, 2023
+      setCountdownDate(new Date('June 15, 2023 00:00:00').getTime());
+    });
+  </script>
+</body>
+</html>

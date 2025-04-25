@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Mind Arena</title>
+  <link rel="stylesheet" href="copyProfilePage.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Animated Background Objects Container -->
+  <div class="background-objects-container"></div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <!-- Left section: Logo -->
+      <div class="header-left">
+        <div class="header-logo">
+          <a href="index.html" class="logo-link">
+            <img src="logos.png" alt="Mind Arena Logo" class="header-logo-img">
+            <span class="header-logo-text" data-key="mindArena">Mind Arena</span>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Middle section: Search -->
+      <div class="header-middle">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search...">
+          <button class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Right section: Notifications, Language, Logout -->
+      <div class="header-right">
+        <!-- Notifications -->
+        <div class="notification-container">
+          <button class="notification-button">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">3</span>
+          </button>
+          <div class="notification-dropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+              <button class="mark-all-read">Mark all as read</button>
+            </div>
+            <div class="notification-list">
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-trophy"></i></div>
+                <div class="notification-content">
+                  <p>New competition available: Math Challenge</p>
+                  <span class="notification-time">2 hours ago</span>
+                </div>
+              </div>
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-clipboard-check"></i></div>
+                <div class="notification-content">
+                  <p>Your IQ test results are ready</p>
+                  <span class="notification-time">Yesterday</span>
+                </div>
+              </div>
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-medal"></i></div>
+                <div class="notification-content">
+                  <p>You've earned a new badge!</p>
+                  <span class="notification-time">3 days ago</span>
+                </div>
+              </div>
+            </div>
+            <div class="notification-footer">
+              <a href="#">View all notifications</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Language Switch -->
+        <div class="language-switch">
+          <span id="english-option" onclick="setLanguageWithHighlight('en')">English</span>
+          <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+        </div>
+        
+        <!-- Logout Button -->
+        <button class="logout-button">
+          <i class="fas fa-sign-out-alt"></i>
+          <span data-key="logout">Logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Menu -->
+  <nav class="profile-nav">
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li class="nav-item active"><a href="#" data-key="personalInfo">Personal Info</a></li>
+        <li class="nav-item"><a href="copyUserCompetitionPage.html" data-key="competitions">Competitions</a></li>
+        <li class="nav-item"><a href="copyCompetitionResults.html" data-key="results">Results</a></li>
+        <li class="nav-item"><a href="copySettingPage.html" data-key="settings">Settings</a></li>
+        <li class="nav-item"><a href="copyNotificationPage.html" data-key="notifications">Notifications</a></li>
+        <li class="nav-item"><a href="copyPrivacySecurity.html" data-key="privacy&security">Privacy</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Title Banner -->
+  <div class="page-title-container">
+    <h1 data-key="profileTitle">Profile</h1>
+    <div class="breadcrumbs">
+      <a href="copyUserHomePage.html" data-key="home">Home</a> &gt; <span data-key="profileTitle">Profile</span>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <div class="container">
+    <!-- Left Section: User Info -->
+    <div class="profile-sidebar">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-avatar">
+            <img src="PROFILEpic.jpg" alt="User Avatar" class="avatar-img">
+            <button class="change-avatar-btn">
+              <i class="fas fa-camera"></i>
+            </button>
+          </div>
+          <h2 class="profile-name">zakaria ismail</h2>
+          <p class="profile-username">@zakaria_ab</p>
+          <div class="profile-stats">
+            <div class="stat-item">
+              <span class="stat-value">12</span>
+              <span class="stat-label" data-key="competitions">Competitions</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">8</span>
+              <span class="stat-label" data-key="awards">Awards</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">142</span>
+              <span class="stat-label" data-key="points">Points</span>
+            </div>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="edit-profile-btn" data-key="editProfile">
+            <i class="fas fa-edit"></i> Edit Profile
+          </button>
+        </div>
+        <div class="profile-completion">
+          <div class="completion-text">
+            <span data-key="profileCompletion">Profile Completion</span>
+            <span class="completion-percentage">75%</span>
+          </div>
+          <div class="completion-bar">
+            <div class="completion-progress" style="width: 75%"></div>
+          </div>
+        </div>
+        <div class="profile-verification">
+          <i class="fas fa-exclamation-circle"></i>
+          <p data-key="verificationMessage">Please complete your profile to participate in all competitions</p>
+        </div>
+      </div>
+      
+      <div class="profile-contact">
+        <h3 data-key="contactInfo">Contact Information</h3>
+        <ul class="contact-list">
+          <li>
+            <i class="fas fa-envelope"></i>
+            <span>ismail090@example.com</span>
+          </li>
+          <li>
+            <i class="fas fa-phone"></i>
+            <span>+213 711 335 577 991</span>
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Algiers, Algeria</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Section: Profile Details -->
+    <div class="profile-content">
+      <!-- Personal Information Section -->
+      <div class="profile-section">
+        <div class="section-header">
+          <h2 data-key="personalInfo">Personal Information</h2>
+          <button class="section-edit-btn" data-section="personal-info">
+            <i class="fas fa-pen"></i>
+          </button>
+        </div>
+        <div class="section-content">
+          <div class="info-grid">
+            <div class="info-item">
+              <label data-key="fullName">Full Name</label>
+              <p>zakaria Mohammed abdelwahab</p>
+            </div>
+            <div class="info-item">
+              <label data-key="dateOfBirth">Date of Birth</label>
+              <p>02/03/1996</p>
+            </div>
+            <div class="info-item">
+              <label data-key="gender">Gender</label>
+              <p data-key="male">Male</p>
+            </div>
+            <div class="info-item">
+              <label data-key="nationality">Nationality</label>
+              <p>Algerian</p>
+            </div>
+            <div class="info-item">
+              <label data-key="education">Education</label>
+              <p>Bachelor's in Computer Science</p>
+            </div>
+            <div class="info-item">
+              <label data-key="occupation">Occupation</label>
+              <p>Software Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Competitions Section -->
+      <div class="profile-section">
+        <div class="section-header">
+          <h2 data-key="recentCompetitions">Recent Competitions</h2>
+          <a href="#" class="view-all-link" data-key="viewAll">View All</a>
+        </div>
+        <div class="section-content">
+          <div class="competitions-list">
+            <div class="competition-card">
+              <div class="competition-icon">
+                <i class="fas fa-brain"></i>
+              </div>
+              <div class="competition-details">
+                <h3>IQ Challenge 2023</h3>
+                <div class="competition-meta">
+                  <span class="competition-date">
+                    <i class="fas fa-calendar-alt"></i> 10/03/2023
+                  </span>
+                  <span class="competition-status completed">
+                    <i class="fas fa-check-circle"></i> <span data-key="completed">Completed</span>
+                  </span>
+                </div>
+                <div class="competition-result">
+                  <span class="result-label" data-key="score">Score:</span>
+                  <span class="result-value">85/100</span>
+                  <span class="result-rank">
+                    <i class="fas fa-trophy"></i> <span data-key="rank">Rank:</span> 12
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="competition-card">
+              <div class="competition-icon">
+                <i class="fas fa-calculator"></i>
+              </div>
+              <div class="competition-details">
+                <h3>Math Olympiad</h3>
+                <div class="competition-meta">
+                  <span class="competition-date">
+                    <i class="fas fa-calendar-alt"></i> 25/02/2023
+                  </span>
+                  <span class="competition-status completed">
+                    <i class="fas fa-check-circle"></i> <span data-key="completed">Completed</span>
+                  </span>
+                </div>
+                <div class="competition-result">
+                  <span class="result-label" data-key="score">Score:</span>
+                  <span class="result-value">92/100</span>
+                  <span class="result-rank">
+                    <i class="fas fa-trophy"></i> <span data-key="rank">Rank:</span> 5
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="competition-card">
+              <div class="competition-icon">
+                <i class="fas fa-puzzle-piece"></i>
+              </div>
+              <div class="competition-details">
+                <h3>Logic Puzzle Challenge</h3>
+                <div class="competition-meta">
+                  <span class="competition-date">
+                    <i class="fas fa-calendar-alt"></i> 15/01/2023
+                  </span>
+                  <span class="competition-status upcoming">
+                    <i class="fas fa-hourglass-half"></i> <span data-key="upcoming">Upcoming</span>
+                  </span>
+                </div>
+                <div class="competition-actions">
+                  <button class="register-btn" data-key="register">Register</button>
+                  <button class="details-btn" data-key="details">Details</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Achievements Section -->
+      <div class="profile-section">
+        <div class="section-header">
+          <h2 data-key="achievements">Achievements</h2>
+        </div>
+        <div class="section-content">
+          <div class="achievements-grid">
+            <div class="achievement-item">
+              <div class="achievement-icon gold">
+                <i class="fas fa-medal"></i>
+              </div>
+              <div class="achievement-details">
+                <h3 data-key="firstPlace">First Place</h3>
+                <p>Logic Masters 2022</p>
+              </div>
+            </div>
+            
+            <div class="achievement-item">
+              <div class="achievement-icon silver">
+                <i class="fas fa-award"></i>
+              </div>
+              <div class="achievement-details">
+                <h3 data-key="secondPlace">Second Place</h3>
+                <p>Math Challenge 2022</p>
+              </div>
+            </div>
+            
+            <div class="achievement-item">
+              <div class="achievement-icon bronze">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div class="achievement-details">
+                <h3 data-key="thirdPlace">Third Place</h3>
+                <p>IQ Test Championship</p>
+              </div>
+            </div>
+            
+            <div class="achievement-item">
+              <div class="achievement-icon">
+                <i class="fas fa-certificate"></i>
+              </div>
+              <div class="achievement-details">
+                <h3 data-key="participation">Participation</h3>
+                <p>International Mind Games</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Profile Modal (Hidden by default) -->
+  <div class="modal" id="edit-profile-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 data-key="editProfile" id="modal-title">Edit Profile</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="edit-profile-form">
+          <div class="form-group">
+            <label for="edit-fullname" data-key="fullName">Full Name</label>
+            <input type="text" id="edit-fullname" name="fullname" value="zakaria mohammed abdelwahab">
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-dob" data-key="dateOfBirth">Date of Birth</label>
+              <input type="date" id="edit-dob" name="dob" value="1996-03-02">
+            </div>
+            
+            <div class="form-group">
+              <label for="edit-gender" data-key="gender">Gender</label>
+              <select id="edit-gender" name="gender">
+                <option value="male" data-key="male">Male</option>
+                <option value="female" data-key="female">Female</option>
+                <option value="other" data-key="other">Other</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="edit-nationality" data-key="nationality">Nationality</label>
+            <input type="text" id="edit-nationality" name="nationality" value="Algerian">
+          </div>
+          
+          <div class="form-group">
+            <label for="edit-email" data-key="email">Email</label>
+            <input type="email" id="edit-email" name="email" value="ismail090@example.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="edit-phone" data-key="phone">Phone</label>
+            <input type="tel" id="edit-phone" name="phone" value="+213 711 335 577 991">
+          </div>
+          
+          <div class="form-group">
+            <label for="edit-address" data-key="address">Address</label>
+            <input type="text" id="edit-address" name="address" value="Algeiers, Algeria">
+          </div>
+          
+          <div class="form-group">
+            <label for="edit-education" data-key="education">Education</label>
+            <input type="text" id="edit-education" name="education" value="Bachelor's in Computer Science">
+          </div>
+          
+          <div class="form-group">
+            <label for="edit-occupation" data-key="occupation">Occupation</label>
+            <input type="text" id="edit-occupation" name="occupation" value="Software Developer">
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" class="cancel-btn" data-key="cancel">Cancel</button>
+            <button type="submit" class="save-btn" data-key="saveChanges">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Keyboard Shortcut Info Modal -->
+  <div class="modal" id="shortcut-info-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Keyboard Shortcuts</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="shortcuts-list">
+          <div class="shortcut-item">
+            <div class="shortcut-key">E</div>
+            <div class="shortcut-description">Edit Profile</div>
+          </div>
+          <div class="shortcut-item">
+            <div class="shortcut-key">P</div>
+            <div class="shortcut-description">Edit Personal Information</div>
+          </div>
+          <div class="shortcut-item">
+            <div class="shortcut-key">Esc</div>
+            <div class="shortcut-description">Close Modal</div>
+          </div>
+          <div class="shortcut-item">
+            <div class="shortcut-key">?</div>
+            <div class="shortcut-description">Show Shortcuts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="copyProfilePage.js"></script>
+</body>
+</html>

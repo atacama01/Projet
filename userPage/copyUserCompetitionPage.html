@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competitions - Mind Arena</title>
+  <link rel="stylesheet" href="copyUserCompetitionPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard-wrapper">
+    <!-- Background Animation Elements -->
+    <div class="animated-background" id="backgroundObjects">
+      <div class="bg-object puzzle-piece" style="top: 5%; left: 2%;"></div>
+      <div class="bg-object chess-knight" style="top: 15%; right: 3%;"></div>
+      <div class="bg-object puzzle-piece-2" style="bottom: 10%; left: 5%;"></div>
+      <div class="bg-object chess-pawn" style="bottom: 20%; right: 8%;"></div>
+      <div class="bg-object integral" style="top: 40%; left: 3%;"></div>
+      <div class="bg-object chess-rook" style="top: 60%; right: 4%;"></div>
+      <div class="bg-object damma" style="bottom: 5%; right: 15%;"></div>
+      <div class="bg-object formula" style="top: 25%; left: 10%;"></div>
+      <div class="bg-object brain" style="top: 70%; left: 15%;"></div>
+      <div class="bg-object lightbulb" style="top: 35%; right: 12%;"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+      <div class="header-left">
+        <a href="index.html">
+          <img src="logos.png" alt="Logo" class="header-logo">
+        </a>
+        <h1 class="header-title">Mind Arena</h1>
+      </div>
+
+      <div class="header-center">
+        <div class="search-container">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" placeholder="Search competitions..." class="header-search" id="headerSearch">
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="notification-container">
+          <button class="notification-btn" id="notificationBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+            </svg>
+            <span class="notification-badge">3</span>
+          </button>
+
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3 data-key="notifications">Notifications</h3>
+              <button class="mark-all-read" data-key="markAllRead">Mark all as read</button>
+            </div>
+            <div class="notification-list">
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-trophy"></i></div>
+                <div class="notification-content">
+                  <p data-key="newCompetition">New competition available: Math Challenge</p>
+                  <span class="notification-time">2 hours ago</span>
+                </div>
+              </div>
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-clipboard-check"></i></div>
+                <div class="notification-content">
+                  <p data-key="resultsReady">Your IQ test results are ready</p>
+                  <span class="notification-time">Yesterday</span>
+                </div>
+              </div>
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-medal"></i></div>
+                <div class="notification-content">
+                  <p data-key="newBadge">You've earned a new badge!</p>
+                  <span class="notification-time">3 days ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Language Switch -->
+        <div class="language-switch">
+          <span id="english-option" class="active">English</span>
+          <span id="arabic-option">العربية</span>
+        </div>
+
+        <button class="settings-btn" id="settingsBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+
+        <button class="logout-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span class="logout-text" data-key="logout">Logout</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <ul>
+        <li><a href="copyUserHomePage.html" data-key="home">Home</a></li>
+        <li class="active"><a href="copyUserCompetitionPage.html" data-key="competitions">Competitions</a></li>
+        <li><a href="copyCompetitionResults.html" data-key="results">Results</a></li>
+        <li><a href="copyProfilePage.html" data-key="profile">Profile</a></li>
+        <li><a href="copyReportAProblem.html" data-key="report">Report a Problem</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Left Section: Dashboard Info -->
+      <div class="left-section">
+        <div class="logo-container">
+          <img src="competitionPage.png" alt="User Logo" class="logo-img">
+        </div>
+        <h1 class="main-text" data-key="competitions">Competitions</h1>
+        <p class="sub-text" data-key="competitionsIntro">Explore exciting competitions and challenges to test your skills and win amazing prizes. Join now and compete with others!</p>
+      </div>
+
+      <!-- Right Section: Competitions List -->
+      <div class="right-section">
+        <div class="search-bar-container">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="search-bar" placeholder="Search competitions..." data-key="searchPlaceholder">
+        </div>
+
+        <div class="competitions-list">
+          <!-- Math Challenge Card -->
+          <a href="copyMathCompetition.html" class="competition-card-link">
+            <div class="competition-card" data-category="math">
+              <h2 data-key="mathChallenge">Math Challenge</h2>
+              <p data-key="mathDesc">Test your skills in a thrilling math competition.</p>
+              <div class="card-footer">
+                <span class="card-detail"><span data-key="starts">Starts</span>: June 15 2025</span>
+                <span class="card-detail"><span data-key="prize">Prize</span>: 150000DA</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Logic Puzzle Card -->
+          <a href="copyLogicPuzzleChallenge.html" class="competition-card-link">
+            <div class="competition-card" data-category="logic">
+              <h2 data-key="logicPuzzle">Logic Puzzle</h2>
+              <p data-key="logicDesc">Challenge yourself with tough logic puzzles.</p>
+              <div class="card-footer">
+                <span class="card-detail"><span data-key="starts">Starts</span>: July 1 2025</span>
+                <span class="card-detail"><span data-key="prize">Prize</span>: 80000DA</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Memory Game Card -->
+          <a href="copyMemoryGameChallenge.html" class="competition-card-link">
+            <div class="competition-card" data-category="memory">
+              <h2 data-key="memoryGame">Memory Game</h2>
+              <p data-key="memoryDesc">Train your memory and beat the competition.</p>
+              <div class="card-footer">
+                <span class="card-detail"><span data-key="starts">Starts</span>: June 10 2025</span>
+                <span class="card-detail"><span data-key="prize">Prize</span>: 50000DA</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Perplexity Challenge Card -->
+          <a href="perplexity-challenge.html" class="competition-card-link">
+            <div class="competition-card" data-category="perplexity">
+              <h2 data-key="perplexityChallenge">Perplexity Challenge</h2>
+              <p data-key="perplexityDesc">Solve mind-bending puzzles that challenge your perception.</p>
+              <div class="card-footer">
+                <span class="card-detail"><span data-key="starts">Starts</span>: July 15 2025</span>
+                <span class="card-detail"><span data-key="prize">Prize</span>: 120000DA</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="copyUserCompetitionPage.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard | Mind Arena</title>
+  <link rel="stylesheet" href="copyUserHomePage.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Background Animation Elements -->
+  <div class="animated-background">
+    <div class="bg-object puzzle-piece" style="top: 5%; left: 2%; color: #6c63ff;"></div>
+    <div class="bg-object chess-knight" style="top: 15%; right: 3%; color: #ff6464;"></div>
+    <div class="bg-object puzzle-piece-2" style="bottom: 10%; left: 5%; color: #4caf50;"></div>
+    <div class="bg-object chess-pawn" style="bottom: 20%; right: 8%; color: #ff9800;"></div>
+    <div class="bg-object integral" style="top: 40%; left: 3%; color: #9c27b0;"></div>
+    <div class="bg-object chess-rook" style="top: 60%; right: 4%; color: #2196f3;"></div>
+    <div class="bg-object damma" style="bottom: 5%; right: 15%; color: #e91e63;"></div>
+    <div class="bg-object formula" style="top: 25%; left: 10%; color: #009688;"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <!-- Left section: Logo -->
+      <div class="header-left">
+        <div class="header-logo">
+          <a href="index.html" class="logo-link">
+            <img src="logos.png" alt="Mind Arena Logo" class="header-logo-img">
+            <span class="header-logo-text" data-key="mindArena">Mind Arena</span>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Middle section: Search -->
+      <div class="header-middle">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search...">
+          <button class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Right section: Notifications, Settings, Dark Mode, Language, Logout -->
+      <div class="header-right">
+        <!-- Notifications -->
+        <div class="notification-container">
+          <button class="notification-button">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">3</span>
+          </button>
+          <div class="notification-dropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+              <button class="mark-all-read">Mark all as read</button>
+            </div>
+            <div class="notification-list">
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-trophy"></i></div>
+                <div class="notification-content">
+                  <p>New competition available: Math Challenge</p>
+                  <span class="notification-time">2 hours ago</span>
+                </div>
+              </div>
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-clipboard-check"></i></div>
+                <div class="notification-content">
+                  <p>Your IQ test results are ready</p>
+                  <span class="notification-time">Yesterday</span>
+                </div>
+              </div>
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-medal"></i></div>
+                <div class="notification-content">
+                  <p>You've earned a new badge!</p>
+                  <span class="notification-time">3 days ago</span>
+                </div>
+              </div>
+            </div>
+            <div class="notification-footer">
+              <a href="copyNotificationPage.html">View all notifications</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Settings Button - UPDATED with anchor link -->
+        <div class="settings-container">
+          <a href="copySettingPage.html" class="settings-link">
+            <button class="settings-button">
+              <i class="fas fa-cog"></i>
+            </button>
+          </a>
+        </div>
+        
+        <!-- Dark Mode Toggle -->
+        <div class="dark-mode-container">
+          <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+            <span class="toggle-slider"></span>
+          </button>
+        </div>
+        
+        <!-- Language Switch -->
+        <div class="language-switch">
+          <span id="english-option" onclick="setLanguageWithHighlight('en')">English</span>
+          <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+        </div>
+        
+        <!-- Logout Button with Link to Login Page -->
+        <a href="loginPage.html" class="logout-link">
+          <button class="logout-button">
+            <i class="fas fa-sign-out-alt"></i>
+            <span data-key="logout">Logout</span>
+          </button>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Bar - CENTERED -->
+  <nav class="menu-bar">
+    <div class="menu-container">
+      <ul class="menu-list centered">
+        <li class="menu-item active">
+          <a href="index.html" data-key="home">
+            <i class="fas fa-home"></i> Home
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="copyUserCompetitionPage.html" data-key="competitions">
+            <i class="fas fa-trophy"></i> Competitions
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="copyCompetitionResults.html" data-key="results">
+            <i class="fas fa-chart-bar"></i> Results
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="copyProfilePage.html" data-key="profile">
+            <i class="fas fa-user"></i> Profile
+          </a>
+        </li>
+        <li class="menu-item">
+          <a href="copyReportAProblem.html" data-key="report">
+            <i class="fas fa-exclamation-circle"></i> Report
+          </a>
+        </li>
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Dashboard Container -->
+  <div class="container">
+    <!-- Left Section: Logo & Text -->
+    <div class="left-section">
+      <div class="logo-container">
+        <a href="index.html" class="dashboard-logo-link">
+          <img src="logos.png" alt="User Logo" class="logo-img">
+        </a>
+      </div>
+      <h1 class="main-text" data-key="mindArena">Mind Arena</h1>
+      <p class="sub-text" data-key="welcomeText">
+        Welcome to mind arena, where you can explore exciting competitions, track your results, and manage your profile effortlessly.
+      </p>
+    </div>
+
+    <!-- Right Section: Action Buttons - UPDATED to 2x2 grid with colored borders -->
+    <div class="right-section">
+      <div class="admin-cards grid-layout">
+        <a href="copyUserCompetitionPage.html" class="card-link">
+          <div class="card">
+            <div class="card-border indigo"></div>
+            <h2 data-key="competitions">Competitions</h2>
+            <p data-key="competitionsDesc">Explore schedules and join exciting competitions.</p>
+          </div>
+        </a>
+
+        <a href="copyCompetitionResults.html" class="card-link">
+          <div class="card">
+            <div class="card-border purple"></div>
+            <h2 data-key="results">Competition Results</h2>
+            <p data-key="resultsDesc">Check results and rankings.</p>
+          </div>
+        </a>          
+
+        <a href="copyProfilePage.html" class="card-link">
+          <div class="card">
+            <div class="card-border green"></div>
+            <h2 data-key="profile">Profile</h2>
+            <p data-key="profileDesc">View, edit your profile informations and view your competition.</p>
+          </div>
+        </a>
+
+        <a href="copyReportAProblem.html" class="card-link">
+          <div class="card">
+            <div class="card-border red"></div>
+            <h2 data-key="report">Report a Problem</h2>
+            <p data-key="reportDesc">Report any issue to our team.</p>
+          </div>
+        </a>
+        
+        <!-- Privacy & Security Card -->
+        <a href="copyPrivacySecurity.html" class="card-link full-width">
+          <div class="card">
+            <div class="card-border amber"></div>
+            <h2 data-key="privacySecurity">Privacy & Security</h2>
+            <p data-key="privacySecurityDesc">Manage your privacy settings and security options.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="copyUserHomePage.js"></script>
+</body>
+</html>

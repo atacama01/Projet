@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report A Problem - Mind Arena</title>
+  <link rel="stylesheet" href="copyReportAProblem.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Animated Background Objects -->
+  <div class="animated-bg">
+    <div class="animated-object obj1"></div>
+    <div class="animated-object obj2"></div>
+    <div class="animated-object obj3"></div>
+    <div class="animated-object obj4"></div>
+    <div class="animated-object obj5"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <!-- Left section: Logo -->
+      <div class="header-left">
+        <div class="header-logo">
+          <a href="index.html" class="logo-link">
+            <img src="logos.png" alt="Mind Arena Logo" class="header-logo-img">
+            <span class="header-logo-text" data-key="mindArena">Mind Arena</span>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Middle section: Search -->
+      <div class="header-middle">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search...">
+          <button class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Right section: Notifications, Language, Logout -->
+      <div class="header-right">
+        <!-- Notifications -->
+        <div class="notification-container">
+          <button class="notification-button">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">3</span>
+          </button>
+          <div class="notification-dropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+              <button class="mark-all-read">Mark all as read</button>
+            </div>
+            <div class="notification-list">
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-trophy"></i></div>
+                <div class="notification-content">
+                  <p>New competition available: Math Challenge</p>
+                  <span class="notification-time">2 hours ago</span>
+                </div>
+              </div>
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-clipboard-check"></i></div>
+                <div class="notification-content">
+                  <p>Your IQ test results are ready</p>
+                  <span class="notification-time">Yesterday</span>
+                </div>
+              </div>
+              <div class="notification-item unread">
+                <div class="notification-icon"><i class="fas fa-medal"></i></div>
+                <div class="notification-content">
+                  <p>You've earned a new badge!</p>
+                  <span class="notification-time">3 days ago</span>
+                </div>
+              </div>
+            </div>
+            <div class="notification-footer">
+              <a href="#">View all notifications</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Language Switch -->
+        <div class="language-switch">
+          <span id="english-option" onclick="setLanguageWithHighlight('en')">English</span>
+          <span id="arabic-option" onclick="setLanguageWithHighlight('ar')">العربية</span>
+        </div>
+        
+        <!-- Logout Button -->
+        <button class="logout-button">
+          <i class="fas fa-sign-out-alt"></i>
+          <span data-key="logout">Logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="copyUserHomePage.html" class="nav-link active"><i class="fas fa-home"></i> <span data-key="home">Home</span></a></li>
+        <li class="nav-item"><a href="copyUserCompetitionPage.html" class="nav-link"><i class="fas fa-trophy"></i> <span data-key="competitions">Competitions</span></a></li>
+        <li class="nav-item"><a href="copyUserCompetitionPage.html" class="nav-link"><i class="fas fa-brain"></i> <span data-key="challenges">Challenges</span></a></li>
+        <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-chart-line"></i> <span data-key="leaderboard">Leaderboard</span></a></li>
+        <li class="nav-item"><a href="copyProfilePage.html" class="nav-link"><i class="fas fa-user"></i> <span data-key="profile">Profile</span></a></li>
+        <li class="nav-item"><a href="copySettingPage.html" class="nav-link"><i class="fas fa-cog"></i> <span data-key="settings">Settings</span></a></li>
+        <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-question-circle"></i> <span data-key="help">Help</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Title Banner -->
+  <div class="page-title-container">
+    <h1 data-key="reportProblemTitle">Report A Problem</h1>
+    <div class="breadcrumbs">
+      <a href="copyUserHomePage.html" data-key="home">Home</a> &gt; <span data-key="reportProblemTitle">Report A Problem</span>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <div class="container">
+    <!-- Left Section: Image & Info -->
+    <div class="left-section">
+      <div class="logo-container">
+        <img src="reportProblemPNG.png" alt="Support Image" class="logo-img">
+      </div>
+      <h2 class="main-text" data-key="helpTitle">We're Here to Help</h2>
+      <p class="sub-text" data-key="helpText">
+        We value your feedback and are committed to resolving any issues you encounter. Please provide details about the problem, and our team will address it promptly.
+      </p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>support@mindarena.com</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+1 (555) 123-4567</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-clock"></i>
+          <span data-key="supportHours">Support hours: 24/7</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section: Report Form -->
+    <div class="right-section">
+      <div class="form-container" id="report-form">
+        <h2 data-key="problemDetails">Problem Details</h2>
+        <form id="problem-form">
+          <div class="form-group">
+            <label for="problem-type" data-key="problemType">Problem Type</label>
+            <select id="problem-type" required>
+              <option value="" data-key="selectProblemType">-- Select Problem Type --</option>
+              <option value="technical" data-key="technical">Technical Issue</option>
+              <option value="account" data-key="account">Account Problem</option>
+              <option value="competition" data-key="competitionIssue">Competition Issue</option>
+              <option value="payment" data-key="payment">Payment Problem</option>
+              <option value="other" data-key="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="problem-title" data-key="problemTitle">Problem Title</label>
+            <input type="text" id="problem-title" placeholder="Brief description of the issue" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="problem-description" data-key="problemDescription">Problem Description</label>
+            <textarea id="problem-description" rows="5" placeholder="Please provide detailed information about the problem" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="problem-date" data-key="whenOccurred">When did this occur?</label>
+            <input type="date" id="problem-date" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="problem-attachment" data-key="attachScreenshot">Attach Screenshot (optional)</label>
+            <div class="file-input-container">
+              <input type="file" id="problem-attachment" accept="image/*">
+              <label for="problem-attachment" class="file-input-label">
+                <i class="fas fa-upload"></i>
+                <span data-key="chooseFile">Choose File</span>
+              </label>
+              <span id="file-name" class="file-name"></span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="problem-priority" data-key="priority">Priority</label>
+            <div class="priority-options">
+              <label class="priority-option">
+                <input type="radio" name="priority" value="low">
+                <span data-key="low">Low</span>
+              </label>
+              <label class="priority-option">
+                <input type="radio" name="priority" value="medium" checked>
+                <span data-key="medium">Medium</span>
+              </label>
+              <label class="priority-option">
+                <input type="radio" name="priority" value="high">
+                <span data-key="high">High</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" class="cancel-button" onclick="window.location.href='index.html'">
+              <i class="fas fa-times"></i>
+              <span data-key="cancel">Cancel</span>
+            </button>
+            <button type="submit" class="submit-button">
+              <i class="fas fa-paper-plane"></i>
+              <span data-key="submitReport">Submit Report</span>
+            </button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Success Message (Hidden by default) -->
+      <div class="success-message" id="success-message" style="display: none;">
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2 data-key="thankYou">Thank You!</h2>
+        <p data-key="reportReceived">Your report has been received. Our team will review it and respond as soon as possible.</p>
+        <p data-key="referenceNumber">Reference Number: <span id="reference-number">REF-12345</span></p>
+        <button class="back-button" onclick="window.location.href='index.html'">
+          <i class="fas fa-home"></i>
+          <span data-key="backToDashboard">Back to Dashboard</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="copyReportAProblem.js"></script>
+</body>
+</html>
